@@ -1,0 +1,66 @@
+// _variables.scss
+
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/fonts" as *;
+
+// Font Fallbacks
+$font-sf-pro-display: "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+$font-sf-pro-text: "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+$font-sf-pro: "SF Pro", "Helvetica Neue", Arial, sans-serif;
+
+// Font Size Variables
+$font-size-small: 0.875rem;
+$font-size-medium: 1rem;
+$font-size-large: 1.25rem;
+$font-size-label: 0.875rem;
+
+// Font Weights
+$font-weight-bold: 700;
+$font-weight-semi-bold: 600;
+$font-weight-normal: 400;
+
+// Primary Font Family
+$font-family-display: $font-sf-pro-display;
+$font-family-text: $font-sf-pro-text;
+$font-family-primary: $font-sf-pro;
+
+// Neutral Colors
+$color-columbia-blue: #bcd4deff;
+$color-light-blue: #a5ccd1ff;
+$color-cadet-gray: #a0b9bfff;
+$color-cadet-gray-2: #9dacb2ff;
+$color-cadet-gray-3: #949ba0ff;
+
+// Secondary Colors
+$color-jet: #343434ff;
+$color-delft-blue: #2f3061ff;
+$color-egyptian-blue: #0e34a0ff;
+$color-ultra-violet: #5f5980ff;
+$color-platinum: #dfdfdfff;
+
+// Primary Colors
+$color-charcoal: #28536bff;
+$color-rosy-brown: #c2948aff;
+$color-air-superiority-blue: #7ea8beff;
+$color-khaki: #bbb193ff;
+$color-white: #ffffff;
+$color-black: #000000;
+
+// Global Breakpoints
+$breakpoint-desktop: 1280px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 320px;
+
+// Global Breakpoints Range
+$breakpoint-tablet-min: 768px;
+$breakpoint-tablet-max: 1279px;
+$breakpoint-mobile-min: 320px;
+$breakpoint-mobile-max: 767px;
+$breakpoint-tablet-range: "(min-width: #{$breakpoint-tablet-min}) and (max-width: #{$breakpoint-tablet-max})";
+$breakpoint-mobile-range: "(min-width: #{$breakpoint-mobile-min}) and (max-width: #{$breakpoint-mobile-max})";
+
+// Common Styles
+$border-radius: 0.3125rem;
+$transition-time: 0.3s;

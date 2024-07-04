@@ -1,0 +1,24 @@
+// _mixins.scss
+
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/fonts" as *;
+
+@mixin font($family, $size, $weight: normal) {
+  font-family: $family;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin font-sf-pro-display($size, $weight: normal) {
+  @include font($sf-pro-display, $size, $weight);
+}
+
+@mixin font-sf-pro-text($size, $weight: normal) {
+  @include font($sf-pro-text, $size, $weight);
+}
+
+@mixin font-sf-pro($size, $weight: normal) {
+  @include font($sf-pro, $size, $weight);
+}

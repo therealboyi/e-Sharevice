@@ -1,0 +1,93 @@
+// _globals.scss
+
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/layout" as *;
+@use "../../styles/partials/fonts" as *;
+
+body {
+  font-family: $font-family-primary;
+  line-height: 1.6; // Default line height
+  background-color: $color-columbia-blue; // Default background color
+  color: $color-charcoal; // Default text color
+}
+
+.header {
+  font-family: $font-family-display;
+}
+
+.paragraph {
+  font-family: $font-family-text;
+}
+
+// Reset default browser styling
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Basic global styles
+html {
+  font-size: 100%; 
+  -webkit-font-smoothing: antialiased; // Improve font rendering on macOS and iOS
+  -moz-osx-font-smoothing: grayscale;  // Improve font rendering on Firefox
+}
+
+body {
+    font-family: $font-family-primary;
+    line-height: 1.6; // Default line height
+    background-color: $color-columbia-blue; // Default background color
+    color: $color-charcoal; // Default text color
+  }
+
+// Anchor tags
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600; // Font weight for headings
+  margin-bottom: 0.5em;
+}
+
+// Lists
+ul, ol {
+  list-style: none; // Remove default list styling
+}
+
+// Images
+img {
+  max-width: 100%; // Ensure images are responsive
+  height: auto;
+}
+
+// Tables
+table {
+  width: 100%;
+  border-collapse: collapse; // Remove spacing between table cells
+}
+
+// Buttons
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit; 
+  padding: 0;
+}
+
+// Forms
+input, textarea, select {
+  font-family: inherit; 
+  font-size: inherit; 
+  margin: 0; 
+}
