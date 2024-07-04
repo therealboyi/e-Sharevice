@@ -72,8 +72,6 @@ To ensure secure access and data management, the following measures will be impl
 
 ### API and Endpoints
 
-#### API Design
-
 Endpoints are structured to handle user interactions, exchanges, and authentication:
 
 - **GET /exchanges**: Fetch available skills, tools, and items for exchange.
@@ -82,14 +80,7 @@ Endpoints are structured to handle user interactions, exchanges, and authenticat
 - **POST /exchanges/create**: Create a new exchange request or offer.
 - **GET /exchanges/:id**: Fetch details of a specific exchange.
 
-#### Security Measures
-
-- **JWT Authentication**: Secure methods for user authentication and authorization.
-- **Data Encryption**: Protect user data in transit and storage.
-
-## User Experience and Interface
-
-### User Feedback
+## User Experience
 
 User feedback will be collected through:
 
@@ -120,9 +111,12 @@ Regular audits and validations ensure data accuracy and reliability.
 2. **Matchmaking**: Implement matchmaking functionality for skills, tools, and items.
 3. **In-App Communication**: Implement messaging and scheduling within the app.
 4. **Community Ratings**: Implement rating and review system for exchanges.
-5. **Credit System**: Implement points or credits for fair exchange.
-6. **Tool Reservation System**: Implement borrowing and reservation functionality for tools.
-7. **DIY Guides and Skill Learning**: Integrate project ideas and guides.
+5. **Tool Reservation System**: Implement borrowing and reservation functionality for tools.
+
+### Nice to Have
+
+- **Credit System**: Implement points or credits for fair exchange.
+- **DIY Guides and Skill Learning**: Integrate project ideas and guides.
 
 ### Bug Fixes
 
@@ -148,7 +142,7 @@ Provide support through in-app help, email, and live chat options.
 
 Engage with users through forums, social media, and feedback channels to build a supportive community.
 
-## UML Diagram
+# UML Diagram
 
 Below is a Mermaid syntax UML diagram illustrating the basic structure of e-Sharevice.
 
