@@ -30,19 +30,18 @@ The intended user base for e-Sharevice includes:
 
 The needs of the target users were identified through research and community feedback. Key needs include reliable matchmaking for exchanges, secure in-app communication, and a fair system for managing transactions.
 
-### Feature List
+### Features
 
 1. **User Profiles**: Create and manage profiles listing skills, tools, and items available for exchange.
 2. **Matchmaking**: Match users based on skill needs, tool requirements, and item availability.
 3. **In-App Communication**: Messaging and scheduling functionality within the app.
 4. **Community Ratings**: Users can rate and review each other after exchanges.
-5. **Credit System**: Points or credits for fair exchange of services and items.
-6. **Reservation System**: Borrowing and reservation functionality for tools.
-7. **DIY Guides and Skill Learning**: Project ideas and guides for using tools and developing skills.
+5. **Reservation System**: Borrowing and reservation functionality for tools.
 
-### Feature Prioritization
+### Nice to Have
 
-Features were prioritized based on their impact on user engagement and community benefits, with matchmaking, communication, and ratings being the top priorities.
+1. **Credit System**: Points or credits for fair exchange of services and items.
+2. **DIY Guides and Skill Learning**: Project ideas and guides for using tools and developing skills.
 
 ## Implementation Details
 
@@ -67,12 +66,10 @@ Features were prioritized based on their impact on user engagement and community
 
 To ensure secure access and data management, the following measures will be implemented:
 
-- **JWT (JSON Web Tokens)**: For user authentication and authorization.
+- **JWT (JSON Web Tokens) Authentication**: For user authentication and authorization.
 - **Data Encryption**: Protect user data in transit and storage.
 
 ### API and Endpoints
-
-#### API Design
 
 Endpoints are structured to handle user interactions, exchanges, and authentication:
 
@@ -82,14 +79,7 @@ Endpoints are structured to handle user interactions, exchanges, and authenticat
 - **POST /exchanges/create**: Create a new exchange request or offer.
 - **GET /exchanges/:id**: Fetch details of a specific exchange.
 
-#### Security Measures
-
-- **JWT Authentication**: Secure methods for user authentication and authorization.
-- **Data Encryption**: Protect user data in transit and storage.
-
-## User Experience and Interface
-
-### User Feedback
+## User Experience
 
 User feedback will be collected through:
 
@@ -120,9 +110,7 @@ Regular audits and validations ensure data accuracy and reliability.
 2. **Matchmaking**: Implement matchmaking functionality for skills, tools, and items.
 3. **In-App Communication**: Implement messaging and scheduling within the app.
 4. **Community Ratings**: Implement rating and review system for exchanges.
-5. **Credit System**: Implement points or credits for fair exchange.
-6. **Tool Reservation System**: Implement borrowing and reservation functionality for tools.
-7. **DIY Guides and Skill Learning**: Integrate project ideas and guides.
+5. **Reservation System**: Implement borrowing and reservation functionality for tools.
 
 ### Bug Fixes
 
@@ -186,9 +174,9 @@ User --> Tool : borrows
 Tool --> User : returns
 User --> Messaging : communicates
 Messaging --> User : receives
+
 ```
 
 # Disclaimer
 
 This proposal outlines a long-term overview for Project e-Sharevice. Please note that features, technologies, and implementation details might change depending on circumstances and user feedback. The aim is to remain flexible and responsive to the needs of the end users and project requirements, ensuring that the final product provides the best possible support and functionality for community sharing.
-
