@@ -2,6 +2,7 @@
 *.css.map
 *.sass.map
 *.scss.map
+*.css
 
 # General
 .DS_Store
