@@ -1,36 +1,55 @@
 // HorizontalNavbar.scss
+@import 'src/styles/partials/variables';
 
-.horizontal-navbar {
-    overflow-x: auto;
-    white-space: nowrap;
-    background-color: #fff;
-    padding: 1rem;
+.horizontal-navbar-wrapper {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1rem;
+
+    overflow-x: hidden;
+    position: fixed;
+    top: 70px; // Height of the header
+    width: 100%;
+    z-index: 999;
   
-    &__list {
-      display: flex;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+    // Hides scrollbar for IE, Edge, and Firefox
+    -ms-overflow-style: none; // IE and Edge
+    scrollbar-width: none; // Firefox
   
-    &__item {
-      margin-right: 1rem;
+    .horizontal-navbar {
+      overflow-x: auto;
+      white-space: nowrap;
+      background-color: #fff;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   
-      &:last-child {
-        margin-right: 0;
+      // Hides scrollbar for Webkit browsers
+      &::-webkit-scrollbar {
+        display: none;
       }
-    }
   
-    &__link {
-      text-decoration: none;
-      color: #333;
-      font-size: 1rem;
-      transition: color 0.3s;
+      &__list {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
   
-      &:hover {
-        color: #007bff;
+      &__item {
+        margin-right: 1rem;
+  
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+  
+      &__link {
+        text-decoration: none;
+        color: #333;
+        font-size: 1rem;
+        transition: color 0.3s;
+  
+        &:hover {
+          color: $color-egyptian-blue;
+        }
       }
     }
   }

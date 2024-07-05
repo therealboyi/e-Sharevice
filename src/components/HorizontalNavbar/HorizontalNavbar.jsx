@@ -6,17 +6,19 @@ import './HorizontalNavbar.scss';
 
 const HorizontalNavbar = ({ items }) => {
   return (
-    <nav className="horizontal-navbar">
-      <ul className="horizontal-navbar__list">
-        {items.map((item, index) => (
-          <li key={index} className="horizontal-navbar__item">
-            <a href={item.link} className="horizontal-navbar__link">
-              {item.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div className="horizontal-navbar-wrapper">
+      <nav className="horizontal-navbar">
+        <ul className="horizontal-navbar__list">
+          {items.map((item, index) => (
+            <li key={index} className="horizontal-navbar__item">
+              <a href={item.link} className="horizontal-navbar__link">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
   );
 };
 
