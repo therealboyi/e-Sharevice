@@ -1,0 +1,39 @@
+// Buttons.scss
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, filter 0.3s ease;
+    color: white; // Default text color
+  
+    &__icon {
+      margin-right: 8px;
+  
+      img {
+        width: 20px; // Adjust icon size as needed
+        height: 20px; // Adjust icon size as needed
+      }
+    }
+  
+    &__text {
+      font-size: 16px;
+    }
+  
+    &:hover {
+      filter: brightness(0.85); 
+    }
+  
+    &--submit {
+      /* Additional styles for submit variant */
+    }
+  
+    &--cancel {
+      /* Additional styles for cancel variant */
+    }
+  
+    /* Add more variants if needed */
+  }
+  

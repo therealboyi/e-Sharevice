@@ -1,9 +1,7 @@
-// _globals.scss
+// src/styles/partials/_globals.scss
 
-@use "../../styles/partials/mixins" as *;
-@use "../../styles/partials/variables" as *;
-@use "../../styles/partials/layout" as *;
-@use "../../styles/partials/fonts" as *;
+@use "./variables" as *;
+@use "./mixins" as *;
 
 body {
   font-family: $font-family-primary;
@@ -37,11 +35,11 @@ html {
 }
 
 body {
-    font-family: $font-family-primary;
-    line-height: 1.6; // Default line height
-    background-color: $color-columbia-blue; // Default background color
-    color: $color-charcoal; // Default text color
-  }
+  font-family: $font-family-primary;
+  line-height: 1.6; // Default line height
+  background-color: $color-white; // Default background color
+  color: $color-charcoal; // Default text color
+}
 
 // Anchor tags
 a {
@@ -54,26 +52,71 @@ a {
 }
 
 // Headings
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600; // Font weight for headings
-  margin-bottom: 0.5em;
+h1 {
+  @include font-sf-pro-display(33px, 700);
+  line-height: 44px;
+
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+h2 {
+  @include font-sf-pro-display(12px, 700);
+  line-height: 20px;
+}
+
+h3 {
+  @include font-sf-pro-display(14px, 700);
+  line-height: 22px;
+
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 13px;
+    line-height: 18px;
+  }
+}
+
+h4 {
+  @include font-sf-pro(14px, 400);
+  line-height: 22px;
+
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 13px;
+    line-height: 18px;
+  }
+}
+
+h5 {
+  @include font-sf-pro-display(12px, 700);
+  line-height: 20px;
+
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 10px;
+    line-height: 20px;
+  }
+}
+
+h6 {
+  @include font-sf-pro-display(10px, 700);
+  line-height: 20px;
 }
 
 // Lists
 ul, ol {
-  list-style: none; // Remove default list styling
+  list-style: none; 
 }
 
 // Images
 img {
-  max-width: 100%; // Ensure images are responsive
+  max-width: 100%; 
   height: auto;
 }
 
 // Tables
 table {
   width: 100%;
-  border-collapse: collapse; // Remove spacing between table cells
+  border-collapse: collapse; 
 }
 
 // Buttons

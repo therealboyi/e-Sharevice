@@ -1,25 +1,9 @@
-// _variables.scss
-
-@use "../../styles/partials/mixins" as *;
-@use "../../styles/partials/typography" as *;
-@use "../../styles/partials/globals" as *;
-@use "../../styles/partials/fonts" as *;
+// src/styles/partials/_variables.scss
 
 // Font Fallbacks
 $font-sf-pro-display: "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
 $font-sf-pro-text: "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
 $font-sf-pro: "SF Pro", "Helvetica Neue", Arial, sans-serif;
-
-// Font Size Variables
-$font-size-small: 0.875rem;
-$font-size-medium: 1rem;
-$font-size-large: 1.25rem;
-$font-size-label: 0.875rem;
-
-// Font Weights
-$font-weight-bold: 700;
-$font-weight-semi-bold: 600;
-$font-weight-normal: 400;
 
 // Primary Font Family
 $font-family-display: $font-sf-pro-display;

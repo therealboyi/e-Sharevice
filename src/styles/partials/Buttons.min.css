@@ -1,0 +1,1 @@
+.button{display:inline-flex;align-items:center;justify-content:center;border:none;cursor:pointer;transition:background-color .3s ease,filter .3s ease;color:#fff}.button__icon{margin-right:8px}.button__icon img{width:20px;height:20px}.button__text{font-size:16px}.button:hover{filter:brightness(0.85)}

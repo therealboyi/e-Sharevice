@@ -1,0 +1,29 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, filter 0.3s ease;
+  color: white;
+  /* Add more variants as needed */
+}
+.button__icon {
+  margin-right: 8px;
+}
+.button__icon img {
+  width: 20px;
+  height: 20px;
+}
+.button__text {
+  font-size: 16px;
+}
+.button:hover {
+  filter: brightness(0.85);
+}
+.button--submit {
+  /* Additional styles for submit variant */
+}
+.button--cancel {
+  /* Additional styles for cancel variant */
+}

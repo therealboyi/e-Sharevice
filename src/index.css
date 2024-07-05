@@ -1,0 +1,138 @@
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/src/assets/fonts/SF-Pro-Display-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/src/assets/fonts/SF-Pro-Display-Semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SF Pro Text";
+  src: url("/src/assets/fonts/SF-Pro-Text-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SF Pro Text";
+  src: url("/src/assets/fonts/SF-Pro-Text-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SF Pro Text";
+  src: url("/src/assets/fonts/SF-Pro-Text-Semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SF Pro";
+  src: url("/src/assets/fonts/SF-Pro.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  font-family: "SF Pro", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #bcd4de;
+  color: #28536b;
+}
+
+.header {
+  font-family: "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+}
+
+.paragraph {
+  font-family: "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "SF Pro", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #bcd4de;
+  color: #28536b;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+}
+
+.global-grid {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 1280px) {
+  .global-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 7.5rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  .global-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 2rem;
+  }
+}
+@media (min-width: 320px) and (max-width: 767px) {
+  .global-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin: 1rem;
+  }
+}
