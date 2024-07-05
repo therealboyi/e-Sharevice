@@ -1,0 +1,26 @@
+// Avatar.scss
+
+.avatar {
+    &--small {
+      width: 30px;
+      height: 30px;
+    }
+  
+    &--medium {
+      width: 40px;
+      height: 40px;
+    }
+  
+    &--large {
+      width: 70px;
+      height: 70px;
+    }
+  
+    &__image {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+  

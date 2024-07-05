@@ -1,39 +1,49 @@
 // Buttons.scss
 
+:root {
+  --button-color: #007bff;
+  --button-hover-color: #ffffff;
+  --button-border-radius: 20px; // Increased border-radius to make the button rounder
+  --button-padding: 10px 20px;
+}
+
 .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, filter 0.3s ease;
-    color: white; // Default text color
-  
-    &__icon {
-      margin-right: 8px;
-  
-      img {
-        width: 20px; // Adjust icon size as needed
-        height: 20px; // Adjust icon size as needed
-      }
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, filter 0.3s ease;
+  color: white; // Default text color
+  background-color: var(--button-color);
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
+
+  &__icon {
+    margin-right: 8px;
+
+    img {
+      width: 20px; // Adjust icon size as needed
+      height: 20px; // Adjust icon size as needed
     }
-  
-    &__text {
-      font-size: 16px;
-    }
-  
-    &:hover {
-      filter: brightness(0.85); 
-    }
-  
-    &--submit {
-      /* Additional styles for submit variant */
-    }
-  
-    &--cancel {
-      /* Additional styles for cancel variant */
-    }
-  
-    /* Add more variants if needed */
   }
-  
+
+  &__text {
+    font-size: 16px;
+  }
+
+  &:hover {
+    background-color: var(--button-hover-color);
+    filter: brightness(0.85);
+  }
+
+  &--submit {
+    /* Additional styles for submit variant */
+  }
+
+  &--cancel {
+    /* Additional styles for cancel variant */
+  }
+
+  /* Add more variants if needed */
+}

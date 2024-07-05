@@ -19,7 +19,6 @@ Thumbs.db
 ._*
 .Spotlight-V100
 .Trashes
-Icon?
 ehthumbs.db
 Thumbs.db
 
@@ -178,7 +177,6 @@ nbdist/
 .DS_Store
 .AppleDouble
 .LSOverride
-Icon
 __MACOSX
 
 # Windows
@@ -264,3 +262,4 @@ tags
 *.wafpickle
 .lock-wscript
 .vite
+readme.txt

@@ -1,0 +1,28 @@
+// InputField.jsx
+
+.input-field {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 40px;
+    padding: 0.5rem;
+    background-color: #fff;
+  
+    &__icon {
+      margin-right: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+  
+    &__input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+  
+      &::placeholder {
+        color: #999;
+      }
+    }
+  }
+  

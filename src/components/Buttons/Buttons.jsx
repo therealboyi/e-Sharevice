@@ -9,18 +9,18 @@ const Button = ({
   svgIconPath,
   text,
   onClick,
-  color = '#007bff', // Default color
-  hoverColor = '#ffffff', // Default hover color
-  borderRadius = '4px', // Default border radius
-  padding = '10px 20px' // Default padding
+  color,
+  hoverColor,
+  borderRadius,
+  padding
 }) => {
   const buttonClass = `button button--${variant}`;
 
   const style = {
-    backgroundColor: color,
-    borderRadius: borderRadius,
-    padding: padding,
-    '--hover-color': hoverColor
+    ...(color && { backgroundColor: color }),
+    ...(hoverColor && { '--hover-color': hoverColor }),
+    ...(borderRadius && { borderRadius: borderRadius }),
+    ...(padding && { padding: padding })
   };
 
   return (

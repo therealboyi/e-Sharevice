@@ -1,23 +1,25 @@
 // src/styles/partials/_layout.scss
 
+@use "./variables" as *;
+
 .global-grid {
   display: grid;
   gap: 1rem;
 
-  @media (min-width: 1280px) {
-    grid-template-columns: 1fr;
+  @media (min-width: $breakpoint-desktop) {
+    grid-template-columns: auto 63px 24px 63px 24px 63px 24px 63px 24px 63px 24px 63px 24px auto;
     gap: 1.5rem;
     margin: 2rem 7.5rem;
   }
 
-  @media (min-width: 768px) and (max-width: 1279px) {
-    grid-template-columns: 1fr;
+  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-tablet-max) {
+    grid-template-columns: 36px auto 24px auto 24px auto 24px auto 24px auto 24px auto 36px;
     gap: 1.5rem;
     margin: 2rem 2rem;
   }
 
-  @media (min-width: 320px) and (max-width: 767px) {
-    grid-template-columns: 1fr;
+  @media (max-width: $breakpoint-mobile-max) {
+    grid-template-columns: 16px auto 16px auto 16px auto 16px auto 16px auto 16px;
     gap: 0.5rem;
     margin: 1rem;
   }
