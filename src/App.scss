@@ -9,16 +9,21 @@
 
   &__content {
     flex: 1;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
   }
 
   &__title {
     font-size: 2rem;
     color: #333;
+    margin-top: 2rem; // Space between the title and the photo card
   }
 
   &__description {
     font-size: 1rem;
     color: #666;
+    margin-top: 1rem; // Space between the description and the title
   }
 }
