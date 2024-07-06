@@ -15,15 +15,15 @@ const NavMenu = ({ isVisible }) => {
           </a>
         </li>
         <li className="nav-menu__item">
-          <a href="#wishlists" className="nav-menu__link">
-            <span className="nav-menu__icon nav-menu__icon--wishlists"></span>
-            <span className="nav-menu__text">Wishlists</span>
+          <a href="#exchange" className="nav-menu__link">
+            <span className="nav-menu__icon nav-menu__icon--exchange"></span>
+            <span className="nav-menu__text">Exchange</span>
           </a>
         </li>
         <li className="nav-menu__item">
-          <a href="#trips" className="nav-menu__link">
-            <span className="nav-menu__icon nav-menu__icon--trips"></span>
-            <span className="nav-menu__text">Trips</span>
+          <a href="#saved" className="nav-menu__link">
+            <span className="nav-menu__icon nav-menu__icon--saved"></span>
+            <span className="nav-menu__text">Saved</span>
           </a>
         </li>
         <li className="nav-menu__item">
@@ -48,4 +48,3 @@ NavMenu.propTypes = {
 };
 
 export default NavMenu;
-

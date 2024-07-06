@@ -7,7 +7,10 @@ import './Avatar.scss';
 const Avatar = ({ src, alt, size }) => {
   return (
     <div className={`avatar avatar--${size}`}>
-      <img src={src} alt={alt} className="avatar__image" />
+      <div className="avatar__icon avatar__icon--custom"></div>
+      <div className="avatar__image-container">
+        <img src={src} alt={alt} className="avatar__image" />
+      </div>
     </div>
   );
 };

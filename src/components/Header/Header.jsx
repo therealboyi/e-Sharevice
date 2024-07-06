@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header__logo">
-        <img src="/src/assets/logo/logo.svg" alt="Logo" className="header__logo-img" />
+        <img src="/src/assets/logo/logo.png" alt="Logo" className="header__logo-img" />
       </div>
       <div className="header__search">
         <InputField 

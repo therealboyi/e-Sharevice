@@ -1,56 +1,60 @@
 // HorizontalNavbar.scss
-@import 'src/styles/partials/variables';
+@import "src/styles/partials/variables";
 
 .horizontal-navbar-wrapper {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-x: hidden;
+  position: fixed;
+  top: 55px; // Height of the header
+  width: 100%;
+  z-index: 999;
 
-    overflow-x: hidden;
-    position: fixed;
-    top: 70px; // Height of the header
-    width: 100%;
-    z-index: 999;
-  
-    // Hides scrollbar for IE, Edge, and Firefox
-    -ms-overflow-style: none; // IE and Edge
-    scrollbar-width: none; // Firefox
-  
-    .horizontal-navbar {
-      overflow-x: auto;
-      white-space: nowrap;
-      background-color: #fff;
-      padding: 1rem;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
-      // Hides scrollbar for Webkit browsers
-      &::-webkit-scrollbar {
-        display: none;
+  // Hides scrollbar for IE, Edge, and Firefox
+  -ms-overflow-style: none; // IE and Edge
+  scrollbar-width: none; // Firefox
+
+  .horizontal-navbar {
+    overflow-x: auto;
+    white-space: nowrap;
+    background-color: $color-white;
+    padding: 1rem 0 0.5rem 0;
+    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    // Hides scrollbar for Webkit browsers
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &__list {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    &__item {
+      margin: 0.2rem;
+
+      &:last-child {
+        margin-right: 0;
       }
-  
-      &__list {
-        display: flex;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-  
-      &__item {
-        margin-right: 1rem;
-  
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-  
-      &__link {
-        text-decoration: none;
-        color: #333;
-        font-size: 1rem;
-        transition: color 0.3s;
-  
-        &:hover {
-          color: $color-egyptian-blue;
-        }
+    }
+
+    &__link {
+      display: inline-block;
+      text-decoration: none;
+      color: $color-white;
+      padding: 0.5rem 1rem;
+      background-color: $color-green;
+      border: 1px solid $color-green;
+      border-radius: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background-color: $color-recycle;
+        color: $color-platinum;
+        border: 1px solid $color-recycle;
       }
     }
   }
-  
+}

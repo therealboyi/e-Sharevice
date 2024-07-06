@@ -4,10 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './InputField.scss';
 
-const InputField = ({ type, placeholder, icon, value, onChange }) => {
+const InputField = ({ type, placeholder, value, onChange }) => {
   return (
     <div className="input-field">
-      {icon && <span className="input-field__icon">{icon}</span>}
+      <span className="input-field__icon input-field__icon--search"></span>
       <input 
         type={type} 
         placeholder={placeholder} 
@@ -22,7 +22,6 @@ const InputField = ({ type, placeholder, icon, value, onChange }) => {
 InputField.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
-  icon: PropTypes.element,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
@@ -30,8 +29,8 @@ InputField.propTypes = {
 InputField.defaultProps = {
   type: 'text',
   placeholder: '',
-  icon: null,
 };
 
 export default InputField;
+
 

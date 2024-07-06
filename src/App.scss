@@ -12,7 +12,7 @@
     padding: 8rem 1rem 1rem 1rem; // Adjusted padding to account for fixed header and navbar
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
   }
 
   &__title {
@@ -25,5 +25,22 @@
     font-size: 1rem;
     color: #666;
     margin-top: 1rem; // Space between the description and the title
+  }
+
+  &__photo-cards {
+    display: grid;
+    grid-template-columns: 1fr; // Default to a single column
+    gap: 2rem; // Space between the photo cards
+    width: 100%;
+    padding: 1rem 0rem;
+
+    @media (min-width: 550px) {
+      grid-template-columns: repeat(2, 1fr);
+      justify-content: center; // Center the grid
+    }
+  }
+
+  .photo-card {
+    margin: 0; // Ensure no extra margin on photo cards
   }
 }

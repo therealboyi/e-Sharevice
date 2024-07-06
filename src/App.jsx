@@ -16,7 +16,7 @@ const navItems = [
   { label: "Blog", link: "#" },
   { label: "Careers", link: "#" },
   { label: "Support", link: "#" },
-  { label: "Privacy", link: "#" }
+  { label: "Privacy", link: "#" },
 ];
 
 const App = () => {
@@ -24,14 +24,16 @@ const App = () => {
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY + window.innerHeight;
-    const footerPosition = document.body.offsetHeight - document.querySelector('.footer').offsetHeight;
+    const footerPosition =
+      document.body.offsetHeight -
+      document.querySelector(".footer").offsetHeight;
     setIsFooterVisible(scrollPosition >= footerPosition);
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -40,27 +42,92 @@ const App = () => {
       <Header />
       <main className="app__content">
         <HorizontalNavbar items={navItems} />
-        <PhotoCard
-          imageSrc="/src/assets/images/messi.png"
-          imageAlt="Lionel Messi"
-          title="Go PRO with Lionel Messi"
-          subtitle="Hosted by Lionel Messi"
-          description="Coming July"
-        />
-        <PhotoCard
-          imageSrc="/src/assets/images/ronaldo.png"
-          imageAlt="Cristiano Ronaldo"
-          title="Go PRO with Cristiano Ronaldo"
-          subtitle="Hosted by Cristiano Ronaldo"
-          description="Coming July"
-        />
-        <PhotoCard
-          imageSrc="/src/assets/images/mbappe.png"
-          imageAlt="Kylian Mbappé"
-          title="Go PRO with Kylian Mbappé"
-          subtitle="Hosted by Kylian Mbappé"
-          description="Coming July"
-        />
+        <div className="app__photo-cards">
+          <PhotoCard
+            imageSrc="/src/assets/images/messi.png"
+            imageAlt="Lionel Messi"
+            title="Go PRO with Lionel Messi"
+            subtitle="Hosted by Lionel Messi"
+            description="Coming July"
+          />
+          <PhotoCard
+            imageSrc="/src/assets/images/ronaldo.png"
+            imageAlt="Cristiano Ronaldo"
+            title="Go PRO with Cristiano Ronaldo"
+            subtitle="Hosted by Cristiano Ronaldo"
+            description="Coming July"
+          />
+          <PhotoCard
+            imageSrc="/src/assets/images/mbappe.png"
+            imageAlt="Kylian Mbappé"
+            title="Go PRO with Kylian Mbappé"
+            subtitle="Hosted by Kylian Mbappé"
+            description="Coming July"
+          />
+          <PhotoCard
+            imageSrc="/src/assets/images/messi.png"
+            imageAlt="Lionel Messi"
+            title="Go PRO with Lionel Messi"
+            subtitle="Hosted by Lionel Messi"
+            description="Coming July"
+          />
+          <PhotoCard
+            imageSrc="/src/assets/images/ronaldo.png"
+            imageAlt="Cristiano Ronaldo"
+            title="Go PRO with Cristiano Ronaldo"
+            subtitle="Hosted by Cristiano Ronaldo"
+            description="Coming July"
+          />
+          <PhotoCard
+            imageSrc="/src/assets/images/mbappe.png"
+            imageAlt="Kylian Mbappé"
+            title="Go PRO with Kylian Mbappé"
+            subtitle="Hosted by Kylian Mbappé"
+            description="Coming July"
+          />
+          <PhotoCard
+            imageSrc="/src/assets/images/messi.png"
+            imageAlt="Lionel Messi"
+            title="Go PRO with Lionel Messi"
+            subtitle="Hosted by Lionel Messi"
+            description="Coming July"
+          />
+          <PhotoCard
+            imageSrc="/src/assets/images/ronaldo.png"
+            imageAlt="Cristiano Ronaldo"
+            title="Go PRO with Cristiano Ronaldo"
+            subtitle="Hosted by Cristiano Ronaldo"
+            description="Coming July"
+          />
+          <PhotoCard
+            imageSrc="/src/assets/images/mbappe.png"
+            imageAlt="Kylian Mbappé"
+            title="Go PRO with Kylian Mbappé"
+            subtitle="Hosted by Kylian Mbappé"
+            description="Coming July"
+          />
+          <PhotoCard
+            imageSrc="/src/assets/images/messi.png"
+            imageAlt="Lionel Messi"
+            title="Go PRO with Lionel Messi"
+            subtitle="Hosted by Lionel Messi"
+            description="Coming July"
+          />
+          <PhotoCard
+            imageSrc="/src/assets/images/ronaldo.png"
+            imageAlt="Cristiano Ronaldo"
+            title="Go PRO with Cristiano Ronaldo"
+            subtitle="Hosted by Cristiano Ronaldo"
+            description="Coming July"
+          />
+          <PhotoCard
+            imageSrc="/src/assets/images/mbappe.png"
+            imageAlt="Kylian Mbappé"
+            title="Go PRO with Kylian Mbappé"
+            subtitle="Hosted by Kylian Mbappé"
+            description="Coming July"
+          />
+        </div>
         <h1 className="app__title">Hello, React!</h1>
         <p className="app__description">
           This is a basic React app setup with SCSS.

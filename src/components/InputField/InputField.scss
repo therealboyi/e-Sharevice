@@ -2,6 +2,7 @@
 
 .input-field {
   display: flex;
+//   width: 50%; // Temp adjustment for mobile view
   align-items: center;
   border: 1px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -13,10 +14,19 @@
     margin-right: 0.5rem;
     display: flex;
     align-items: center;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__icon--search {
+    background-image: url('./src/assets/icons/search.svg');
+    background-size: cover;
   }
 
   &__input {
     flex: 1;
+    width: 100%; // Temp adjustment for mobile view
+
     border: none;
     outline: none;
     font-size: 1rem;
