@@ -2,7 +2,7 @@
 @import "src/styles/partials/variables";
 
 .horizontal-navbar-wrapper {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow-x: hidden;
   position: fixed;
   top: 55px; // Height of the header
@@ -17,7 +17,7 @@
     overflow-x: auto;
     white-space: nowrap;
     background-color: $color-white;
-    padding: 1rem 0 0.5rem 0;
+    padding: 1rem 1rem;
     // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     // Hides scrollbar for Webkit browsers
@@ -30,30 +30,34 @@
       list-style: none;
       padding: 0;
       margin: 0;
+      gap: 0.5rem;
     }
 
     &__item {
-      margin: 0.2rem;
+      // margin: 0.2rem; // Space between items
+      // padding:0 1rem 0 0; // Space after the last item on the list
 
       &:last-child {
-        margin-right: 0;
+        padding-right: 1rem;
       }
     }
 
     &__link {
       display: inline-block;
       text-decoration: none;
-      color: $color-white;
+      color: black;
       padding: 0.5rem 1rem;
-      background-color: $color-green;
-      border: 1px solid $color-green;
+      background-color: white;
+      border: 1px solid white;
+      box-shadow: 2px 2px 23px -7px rgba(133, 133, 133, 0.3);
+
       border-radius: 20px;
       transition: background-color 0.3s ease, color 0.3s ease;
 
       &:hover {
-        background-color: $color-recycle;
+        background-color: white;
         color: $color-platinum;
-        border: 1px solid $color-recycle;
+        border: 1px solid white;
       }
     }
   }

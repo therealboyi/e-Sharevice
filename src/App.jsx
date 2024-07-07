@@ -17,6 +17,14 @@ const navItems = [
   { label: "Careers", link: "#" },
   { label: "Support", link: "#" },
   { label: "Privacy", link: "#" },
+  { label: "Home", link: "#" },
+  { label: "About", link: "#" },
+  { label: "Services", link: "#" },
+  { label: "Contact", link: "#" },
+  { label: "Blog", link: "#" },
+  { label: "Careers", link: "#" },
+  { label: "Support", link: "#" },
+  { label: "Privacy", link: "#" },
 ];
 
 const App = () => {

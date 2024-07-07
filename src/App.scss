@@ -1,4 +1,4 @@
-// // App.scss
+// App.scss
 
 @use "./styles/partials/index" as *;
 
@@ -13,6 +13,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (min-width: 768px) {
+      padding: 8rem 3rem 1rem 3rem; // Adjust padding for specific screen sizes
+    }
+    @media (min-width: 1280px) {
+      padding: 8rem 5rem 1rem 5rem; // Adjust padding for specific screen sizes
+    }
   }
 
   &__title {
@@ -32,10 +39,20 @@
     grid-template-columns: 1fr; // Default to a single column
     gap: 2rem; // Space between the photo cards
     width: 100%;
-    padding: 1rem 0rem;
+    padding: 0.5rem 0rem;
 
     @media (min-width: 550px) {
       grid-template-columns: repeat(2, 1fr);
+      justify-content: center; // Center the grid
+    }
+
+    @media (min-width: 768px) and (max-width: 1279px) {
+      grid-template-columns: repeat(3, 1fr); // 3 columns for medium screens
+      justify-content: center; // Center the grid
+    }
+
+    @media (min-width: 1280px) {
+      grid-template-columns: repeat(4, 1fr); // 4 columns for larger screens
       justify-content: center; // Center the grid
     }
   }
