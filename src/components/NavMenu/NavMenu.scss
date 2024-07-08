@@ -33,6 +33,16 @@
     flex-direction: column;
     align-items: center;
     padding: 10px 0;
+
+    &--active {
+      .nav-menu__link {
+        color: red;
+        
+        .nav-menu__icon {
+          filter: brightness(0) saturate(100%) invert(36%) sepia(96%) saturate(5494%) hue-rotate(339deg) brightness(100%) contrast(104%);
+        }
+      }
+    }
   }
 
   &__link {

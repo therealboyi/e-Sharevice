@@ -17,22 +17,7 @@ const navItems = [
   { label: "Careers", link: "#" },
   { label: "Support", link: "#" },
   { label: "Privacy", link: "#" },
-  { label: "Home", link: "#" },
-  { label: "About", link: "#" },
-  { label: "Services", link: "#" },
-  { label: "Contact", link: "#" },
-  { label: "Blog", link: "#" },
-  { label: "Careers", link: "#" },
-  { label: "Support", link: "#" },
-  { label: "Privacy", link: "#" },
-  { label: "Home", link: "#" },
-  { label: "About", link: "#" },
-  { label: "Services", link: "#" },
-  { label: "Contact", link: "#" },
-  { label: "Blog", link: "#" },
-  { label: "Careers", link: "#" },
-  { label: "Support", link: "#" },
-  { label: "Privacy", link: "#" },
+  // Duplicate items for example
   { label: "Home", link: "#" },
   { label: "About", link: "#" },
   { label: "Services", link: "#" },
@@ -44,22 +29,24 @@ const navItems = [
 ];
 
 const HomePage = () => {
-  const [isFooterVisible, setIsFooterVisible] = useState(false);
+  const [activeNavItem, setActiveNavItem] = useState("explore");
 
-  const handleScroll = () => {
-    const scrollPosition = window.scrollY + window.innerHeight;
-    const footerPosition =
-      document.body.offsetHeight -
-      document.querySelector(".footer").offsetHeight;
-    setIsFooterVisible(scrollPosition >= footerPosition);
+  //   const handleScroll = () => {
+  //     // Perform any action you want on scroll
+  //     console.log("Scroll detected!");
+  //     // You can add more logic here if needed
+  //   };
+
+  //   useEffect(() => {
+  //     window.addEventListener("scroll", handleScroll);
+  //     return () => {
+  //       window.removeEventListener("scroll", handleScroll);
+  //     };
+  //   }, []);
+
+  const handleNavItemClick = (item) => {
+    setActiveNavItem(item);
   };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <div className="homepage">
@@ -156,7 +143,11 @@ const HomePage = () => {
         <p className="homepage__description">
           This is a basic React homepage setup with SCSS.
         </p>
-        <NavMenu isVisible={!isFooterVisible} />
+        <NavMenu
+          //   isVisible={true} // Removed dependency on footer visibility
+          activeItem={activeNavItem}
+          onItemClick={handleNavItemClick}
+        />
       </main>
       <Footer className="footer" />
     </div>
