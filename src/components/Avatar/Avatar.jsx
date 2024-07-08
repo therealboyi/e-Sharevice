@@ -1,16 +1,42 @@
 // Avatar.jsx
 
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './Avatar.scss';
+import AvatarMenu from '../AvatarMenu/AvatarMenu';
 
 const Avatar = ({ src, alt, size }) => {
+  const [menuVisible, setMenuVisible] = useState(false);
+  const menuRef = useRef(null);
+
+  const toggleMenu = () => {
+    setMenuVisible(!menuVisible);
+  };
+
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setMenuVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    if (menuVisible) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuVisible]);
+
   return (
-    <div className={`avatar avatar--${size}`}>
+    <div className={`avatar avatar--${size}`} ref={menuRef} onClick={toggleMenu}>
       <div className="avatar__icon avatar__icon--custom"></div>
       <div className="avatar__image-container">
         <img src={src} alt={alt} className="avatar__image" />
       </div>
+      {menuVisible && <AvatarMenu />}
     </div>
   );
 };
@@ -26,3 +52,4 @@ Avatar.defaultProps = {
 };
 
 export default Avatar;
+

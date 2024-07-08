@@ -3,35 +3,36 @@
 .avatar {
   display: flex;
   align-items: center;
-  border: 2px solid #ddd;
+  border: 1.5px solid #ddd;
   border-radius: 50px;
   padding: 2px 5px;
   background-color: #fff;
   position: relative;
   transform: scale(0.7);
+  cursor: pointer;
 
   &--small {
-    height: 50px; // Height of the avatar including the border
-    width: 140px; // Width to accommodate icon and avatar
+    height: 50px;
+    width: 140px;
   }
 
   &--medium {
-    height: 65px; // Height of the avatar including the border
-    width: 120px; // Width to accommodate icon and avatar
+    height: 65px;
+    width: 120px;
   }
 
   &--large {
-    height: 90px; // Height of the avatar including the border
-    width: 220px; // Width to accommodate icon and avatar
+    height: 90px;
+    width: 220px;
   }
 
   &__icon {
     position: relative;
-    left: 0px; // Position the icon inside the oval
+    left: 0px;
 
     &--custom {
-      width: 3rem; // Icon size
-      height: 3rem; // Icon size
+      width: 3rem;
+      height: 3rem;
       background-image: url("../../assets/icons/hamburger-menu.png");
       background-size: cover;
     }
