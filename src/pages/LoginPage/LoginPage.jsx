@@ -40,35 +40,35 @@ const handleLastNameChange = (e) => {
 setLastName(e.target.value);
 };
 
-const handleContinue = async () => {
-console.log("API URL:", API_URL);
-console.log("Email:", email);
+  const handleContinue = async () => {
+    console.log("API URL:", API_URL);
+    console.log("Email:", email);
 
-try {
-const response = await axios.post(
-`${API_URL}/check-email`,
-{ email },
-{
-headers: {
-"Content-Type": "application/json",
-},
-}
-);
-console.log("Response:", response.data);
-if (response.data.message === "Email exists") {
-console.log("Email exists:", email);
-setIsPasswordPage(true);
-} else {
-console.log("Email not found, switching to signup:", email);
-setIsLogin(false);
-}
-} catch (error) {
-console.error(
-"Error checking email:",
-error.response ? error.response.data : error.message
-);
-}
-};
+    try {
+      const response = await axios.post(
+        `${API_URL}/check-email`,
+        { email },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("Response:", response.data);
+      if (response.data.message === "Email exists") {
+        console.log("Email exists:", email);
+        setIsPasswordPage(true);
+      } else {
+        console.log("Email not found, switching to signup:", email);
+        setIsLogin(false);
+      }
+    } catch (error) {
+      console.error(
+        "Error checking email:",
+        error.response ? error.response.data : error.message
+      );
+    }
+  };
 
 const handleBackClick = () => {
 if (isPasswordPage) {
@@ -78,66 +78,66 @@ setIsLogin(true);
 }
 };
 
-const handleLogin = async () => {
-console.log("API URL:", API_URL);
-console.log("Email:", email);
-console.log("Password:", password);
+  const handleLogin = async () => {
+    console.log("API URL:", API_URL);
+    console.log("Email:", email);
+    console.log("Password:", password);
 
-try {
-const response = await axios.post(
-`${API_URL}/login`,
-{ email, password },
-{
-headers: {
-"Content-Type": "application/json",
-},
-}
-);
-console.log("Response:", response.data);
-if (response.data.message === "Login successful") {
-console.log("Login successful");
-navigate("/"); // Redirect to the homepage
-} else {
-console.log("Incorrect password");
-}
-} catch (error) {
-console.error("Error logging in:", error);
-}
-};
+    try {
+      const response = await axios.post(
+        `${API_URL}/login`,
+        { email, password },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("Response:", response.data);
+      if (response.data.message === "Login successful") {
+        console.log("Login successful");
+        navigate("/"); // Redirect to the homepage
+      } else {
+        console.log("Incorrect password");
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+    }
+  };
 
-const handleSignup = async () => {
-console.log("API URL:", API_URL);
-console.log("First Name:", firstName);
-console.log("Last Name:", lastName);
-console.log("Email:", email);
-console.log("Password:", password);
+  const handleSignup = async () => {
+    console.log("API URL:", API_URL);
+    console.log("First Name:", firstName);
+    console.log("Last Name:", lastName);
+    console.log("Email:", email);
+    console.log("Password:", password);
 
-try {
-const response = await axios.post(
-`${API_URL}/signup`,
-{
-first_name: firstName,
-last_name: lastName,
-email,
-password,
-},
-{
-headers: {
-"Content-Type": "application/json",
-},
-}
-);
-console.log("Response:", response.data);
-if (response.data.message === "User registered successfully") {
-console.log("User registered successfully");
-setIsPasswordPage(true);
-} else {
-console.log("Error registering user");
-}
-} catch (error) {
-console.error("Error registering user:", error);
-}
-};
+    try {
+      const response = await axios.post(
+        `${API_URL}/signup`,
+        {
+          first_name: firstName,
+          last_name: lastName,
+          email,
+          password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("Response:", response.data);
+      if (response.data.message === "User registered successfully") {
+        console.log("User registered successfully");
+        setIsPasswordPage(true);
+      } else {
+        console.log("Error registering user");
+      }
+    } catch (error) {
+      console.error("Error registering user:", error);
+    }
+  };
 
 const handleKeyDown = (e) => {
 if (e.key === "Enter") {
