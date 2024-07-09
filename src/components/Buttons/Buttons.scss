@@ -67,4 +67,18 @@
   }
 
   /* Add more variants if needed */
+
+  @media (max-width: 767px) {
+    &:hover {
+      background-color: var(--button-color);
+      filter: none;
+    }
+
+    &--facebook:hover,
+    &--google:hover,
+    &--apple:hover,
+    &--phone:hover {
+      background-color: white;
+    }
+  }
 }
