@@ -1,9 +1,11 @@
 // Buttons.scss
 
+@import "src/styles/partials/variables";
+
 :root {
   --button-color: #007bff;
-  --button-hover-color: #ffffff;
-  --button-border-radius: 20px; // Increased border-radius to make the button rounder
+  --button-hover-color: #00bfff;
+  --button-border-radius: 20px;
   --button-padding: 10px 20px;
 }
 
@@ -18,13 +20,19 @@
   background-color: var(--button-color);
   border-radius: var(--button-border-radius);
   padding: var(--button-padding);
+  width: 100%;
+  margin-bottom: 10px;
+  position: relative;
 
   &__icon {
-    margin-right: 8px;
+    position: absolute;
+    left: 16px; // Move the icon left or right
+    display: flex;
+    align-items: center;
 
     img {
-      width: 20px; // Adjust icon size as needed
-      height: 20px; // Adjust icon size as needed
+      width: 20px;
+      height: 20px;
     }
   }
 
@@ -38,11 +46,24 @@
   }
 
   &--submit {
-    /* Additional styles for submit variant */
+    background: #00bfff; // Sky blue
+    color: white;
   }
 
-  &--cancel {
-    /* Additional styles for cancel variant */
+  &--facebook,
+  &--google,
+  &--apple,
+  &--phone {
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd;
+  }
+
+  &--facebook:hover,
+  &--google:hover,
+  &--apple:hover,
+  &--phone:hover {
+    background-color: #f0f0f0;
   }
 
   /* Add more variants if needed */

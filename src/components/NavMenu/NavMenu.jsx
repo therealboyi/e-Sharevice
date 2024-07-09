@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link, useLocation } from 'react-router-dom';
 import './NavMenu.scss';
 
-const NavMenu = ({ activeItem, onItemClick }) => {
+const NavMenu = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     let lastScrollTop = 0;
@@ -26,38 +28,46 @@ const NavMenu = ({ activeItem, onItemClick }) => {
     };
   }, []);
 
+  const getActiveClass = (path) => (location.pathname === path ? 'nav-menu__item--active' : '');
+
   return (
     <nav className={`nav-menu ${isVisible ? 'nav-menu--visible' : 'nav-menu--hidden'}`}>
       <ul className="nav-menu__list">
-        <li className={`nav-menu__item ${activeItem === 'explore' ? 'nav-menu__item--active' : ''}`}>
-          <a href="#explore" className="nav-menu__link" onClick={() => onItemClick('explore')}>
+        <li className={`nav-menu__item ${getActiveClass('/')}`}>
+          <Link to="/" className="nav-menu__link">
             <span className="nav-menu__icon nav-menu__icon--explore"></span>
             <span className="nav-menu__text">Explore</span>
-          </a>
+          </Link>
         </li>
-        <li className={`nav-menu__item ${activeItem === 'exchange' ? 'nav-menu__item--active' : ''}`}>
-          <a href="#exchange" className="nav-menu__link" onClick={() => onItemClick('exchange')}>
+        <li className={`nav-menu__item ${getActiveClass('/exchange')}`}>
+          <Link to="/exchange" className="nav-menu__link">
             <span className="nav-menu__icon nav-menu__icon--exchange"></span>
             <span className="nav-menu__text">Exchange</span>
-          </a>
+          </Link>
         </li>
-        <li className={`nav-menu__item ${activeItem === 'saved' ? 'nav-menu__item--active' : ''}`}>
-          <a href="#saved" className="nav-menu__link" onClick={() => onItemClick('saved')}>
+        <li className={`nav-menu__item ${getActiveClass('/saved')}`}>
+          <Link to="/saved" className="nav-menu__link">
             <span className="nav-menu__icon nav-menu__icon--saved"></span>
             <span className="nav-menu__text">Saved</span>
-          </a>
+          </Link>
         </li>
-        <li className={`nav-menu__item ${activeItem === 'messages' ? 'nav-menu__item--active' : ''}`}>
-          <a href="#messages" className="nav-menu__link" onClick={() => onItemClick('messages')}>
+        <li className={`nav-menu__item ${getActiveClass('/messages')}`}>
+          <Link to="/messages" className="nav-menu__link">
             <span className="nav-menu__icon nav-menu__icon--messages"></span>
             <span className="nav-menu__text">Messages</span>
-          </a>
+          </Link>
         </li>
-        <li className={`nav-menu__item ${activeItem === 'profile' ? 'nav-menu__item--active' : ''}`}>
-          <a href="#profile" className="nav-menu__link" onClick={() => onItemClick('profile')}>
+        <li className={`nav-menu__item ${getActiveClass('/profile')}`}>
+          <Link to="/profile" className="nav-menu__link">
             <span className="nav-menu__icon nav-menu__icon--profile"></span>
             <span className="nav-menu__text">Profile</span>
-          </a>
+          </Link>
+        </li>
+        <li className={`nav-menu__item ${getActiveClass('/login')}`}>
+          <Link to="/login" className="nav-menu__link">
+            <span className="nav-menu__icon nav-menu__icon--login"></span>
+            <span className="nav-menu__text">Login</span>
+          </Link>
         </li>
       </ul>
     </nav>
@@ -65,8 +75,8 @@ const NavMenu = ({ activeItem, onItemClick }) => {
 };
 
 NavMenu.propTypes = {
-  activeItem: PropTypes.string.isRequired,
-  onItemClick: PropTypes.func.isRequired,
+  activeItem: PropTypes.string,
+  onItemClick: PropTypes.func,
 };
 
 export default NavMenu;

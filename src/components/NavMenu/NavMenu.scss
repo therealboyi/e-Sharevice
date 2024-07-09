@@ -1,6 +1,6 @@
 // NavMenu.scss
 
-@import 'src/styles/partials/variables';
+@import "src/styles/partials/variables";
 
 .nav-menu {
   position: fixed;
@@ -36,10 +36,11 @@
 
     &--active {
       .nav-menu__link {
-        color: red;
-        
+        color: $color-recycle;
+
         .nav-menu__icon {
-          filter: brightness(0) saturate(100%) invert(36%) sepia(96%) saturate(5494%) hue-rotate(339deg) brightness(100%) contrast(104%);
+          filter: brightness(0) saturate(100%) invert(36%) sepia(96%)
+            saturate(3000%) hue-rotate(180deg) brightness(100%) contrast(104%); // Icon filter for blue
         }
       }
     }
@@ -61,27 +62,32 @@
   }
 
   &__icon--explore {
-    background-image: url('./src/assets/icons/home.png');
+    background-image: url("./src/assets/icons/home.png");
     background-size: cover;
   }
 
   &__icon--exchange {
-    background-image: url('./src/assets/icons/exchange.svg');
+    background-image: url("./src/assets/icons/exchange.svg");
     background-size: cover;
   }
 
   &__icon--saved {
-    background-image: url('./src/assets/icons/heart.png');
+    background-image: url("./src/assets/icons/heart.png");
     background-size: cover;
   }
 
   &__icon--messages {
-    background-image: url('./src/assets/icons/message.png');
+    background-image: url("./src/assets/icons/message.png");
     background-size: cover;
   }
 
   &__icon--profile {
-    background-image: url('./src/assets/icons/profile.png');
+    background-image: url("./src/assets/icons/profile.png");
+    background-size: cover;
+  }
+
+  &__icon--login {
+    background-image: url("./src/assets/icons/profile2.png");
     background-size: cover;
   }
 
@@ -94,6 +100,11 @@
   }
 
   &__link:hover .nav-menu__icon {
-    filter: brightness(0) saturate(100%) invert(23%) sepia(67%) saturate(2371%) hue-rotate(327deg) brightness(97%) contrast(99%);
+    filter: brightness(0) saturate(100%) invert(23%) sepia(67%) saturate(2371%)
+      hue-rotate(327deg) brightness(97%) contrast(99%);
+  }
+
+  @media (min-width: 768px) {
+    display: none;
   }
 }

@@ -12,7 +12,8 @@ const Button = ({
   color,
   hoverColor,
   borderRadius,
-  padding
+  padding,
+  fullWidth
 }) => {
   const buttonClass = `button button--${variant}`;
 
@@ -20,7 +21,8 @@ const Button = ({
     ...(color && { backgroundColor: color }),
     ...(hoverColor && { '--hover-color': hoverColor }),
     ...(borderRadius && { borderRadius: borderRadius }),
-    ...(padding && { padding: padding })
+    ...(padding && { padding: padding }),
+    ...(fullWidth && { width: '100%' })
   };
 
   return (
@@ -43,7 +45,8 @@ Button.propTypes = {
   color: PropTypes.string,
   hoverColor: PropTypes.string,
   borderRadius: PropTypes.string,
-  padding: PropTypes.string
+  padding: PropTypes.string,
+  fullWidth: PropTypes.bool
 };
 
 export default Button;
