@@ -5,7 +5,11 @@ import PropTypes from 'prop-types';
 import './Avatar.scss';
 import AvatarMenu from '../AvatarMenu/AvatarMenu';
 
-const Avatar = ({ src, alt, size }) => {
+const Avatar = ({ 
+  src, 
+  alt, 
+  size = 'medium' 
+}) => {
   const [menuVisible, setMenuVisible] = useState(false);
   const menuRef = useRef(null);
 
@@ -47,9 +51,4 @@ Avatar.propTypes = {
   size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
-Avatar.defaultProps = {
-  size: 'medium',
-};
-
 export default Avatar;
-

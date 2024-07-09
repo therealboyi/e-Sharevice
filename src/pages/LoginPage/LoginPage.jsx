@@ -18,6 +18,8 @@ const LoginPage = ({ onLogin }) => {
   const [birthDate, setBirthDate] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -40,9 +42,11 @@ const LoginPage = ({ onLogin }) => {
     setLastName(e.target.value);
   };
 
-  const handleContinue = async () => {
+  const handleContinue = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
     console.log("API URL:", API_URL);
-    console.log("Email:", email);
+    // console.log("Email:", email);
 
     try {
       const response = await axios.post(
@@ -56,10 +60,10 @@ const LoginPage = ({ onLogin }) => {
       );
       console.log("Response:", response.data);
       if (response.data.message === "Email exists") {
-        console.log("Email exists:", email);
+        console.log("Email exists");
         setIsPasswordPage(true);
       } else {
-        console.log("Email not found, switching to signup:", email);
+        console.log("Email not found, switching to signup");
         setIsLogin(false);
       }
     } catch (error) {
@@ -67,6 +71,9 @@ const LoginPage = ({ onLogin }) => {
         "Error checking email:",
         error.response ? error.response.data : error.message
       );
+      setErrorMessage("Error checking email. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -78,10 +85,12 @@ const LoginPage = ({ onLogin }) => {
     }
   };
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    if (e) e.preventDefault();
+    setIsSubmitting(true);
     console.log("API URL:", API_URL);
-    console.log("Email:", email);
-    console.log("Password:", password);
+    // console.log("Email:", email);
+    // console.log("Password:", password);
 
     try {
       const response = await axios.post(
@@ -93,24 +102,30 @@ const LoginPage = ({ onLogin }) => {
           },
         }
       );
-      console.log("Response:", response.data);
+      // console.log("Response:", response.data);
       if (response.data.message === "Login successful") {
         console.log("Login successful");
-        navigate("/"); // Redirect to the homepage
+        navigate("/");
       } else {
         console.log("Incorrect password");
+        setErrorMessage("Incorrect password. Please try again.");
       }
     } catch (error) {
       console.error("Error logging in:", error);
+      setErrorMessage("Error logging in. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  const handleSignup = async () => {
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
     console.log("API URL:", API_URL);
-    console.log("First Name:", firstName);
-    console.log("Last Name:", lastName);
-    console.log("Email:", email);
-    console.log("Password:", password);
+    // console.log("First Name:", firstName);
+    // console.log("Last Name:", lastName);
+    // console.log("Email:", email);
+    // console.log("Password:", password);
 
     try {
       const response = await axios.post(
@@ -127,24 +142,39 @@ const LoginPage = ({ onLogin }) => {
           },
         }
       );
-      console.log("Response:", response.data);
+      console.log("Signup Response:", response.data);
       if (response.data.message === "User registered successfully") {
         console.log("User registered successfully");
-        setIsPasswordPage(true);
+        await handleLogin(); // Log the user in directly after successful registration
       } else {
-        console.log("Error registering user");
+        console.log("Error registering user:", response.data);
+        setErrorMessage("Error registering user. Please try again.");
       }
     } catch (error) {
-      console.error("Error registering user:", error);
+      if (error.response) {
+        console.error("Error registering user:", error.response.data);
+        if (error.response.status === 409) {
+          setErrorMessage(
+            "Email already in use. Please use a different email."
+          );
+        } else {
+          setErrorMessage("Error registering user. Please try again.");
+        }
+      } else {
+        console.error("Error registering user:", error.message);
+        setErrorMessage("Error registering user. Please try again.");
+      }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       if (isPasswordPage) {
-        handleLogin();
+        handleLogin(e);
       } else {
-        handleContinue();
+        handleContinue(e);
       }
     }
   };
@@ -152,6 +182,7 @@ const LoginPage = ({ onLogin }) => {
   return (
     <div className="login-page">
       <div className="login-page__content">
+        {errorMessage && <p className="login-page__error">{errorMessage}</p>}
         {!isLogin && !isPasswordPage && (
           <div className="signup-page__header">
             <img
@@ -168,7 +199,7 @@ const LoginPage = ({ onLogin }) => {
             <h2 className="login-page__title">Log in or sign up</h2>
             <hr className="login-page__divider-top" />
             <h3 className="login-page__subtitle">Welcome to e-Sharevice</h3>
-            <div className="login-page__form">
+            <form className="login-page__form" onSubmit={handleContinue}>
               <input
                 type="email"
                 className="login-page__input"
@@ -176,6 +207,18 @@ const LoginPage = ({ onLogin }) => {
                 value={email}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
+                autoComplete="email"
+                disabled={isSubmitting}
+              />
+              {/* Hidden username field for accessibility */}
+              <input
+                type="text"
+                name="username"
+                className="login-page__input"
+                value={email}
+                autoComplete="username"
+                style={{ display: "none" }}
+                readOnly
               />
               <Button
                 variant="submit"
@@ -186,8 +229,9 @@ const LoginPage = ({ onLogin }) => {
                 borderRadius="4px"
                 padding="12px"
                 fullWidth
+                disabled={isSubmitting}
               />
-            </div>
+            </form>
             <div className="login-page__divider-container">
               <hr className="login-page__divider" />
               <span className="login-page__divider-text">or</span>
@@ -203,6 +247,7 @@ const LoginPage = ({ onLogin }) => {
               borderRadius="4px"
               padding="12px"
               fullWidth
+              disabled={isSubmitting}
             />
             <Button
               variant="google"
@@ -214,6 +259,7 @@ const LoginPage = ({ onLogin }) => {
               borderRadius="4px"
               padding="12px"
               fullWidth
+              disabled={isSubmitting}
             />
             <Button
               variant="apple"
@@ -225,6 +271,7 @@ const LoginPage = ({ onLogin }) => {
               borderRadius="4px"
               padding="12px"
               fullWidth
+              disabled={isSubmitting}
             />
             <Button
               variant="phone"
@@ -236,6 +283,7 @@ const LoginPage = ({ onLogin }) => {
               borderRadius="4px"
               padding="12px"
               fullWidth
+              disabled={isSubmitting}
             />
             <p className="login-page__help">
               <a href="#" className="login-page__help-link">
@@ -254,7 +302,16 @@ const LoginPage = ({ onLogin }) => {
               />
               <h2 className="signup-page__title">Enter your password</h2>
             </div>
-            <div className="signup-page__form">
+            <form className="signup-page__form" onSubmit={handleLogin}>
+              <input
+                type="text"
+                name="username"
+                className="signup-page__input"
+                value={email}
+                autoComplete="username"
+                style={{ display: "none" }}
+                readOnly
+              />
               <div className="signup-page__field">
                 <label className="signup-page__label">Password</label>
                 <input
@@ -264,6 +321,8 @@ const LoginPage = ({ onLogin }) => {
                   value={password}
                   onChange={handlePasswordChange}
                   onKeyDown={handleKeyDown}
+                  autoComplete="current-password"
+                  disabled={isSubmitting}
                 />
               </div>
               <Button
@@ -275,13 +334,14 @@ const LoginPage = ({ onLogin }) => {
                 borderRadius="4px"
                 padding="12px"
                 fullWidth
+                disabled={isSubmitting}
               />
-            </div>
+            </form>
           </>
         ) : (
           <>
             <hr className="signup-page__divider-top" />
-            <div className="signup-page__form">
+            <form className="signup-page__form" onSubmit={handleSignup}>
               <div className="signup-page__field">
                 <label className="signup-page__label">Legal name</label>
                 <div className="signup-page__input-group">
@@ -291,6 +351,7 @@ const LoginPage = ({ onLogin }) => {
                     placeholder="First name on ID"
                     value={firstName}
                     onChange={handleFirstNameChange}
+                    disabled={isSubmitting}
                   />
                   <input
                     type="text"
@@ -298,6 +359,7 @@ const LoginPage = ({ onLogin }) => {
                     placeholder="Last name on ID"
                     value={lastName}
                     onChange={handleLastNameChange}
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -309,6 +371,8 @@ const LoginPage = ({ onLogin }) => {
                   placeholder="Birth date (e.g., MM/DD/YYYY)"
                   value={birthDate}
                   onChange={handleDateChange}
+                  autoComplete="bday"
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="signup-page__field">
@@ -320,6 +384,8 @@ const LoginPage = ({ onLogin }) => {
                   value={email}
                   onChange={handleInputChange}
                   onKeyDown={handleKeyDown}
+                  autoComplete="email"
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="signup-page__field">
@@ -330,6 +396,8 @@ const LoginPage = ({ onLogin }) => {
                   placeholder="Password"
                   value={password}
                   onChange={handlePasswordChange}
+                  autoComplete="new-password"
+                  disabled={isSubmitting}
                 />
               </div>
               <Button
@@ -341,8 +409,9 @@ const LoginPage = ({ onLogin }) => {
                 borderRadius="4px"
                 padding="12px"
                 fullWidth
+                disabled={isSubmitting}
               />
-            </div>
+            </form>
             <p className="login-page__help">
               <a href="#" className="login-page__help-link">
                 Need help?

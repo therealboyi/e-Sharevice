@@ -4,7 +4,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './InputField.scss';
 
-const InputField = ({ type, placeholder, value, onChange }) => {
+const InputField = ({ 
+  type = 'text', 
+  placeholder = '', 
+  value, 
+  onChange 
+}) => {
   return (
     <div className="input-field">
       <span className="input-field__icon input-field__icon--search"></span>
@@ -26,11 +31,4 @@ InputField.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-InputField.defaultProps = {
-  type: 'text',
-  placeholder: '',
-};
-
 export default InputField;
-
-
