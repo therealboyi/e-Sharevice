@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<LoginPage />} />
-        {/*<Route path="/exchange" element={<Exchange />} />
+        {/* <Route path="/exchange" element={<Exchange />} />
         <Route path="/saved" element={<Saved />} />
         <Route path="/messages" element={<Messages />} /> */}
         <Route path="*" element={<NotFoundPage />} />
