@@ -15,7 +15,7 @@ const ProtectedComponent = ({ children }) => {
   const location = useLocation();
 
   const handleLoginClick = () => {
-    setIntendedDestination(location.pathname); 
+    setIntendedDestination(location.pathname); // Store the current location
     setIsModalOpen(true);
   };
 
@@ -36,7 +36,7 @@ const ProtectedComponent = ({ children }) => {
             variant="submit"
             text="Log in"
             onClick={handleLoginClick}
-            color="#00bfff" // Sky blue
+            color="#00bfff"
             hoverColor="#87ceeb"
             borderRadius="4px"
             padding="12px"

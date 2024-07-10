@@ -93,10 +93,10 @@ const LoginPage = ({ onClose, intendedDestination = "/" }) => {
       );
       if (response.data.message === "Login successful") {
         login({ email, token: response.data.token });
-        navigate(intendedDestination, { replace: true });
         if (onClose) {
           onClose();
         }
+        navigate(intendedDestination, { replace: true });
       } else {
         setErrorMessage("Incorrect password. Please try again.");
       }
@@ -127,7 +127,24 @@ const LoginPage = ({ onClose, intendedDestination = "/" }) => {
         }
       );
       if (response.data.message === "User registered successfully") {
-        await handleLogin();
+        const loginResponse = await axios.post(
+          `${API_URL}/login`,
+          { email, password },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        if (loginResponse.data.message === "Login successful") {
+          login({ email, token: loginResponse.data.token });
+          if (onClose) {
+            onClose();
+          }
+          navigate("/", { replace: true });
+        } else {
+          setErrorMessage("Error logging in after signup. Please try again.");
+        }
       } else {
         setErrorMessage("Error registering user. Please try again.");
       }
