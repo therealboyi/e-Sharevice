@@ -1,29 +1,28 @@
 // src/contexts/AuthContext.jsx
-import React, { createContext, useState, useContext, useEffect } from "react";
-import axios from "axios";
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const AuthContext = createContext();
-
-export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const savedUser = localStorage.getItem("user");
+    // Check local storage or perform an API call to check if the user is logged in
+    const savedUser = JSON.parse(localStorage.getItem('user'));
     if (savedUser) {
-      setUser(JSON.parse(savedUser));
+      setUser(savedUser);
     }
   }, []);
 
   const login = (userData) => {
     setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem('user', JSON.stringify(userData));
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem("user");
+    localStorage.removeItem('user');
   };
 
   return (
@@ -31,4 +30,12 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
+};
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export const useAuth = () => {
+  return useContext(AuthContext);
 };

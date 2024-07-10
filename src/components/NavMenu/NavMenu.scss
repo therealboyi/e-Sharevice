@@ -95,15 +95,6 @@
     font-size: 12px;
   }
 
-  &__link:hover .nav-menu__text {
-    color: $color-egyptian-blue;
-  }
-
-  &__link:hover .nav-menu__icon {
-    filter: brightness(0) saturate(100%) invert(23%) sepia(67%) saturate(2371%)
-      hue-rotate(327deg) brightness(97%) contrast(99%);
-  }
-
   @media (min-width: 768px) {
     display: none;
   }
