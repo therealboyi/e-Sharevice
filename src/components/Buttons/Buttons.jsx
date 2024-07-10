@@ -1,8 +1,8 @@
 // Buttons.jsx
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import './Buttons.scss';
+import React from "react";
+import PropTypes from "prop-types";
+import "./Buttons.scss";
 
 const Button = ({
   variant,
@@ -13,16 +13,16 @@ const Button = ({
   hoverColor,
   borderRadius,
   padding,
-  fullWidth
+  fullWidth,
 }) => {
   const buttonClass = `button button--${variant}`;
 
   const style = {
     ...(color && { backgroundColor: color }),
-    ...(hoverColor && { '--hover-color': hoverColor }),
+    ...(hoverColor && { "--hover-color": hoverColor }),
     ...(borderRadius && { borderRadius: borderRadius }),
     ...(padding && { padding: padding }),
-    ...(fullWidth && { width: '100%' })
+    ...(fullWidth && { width: "100%" }),
   };
 
   return (
@@ -46,7 +46,7 @@ Button.propTypes = {
   hoverColor: PropTypes.string,
   borderRadius: PropTypes.string,
   padding: PropTypes.string,
-  fullWidth: PropTypes.bool
+  fullWidth: PropTypes.bool,
 };
 
 export default Button;

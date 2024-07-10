@@ -1,61 +1,66 @@
 // src/pages/ExchangePage/ExchangePage.scss
 .exchange-page {
+  padding-top: 60px;
+
+  &__content {
     padding: 20px;
-    background-color: #fff;
-
-    &__title {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 20px;
-        text-align: center;
+    @media (max-width: 767px) {
+      margin-top: -4rem;
     }
+  }
 
-    &__list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
 
-    &__item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 20px;
-    }
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 
-    &__avatar {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 20px;
-    }
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+  }
 
-    &__info {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
 
-    &__provider {
-        font-size: 16px;
-        font-weight: bold;
-        margin: 0;
-    }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
 
-    &__service {
-        font-size: 14px;
-        color: #555;
-        margin: 5px 0;
-    }
+  &__provider {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
 
-    &__location {
-        font-size: 14px;
-        color: #555;
-    }
+  &__service {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+  }
 
-    &__arrow {
-        font-size: 20px;
-        color: #555;
-    }
+  &__location {
+    font-size: 14px;
+    color: #555;
+  }
+
+  &__arrow {
+    font-size: 20px;
+    color: #555;
+  }
 }

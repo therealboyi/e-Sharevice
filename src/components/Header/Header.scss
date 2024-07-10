@@ -7,7 +7,6 @@
   align-items: center;
   padding: 2rem 1rem 2rem 1rem;
   background-color: #fff;
-  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: 60px;
   position: fixed;
   width: 100%;
@@ -15,13 +14,11 @@
   z-index: 1000;
 
   @media (min-width: 767px) {
-    padding: 2rem 1.5rem 1rem 2.8rem; // Adjust padding for specific screen sizes
+    padding: 2rem 1.5rem 1rem 2.8rem;
   }
-  // @media (min-width: 980px) {
-  //   padding: 2rem 1.5rem 1rem 2.8rem; // Adjust padding for specific screen sizes
-  // }
+
   @media (min-width: 1280px) {
-    padding: 2rem 3.8rem 1rem 4.8rem; // Adjust padding for specific screen sizes
+    padding: 2rem 3.8rem 1rem 4.8rem;
   }
 
   &__logo {

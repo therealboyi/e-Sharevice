@@ -1,54 +1,60 @@
 // src/pages/SavedPage/SavedPage.scss
 .saved-page {
+  padding-top: 60px;
+
+  &__content {
     padding: 20px;
-    background-color: #fff;
-
-    &__title {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 20px;
+    @media (max-width: 767px) {
+      margin-top: -4rem;
     }
+  }
 
-    &__list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
 
-    &__item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 20px;
-    }
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 
-    &__image {
-        width: 80px;
-        height: 80px;
-        border-radius: 8px;
-        margin-right: 20px;
-    }
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+  }
 
-    &__info {
-        display: flex;
-        flex-direction: column;
-    }
+  &__image {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    margin-right: 20px;
+  }
 
-    &__city {
-        font-size: 18px;
-        font-weight: bold;
-        margin: 0;
-    }
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
 
-    &__host {
-        font-size: 14px;
-        color: #555;
-        margin: 5px 0;
-    }
+  &__city {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+  }
 
-    &__dates {
-        font-size: 14px;
-        color: #555;
-    }
+  &__host {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+  }
+
+  &__dates {
+    font-size: 14px;
+    color: #555;
+  }
 }

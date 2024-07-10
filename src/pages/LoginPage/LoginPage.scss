@@ -16,6 +16,10 @@
     width: 100%;
     max-width: 350px;
     text-align: center;
+
+    @media (min-width: 767px) {
+      margin-top: 5rem;
+    }
   }
 
   &__title {

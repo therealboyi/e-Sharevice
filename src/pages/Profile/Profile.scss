@@ -1,94 +1,102 @@
-// Profile.scss
-
+// src/pages/Profile/Profile.scss
 .profile {
-    &__header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px;
-    }
-    
-    &__title {
-      font-size: 24px;
-      font-weight: bold;
-    }
-    
-    &__notification {
-      .profile__icon--notification {
-      }
-    }
-    
-    &__info {
-      display: flex;
-      align-items: center;
-      padding: 16px;
-    }
-    
-    &__avatar {
-      // Avatar component specific styles 
-    }
-    
-    &__details {
-      flex-grow: 1;
-      padding: 0 16px;
-    }
-    
-    &__name {
-      font-size: 18px;
-      font-weight: bold;
-    }
-    
-    &__description {
-      font-size: 14px;
-      color: gray;
-    }
-    
-    &__icon--arrow {
-      // arrow icon styles here
-    }
-    
-    &__divider {
-      border: 0;
-      border-top: 1px solid #ccc;
-    }
-    
-    &__settings {
-      padding: 16px;
-    }
-    
-    &__settings-title {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-    
-    &__settings-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-    &__settings-item {
-      display: flex;
-      align-items: center;
-      padding: 8px 0;
-    }
-    
-    &__settings-label {
-      margin-left: 8px;
-      font-size: 16px;
-    }
-    
-    &__logout {
-      display: block;
-      width: 100%;
-      padding: 16px;
-      background: none;
-      border: none;
-      text-align: center;
-      font-size: 16px;
-      color: red;
-      cursor: pointer;
+  padding-top: 60px;
+
+  &__content {
+    // padding: 20px;
+
+    @media (max-width: 767px) {
+      margin-top: -4rem;
     }
   }
-  
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &__notification {
+    .profile__icon--notification {
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+  }
+
+  &__avatar {
+    // Avatar component specific styles
+  }
+
+  &__details {
+    flex-grow: 1;
+    padding: 0 16px;
+  }
+
+  &__name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__description {
+    font-size: 14px;
+    color: gray;
+  }
+
+  &__icon--arrow {
+    // arrow icon styles here
+  }
+
+  &__divider {
+    border: 0;
+    border-top: 1px solid #ccc;
+  }
+
+  &__settings {
+    padding: 16px;
+  }
+
+  &__settings-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  &__settings-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__settings-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+  }
+
+  &__settings-label {
+    margin-left: 8px;
+    font-size: 16px;
+  }
+
+  &__logout {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background: none;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    color: red;
+    cursor: pointer;
+  }
+}

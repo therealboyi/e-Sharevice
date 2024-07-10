@@ -28,9 +28,8 @@ const ProtectedComponent = ({ children }) => {
       <div className="login-prompt">
         <div className="login-prompt__content">
           <h1 className="login-prompt__title">Log in Required</h1>
-          <h2 className="login-prompt__subtitle">Log in to access this page</h2>
           <p className="login-prompt__info-text">
-            You can view, or edit your profile once you’ve logged in.
+            You can view this page once you’ve logged in.
           </p>{" "}
           <Button
             variant="submit"
