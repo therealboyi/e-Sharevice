@@ -1,31 +1,28 @@
-// App.jsx
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "../src/pages/Homepage/Homepage.jsx";
-import NotFoundPage from "../src/pages/NotFoundPage/NotFoundPage.jsx";
-import Profile from "../src/pages/Profile/Profile.jsx";
-import LoginPage from "../src/pages/LoginPage/LoginPage.jsx";
-// import Exchange from '../src/pages/Exchange/Exchange.jsx'; 
-// import Saved from '../src/pages/Saved/Saved.jsx'; 
-// import Messages from '../src/pages/Messages/Messages.jsx'; 
-import NavMenu from "./components/NavMenu/NavMenu"; 
-import "./App.scss";
+// src/App.jsx
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/Homepage/Homepage.jsx';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx';
+import Profile from './pages/Profile/Profile.jsx';
+import LoginPage from './pages/LoginPage/LoginPage.jsx';
+import NavMenu from './components/NavMenu/NavMenu';
+import { AuthProvider } from './contexts/AuthContext.jsx';
+import ProtectedComponent from './components/ProtectedComponent.jsx';
+import './App.scss';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <NavMenu activeItem="explore" onItemClick={() => {}} />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/login" element={<LoginPage />} />
-        {/* <Route path="/exchange" element={<Exchange />} />
-        <Route path="/saved" element={<Saved />} />
-        <Route path="/messages" element={<Messages />} /> */}
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    return (
+        <AuthProvider>
+            <BrowserRouter>
+                <NavMenu activeItem="explore" onItemClick={() => {}} />
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/profile" element={<ProtectedComponent><Profile /></ProtectedComponent>} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="*" element={<NotFoundPage />} />
+                </Routes>
+            </BrowserRouter>
+        </AuthProvider>
+    );
 }
 
 export default App;

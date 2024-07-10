@@ -1,15 +1,23 @@
-// Profile.jsx
-
-import React, { useState } from 'react';
-import './Profile.scss';
+// src/pages/Profile/Profile.jsx
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Profile.scss";
 import NavMenu from "../../components/NavMenu/NavMenu";
-import Avatar from '../../components/Avatar/Avatar'; 
+import Avatar from "../../components/Avatar/Avatar";
+import { useAuth } from "../../contexts/AuthContext.jsx";
 
 const Profile = () => {
-  const [activeNavItem, setActiveNavItem] = useState('profile');
+  const [activeNavItem, setActiveNavItem] = useState("profile");
+  const { logout } = useAuth();
+  const navigate = useNavigate();
 
   const handleNavItemClick = (item) => {
     setActiveNavItem(item);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate("/"); // Redirect to home page after logout
   };
 
   return (
@@ -21,7 +29,11 @@ const Profile = () => {
         </div>
       </header>
       <div className="profile__info">
-        <Avatar className="profile__avatar" src="path/to/avatar.jpg" alt="Marvin's avatar" /> {/* Use the Avatar component with src prop */}
+        <Avatar
+          className="profile__avatar"
+          src="path/to/avatar.jpg"
+          alt="Marvin's avatar"
+        />{" "}
         <div className="profile__details">
           <p className="profile__name">Marvin</p>
           <p className="profile__description">Click to show profile</p>
@@ -40,24 +52,23 @@ const Profile = () => {
           ))}
         </ul>
       </div>
-      <button className="profile__logout">Logout</button>
-      <NavMenu
-        activeItem={activeNavItem}
-        onItemClick={handleNavItemClick}
-      />
+      <button className="profile__logout" onClick={handleLogout}>
+        Logout
+      </button>
+      <NavMenu activeItem={activeNavItem} onItemClick={handleNavItemClick} />
     </div>
   );
 };
 
 const settings = [
-  { label: 'Personal Information', icon: 'personal-info' },
-  { label: 'Payments', icon: 'payments' },
-  { label: 'Login & Security', icon: 'login-security' },
-  { label: 'Accessibility', icon: 'accessibility' },
-  { label: 'Face ID', icon: 'face-id' },
-  { label: 'Support', icon: 'support' },
-  { label: 'Feedback', icon: 'feedback' },
-  { label: 'Privacy & Sharing', icon: 'privacy-sharing' },
+  { label: "Personal Information", icon: "personal-info" },
+  { label: "Payments", icon: "payments" },
+  { label: "Login & Security", icon: "login-security" },
+  { label: "Accessibility", icon: "accessibility" },
+  { label: "Face ID", icon: "face-id" },
+  { label: "Support", icon: "support" },
+  { label: "Feedback", icon: "feedback" },
+  { label: "Privacy & Sharing", icon: "privacy-sharing" },
 ];
 
 export default Profile;

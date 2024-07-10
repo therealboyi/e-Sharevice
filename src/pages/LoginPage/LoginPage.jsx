@@ -1,5 +1,4 @@
-// LoginPage.jsx
-
+// src/pages/LoginPage/LoginPage.jsx
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
@@ -7,10 +6,11 @@ import axios from "axios";
 import Button from "../../components/Buttons/Buttons";
 import "./LoginPage.scss";
 import backIcon from "../../assets/icons/back.png";
+import { useAuth } from "../../contexts/AuthContext.jsx";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const LoginPage = ({ onLogin }) => {
+const LoginPage = ({ onClose, intendedDestination = "/" }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
@@ -21,6 +21,7 @@ const LoginPage = ({ onLogin }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleInputChange = (e) => {
     setEmail(e.target.value);
@@ -45,8 +46,6 @@ const LoginPage = ({ onLogin }) => {
   const handleContinue = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    console.log("API URL:", API_URL);
-    // console.log("Email:", email);
 
     try {
       const response = await axios.post(
@@ -58,19 +57,12 @@ const LoginPage = ({ onLogin }) => {
           },
         }
       );
-      console.log("Response:", response.data);
       if (response.data.message === "Email exists") {
-        console.log("Email exists");
         setIsPasswordPage(true);
       } else {
-        console.log("Email not found, switching to signup");
         setIsLogin(false);
       }
     } catch (error) {
-      console.error(
-        "Error checking email:",
-        error.response ? error.response.data : error.message
-      );
       setErrorMessage("Error checking email. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -88,9 +80,6 @@ const LoginPage = ({ onLogin }) => {
   const handleLogin = async (e) => {
     if (e) e.preventDefault();
     setIsSubmitting(true);
-    console.log("API URL:", API_URL);
-    // console.log("Email:", email);
-    // console.log("Password:", password);
 
     try {
       const response = await axios.post(
@@ -102,16 +91,16 @@ const LoginPage = ({ onLogin }) => {
           },
         }
       );
-      // console.log("Response:", response.data);
       if (response.data.message === "Login successful") {
-        console.log("Login successful");
-        navigate("/");
+        login({ email, token: response.data.token });
+        navigate(intendedDestination, { replace: true });
+        if (onClose) {
+          onClose();
+        }
       } else {
-        console.log("Incorrect password");
         setErrorMessage("Incorrect password. Please try again.");
       }
     } catch (error) {
-      console.error("Error logging in:", error);
       setErrorMessage("Error logging in. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -121,11 +110,6 @@ const LoginPage = ({ onLogin }) => {
   const handleSignup = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    console.log("API URL:", API_URL);
-    // console.log("First Name:", firstName);
-    // console.log("Last Name:", lastName);
-    // console.log("Email:", email);
-    // console.log("Password:", password);
 
     try {
       const response = await axios.post(
@@ -142,17 +126,13 @@ const LoginPage = ({ onLogin }) => {
           },
         }
       );
-      console.log("Signup Response:", response.data);
       if (response.data.message === "User registered successfully") {
-        console.log("User registered successfully");
-        await handleLogin(); // Log the user in directly after successful registration
+        await handleLogin();
       } else {
-        console.log("Error registering user:", response.data);
         setErrorMessage("Error registering user. Please try again.");
       }
     } catch (error) {
       if (error.response) {
-        console.error("Error registering user:", error.response.data);
         if (error.response.status === 409) {
           setErrorMessage(
             "Email already in use. Please use a different email."
@@ -161,7 +141,6 @@ const LoginPage = ({ onLogin }) => {
           setErrorMessage("Error registering user. Please try again.");
         }
       } else {
-        console.error("Error registering user:", error.message);
         setErrorMessage("Error registering user. Please try again.");
       }
     } finally {
@@ -210,7 +189,6 @@ const LoginPage = ({ onLogin }) => {
                 autoComplete="email"
                 disabled={isSubmitting}
               />
-              {/* Hidden username field for accessibility */}
               <input
                 type="text"
                 name="username"
@@ -224,7 +202,7 @@ const LoginPage = ({ onLogin }) => {
                 variant="submit"
                 text="Continue"
                 onClick={handleContinue}
-                color="#00bfff" // Sky blue
+                color="#00bfff"
                 hoverColor="#87ceeb"
                 borderRadius="4px"
                 padding="12px"
@@ -329,7 +307,7 @@ const LoginPage = ({ onLogin }) => {
                 variant="submit"
                 text="Log in"
                 onClick={handleLogin}
-                color="#00bfff" // Sky blue
+                color="#00bfff"
                 hoverColor="#87ceeb"
                 borderRadius="4px"
                 padding="12px"
@@ -404,7 +382,7 @@ const LoginPage = ({ onLogin }) => {
                 variant="submit"
                 text="Agree and continue"
                 onClick={handleSignup}
-                color="#00bfff" // Sky blue
+                color="#00bfff"
                 hoverColor="#87ceeb"
                 borderRadius="4px"
                 padding="12px"
@@ -426,6 +404,8 @@ const LoginPage = ({ onLogin }) => {
 
 LoginPage.propTypes = {
   onLogin: PropTypes.func,
+  onClose: PropTypes.func,
+  intendedDestination: PropTypes.string,
 };
 
 export default LoginPage;
