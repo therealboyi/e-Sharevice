@@ -1,10 +1,10 @@
-// src/components/ProtectedComponent.jsx
+// src/components/ProtectedComponent/ProtectedComponent.jsx
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext.jsx";
-import Button from "./Buttons/Buttons";
-import Modal from "./Modal/Modal";
-import LoginPage from "../pages/LoginPage/LoginPage";
+import { useAuth } from "../../contexts/AuthContext";
+import Button from "../Buttons/Buttons";
+import Modal from "../Modal/Modal";
+import LoginPage from "../../pages/LoginPage/LoginPage";
 import "./ProtectedComponent.scss";
 
 const ProtectedComponent = ({ children }) => {

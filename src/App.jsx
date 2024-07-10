@@ -9,7 +9,7 @@ import MessagesPage from "./pages/MessagesPage/MessagesPage.jsx";
 import ExchangePage from "./pages/ExchangePage/ExchangePage.jsx";
 import NavMenu from "./components/NavMenu/NavMenu";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
-import ProtectedComponent from "./components/ProtectedComponent.jsx";
+import ProtectedComponent from "../src/components/ProtectedComponent/ProtectedComponent.jsx";
 import "./App.scss";
 
 function App() {
