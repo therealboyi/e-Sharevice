@@ -5,6 +5,7 @@
   flex-direction: column;
   height: 100vh;
   padding-top: 60px;
+  overflow: hidden; // Hide overall page scroll
 
   &__content {
     flex-grow: 1;
@@ -26,6 +27,7 @@
   &__main {
     display: flex;
     flex-grow: 1;
+    height: calc(100vh - 140px);
     @media (max-width: 767px) {
       flex-direction: column;
     }
@@ -36,6 +38,8 @@
     padding: 0;
     margin: 0;
     width: 30%;
+    height: 100%;
+    overflow-y: auto;
     border-right: 1px solid #ddd;
     @media (max-width: 767px) {
       width: 100%;
@@ -66,28 +70,37 @@
   &__info {
     display: flex;
     flex-direction: column;
+    max-width: calc(100% - 60px);
   }
 
   &__sender {
     font-size: 16px;
     font-weight: bold;
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__text {
     font-size: 14px;
     color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__details-container {
-    display: flex;
-    flex-direction: column;
     flex-grow: 1;
-    justify-content: space-between;
+    width: 70%;
+    height: 100%;
+    overflow-y: auto;
+    @media (max-width: 767px) {
+      width: 100%;
+    }
   }
 
   &__details {
-    flex-grow: 1;
     padding: 20px;
     @media (max-width: 767px) {
       padding: 0;
@@ -116,33 +129,5 @@
       font-size: 16px;
       cursor: pointer;
     }
-  }
-
-  &__input-container {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-top: 1px solid #ddd;
-    background-color: white;
-    @media (max-width: 767px) {
-      padding: 5px;
-    }
-  }
-
-  &__input {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-right: 10px;
-  }
-
-  &__send-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
   }
 }

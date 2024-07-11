@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
+import MessageInput from "../../components/MessageInput/MessageInput";
 import "./MessagesPage.scss";
 
 const messages = [
   {
     sender: "Fit4Less",
     message:
-      "I can also make a 4 Months customized workout plan for you if you want.",
+      "I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want. workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want. workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want. workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.",
     imgSrc: "/src/assets/images/avatar.png",
   },
   {
@@ -17,6 +18,78 @@ const messages = [
       "Are you able to help me get started on a plan to gain more weight? Would that include supplements?",
     imgSrc: "/src/assets/images/avatar.png",
   },
+  {
+    sender: "Mandy's Pawradise",
+    message: "Will you be available to pick them up at 5:00 PM?",
+    imgSrc: "/src/assets/images/avatar.png",
+  },
+  ,
+  {
+    sender: "Mandy's Pawradise",
+    message: "Will you be available to pick them up at 5:00 PM?",
+    imgSrc: "/src/assets/images/avatar.png",
+  },
+  ,
+  {
+    sender: "Mandy's Pawradise",
+    message: "Will you be available to pick them up at 5:00 PM?",
+    imgSrc: "/src/assets/images/avatar.png",
+  },
+  ,
+  {
+    sender: "Mandy's Pawradise",
+    message: "Will you be available to pick them up at 5:00 PM?",
+    imgSrc: "/src/assets/images/avatar.png",
+  },
+  ,
+  {
+    sender: "Mandy's Pawradise",
+    message: "Will you be available to pick them up at 5:00 PM?",
+    imgSrc: "/src/assets/images/avatar.png",
+  },
+  ,
+  {
+    sender: "Mandy's Pawradise",
+    message: "Will you be available to pick them up at 5:00 PM?",
+    imgSrc: "/src/assets/images/avatar.png",
+  },
+  ,
+  {
+    sender: "Mandy's Pawradise",
+    message: "Will you be available to pick them up at 5:00 PM?",
+    imgSrc: "/src/assets/images/avatar.png",
+  },
+  ,
+  {
+    sender: "Mandy's Pawradise",
+    message: "Will you be available to pick them up at 5:00 PM?",
+    imgSrc: "/src/assets/images/avatar.png",
+  },
+  ,
+  {
+    sender: "Mandy's Pawradise",
+    message: "Will you be available to pick them up at 5:00 PM?",
+    imgSrc: "/src/assets/images/avatar.png",
+  },
+  ,
+  {
+    sender: "Mandy's Pawradise",
+    message: "Will you be available to pick them up at 5:00 PM?",
+    imgSrc: "/src/assets/images/avatar.png",
+  },
+  ,
+  {
+    sender: "Mandy's Pawradise",
+    message: "Will you be available to pick them up at 5:00 PM?",
+    imgSrc: "/src/assets/images/avatar.png",
+  },
+  ,
+  {
+    sender: "Mandy's Pawradise",
+    message: "Will you be available to pick them up at 5:00 PM?",
+    imgSrc: "/src/assets/images/avatar.png",
+  },
+  ,
   {
     sender: "Mandy's Pawradise",
     message: "Will you be available to pick them up at 5:00 PM?",
@@ -108,7 +181,11 @@ const MessagesPage = ({ setIsMessageSelected }) => {
                   />
                   <div className="messages-page__info">
                     <h2 className="messages-page__sender">{msg.sender}</h2>
-                    <p className="messages-page__text">{msg.message}</p>
+                    <p className="messages-page__text">
+                      {msg.message.length > 50
+                        ? `${msg.message.substring(0, 50)}...`
+                        : msg.message}
+                    </p>
                   </div>
                 </li>
               ))}
@@ -123,43 +200,16 @@ const MessagesPage = ({ setIsMessageSelected }) => {
                     {selectedMessage.message}
                   </p>
                 </div>
-                <div className="messages-page__input-container">
-                  <input
-                    type="text"
-                    className="messages-page__input"
-                    value={newMessage}
-                    onChange={(e) => setNewMessage(e.target.value)}
-                    placeholder="Type a message"
-                  />
-                  <button
-                    className="messages-page__send-button"
-                    onClick={handleSendMessage}
-                  >
-                    Send
-                  </button>
-                </div>
               </div>
             )}
           </div>
         )}
-        {isMobile && selectedMessage && (
-          <div className="messages-page__input-container">
-            <input
-              type="text"
-              className="messages-page__input"
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-              placeholder="Type a message"
-            />
-            <button
-              className="messages-page__send-button"
-              onClick={handleSendMessage}
-            >
-              Send
-            </button>
-          </div>
-        )}
       </div>
+      <MessageInput
+        newMessage={newMessage}
+        setNewMessage={setNewMessage}
+        handleSendMessage={handleSendMessage}
+      />
     </div>
   );
 };
