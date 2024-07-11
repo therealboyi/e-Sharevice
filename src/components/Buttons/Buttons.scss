@@ -1,5 +1,4 @@
-// Buttons.scss
-
+// src/components/Buttons/Buttons.scss
 @import "src/styles/partials/variables";
 
 :root {
@@ -20,7 +19,6 @@
   background-color: var(--button-color);
   border-radius: var(--button-border-radius);
   padding: var(--button-padding);
-  width: 100%;
   margin-bottom: 10px;
   position: relative;
 
@@ -48,7 +46,21 @@
   &--submit {
     background: #00bfff; // Sky blue
     color: white;
-    // margin-top: 1rem;
+  }
+
+  &--delete {
+    background: red; // Red
+    color: white;
+  }
+
+  &--confirm {
+    background: red; // Red
+    color: white;
+  }
+
+  &--cancel {
+    background: grey; // Grey
+    color: white;
   }
 
   &--facebook,

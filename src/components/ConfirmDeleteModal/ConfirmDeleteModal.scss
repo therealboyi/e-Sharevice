@@ -1,0 +1,59 @@
+// src/components/ConfirmDeleteModal/ConfirmDeleteModal.scss
+.confirm-delete-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &__content {
+    position: relative;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+    z-index: 1001;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  &__button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &.confirm {
+      background-color: red;
+      color: white;
+      border: none;
+    }
+
+    &.cancel {
+      background-color: grey;
+      color: white;
+      border: none;
+    }
+  }
+}

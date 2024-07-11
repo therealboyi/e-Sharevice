@@ -1,5 +1,4 @@
-// Buttons.jsx
-
+// src/components/Buttons/Buttons.jsx
 import React from "react";
 import PropTypes from "prop-types";
 import "./Buttons.scss";
@@ -14,6 +13,7 @@ const Button = ({
   borderRadius,
   padding,
   fullWidth,
+  type = "button",
 }) => {
   const buttonClass = `button button--${variant}`;
 
@@ -26,7 +26,7 @@ const Button = ({
   };
 
   return (
-    <button className={buttonClass} onClick={onClick} style={style}>
+    <button className={buttonClass} onClick={onClick} style={style} type={type}>
       {svgIconPath && (
         <span className="button__icon">
           <img src={svgIconPath} alt={`${variant} icon`} />
@@ -47,6 +47,7 @@ Button.propTypes = {
   borderRadius: PropTypes.string,
   padding: PropTypes.string,
   fullWidth: PropTypes.bool,
+  type: PropTypes.string,
 };
 
 export default Button;
