@@ -15,6 +15,13 @@
     margin-bottom: 20px;
   }
 
+  &__add-button {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+
   &__list {
     list-style: none;
     padding: 0;
@@ -30,10 +37,11 @@
   }
 
   &__avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
     margin-right: 20px;
+    object-fit: cover;
   }
 
   &__info {
