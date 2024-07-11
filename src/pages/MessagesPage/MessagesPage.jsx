@@ -27,6 +27,7 @@ const messages = [
 const MessagesPage = ({ setIsMessageSelected }) => {
   const [selectedMessage, setSelectedMessage] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
+  const [newMessage, setNewMessage] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -48,6 +49,18 @@ const MessagesPage = ({ setIsMessageSelected }) => {
     console.log("Back to list");
     setSelectedMessage(null);
     setIsMessageSelected(false);
+  };
+
+  const handleSendMessage = () => {
+    if (newMessage.trim()) {
+      const newMsg = {
+        sender: "You",
+        message: newMessage,
+        imgSrc: "/src/assets/images/avatar.png",
+      };
+      messages.push(newMsg);
+      setNewMessage("");
+    }
   };
 
   useEffect(() => {
@@ -101,15 +114,49 @@ const MessagesPage = ({ setIsMessageSelected }) => {
               ))}
             </ul>
             {selectedMessage && !isMobile && (
-              <div className="messages-page__details">
-                <h2 className="messages-page__details-sender">
-                  {selectedMessage.sender}
-                </h2>
-                <p className="messages-page__details-text">
-                  {selectedMessage.message}
-                </p>
+              <div className="messages-page__details-container">
+                <div className="messages-page__details">
+                  <h2 className="messages-page__details-sender">
+                    {selectedMessage.sender}
+                  </h2>
+                  <p className="messages-page__details-text">
+                    {selectedMessage.message}
+                  </p>
+                </div>
+                <div className="messages-page__input-container">
+                  <input
+                    type="text"
+                    className="messages-page__input"
+                    value={newMessage}
+                    onChange={(e) => setNewMessage(e.target.value)}
+                    placeholder="Type a message"
+                  />
+                  <button
+                    className="messages-page__send-button"
+                    onClick={handleSendMessage}
+                  >
+                    Send
+                  </button>
+                </div>
               </div>
             )}
+          </div>
+        )}
+        {isMobile && selectedMessage && (
+          <div className="messages-page__input-container">
+            <input
+              type="text"
+              className="messages-page__input"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              placeholder="Type a message"
+            />
+            <button
+              className="messages-page__send-button"
+              onClick={handleSendMessage}
+            >
+              Send
+            </button>
           </div>
         )}
       </div>

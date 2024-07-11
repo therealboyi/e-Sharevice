@@ -1,10 +1,17 @@
 // MessagesPage.scss
 
 .messages-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   padding-top: 60px;
 
   &__content {
+    flex-grow: 1;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     @media (max-width: 767px) {
       margin-top: -4rem;
     }
@@ -18,6 +25,7 @@
 
   &__main {
     display: flex;
+    flex-grow: 1;
     @media (max-width: 767px) {
       flex-direction: column;
     }
@@ -71,6 +79,13 @@
     color: #555;
   }
 
+  &__details-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+
   &__details {
     flex-grow: 1;
     padding: 20px;
@@ -101,5 +116,33 @@
       font-size: 16px;
       cursor: pointer;
     }
+  }
+
+  &__input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: white;
+    @media (max-width: 767px) {
+      padding: 5px;
+    }
+  }
+
+  &__input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+
+  &__send-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
   }
 }
