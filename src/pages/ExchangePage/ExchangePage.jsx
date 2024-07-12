@@ -15,23 +15,25 @@ const ExchangePage = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [deleteIndex, setDeleteIndex] = useState(null);
 
-  useEffect(() => {
-    const fetchExchangeItems = async () => {
-      try {
-        const response = await axiosInstance.get("/exchange-items");
-        console.log("Response:", response);
-        if (Array.isArray(response.data)) {
-          setExchanges(response.data);
-        } else {
-          console.error("Response data is not an array:", response.data);
-          setExchanges([]);
-        }
-      } catch (error) {
-        console.error("Error fetching exchange items:", error);
+  const fetchExchangeItems = async () => {
+    try {
+      const response = await axiosInstance.get("/exchange-items");
+      console.log("Response:", response);
+      if (Array.isArray(response.data)) {
+        setExchanges(
+          response.data.sort((a, b) => new Date(b.date) - new Date(a.date))
+        );
+      } else {
+        console.error("Response data is not an array:", response.data);
         setExchanges([]);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching exchange items:", error);
+      setExchanges([]);
+    }
+  };
 
+  useEffect(() => {
     fetchExchangeItems();
   }, []);
 
@@ -51,15 +53,16 @@ const ExchangePage = () => {
     openModal();
   };
 
-  const addExchange = async (newItem) => {
+  const addExchange = async (formData) => {
     try {
-      const response = await axiosInstance.post("/exchange-items", newItem, {
+      const response = await axiosInstance.post("/exchange-items", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
+
       if (response.data) {
-        setExchanges([...exchanges, response.data]);
+        fetchExchangeItems();
       }
       closeModal();
     } catch (error) {
@@ -67,17 +70,20 @@ const ExchangePage = () => {
     }
   };
 
-  const updateExchange = async (updatedItem) => {
+  const updateExchange = async (formData, id) => {
     try {
       const response = await axiosInstance.put(
-        `/exchange-items/${updatedItem.id}`,
-        updatedItem
+        `/exchange-items/${id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
+
       if (response.data) {
-        const updatedExchanges = exchanges.map((item) =>
-          item.id === updatedItem.id ? response.data : item
-        );
-        setExchanges(updatedExchanges);
+        fetchExchangeItems();
       }
       closeModal();
     } catch (error) {
@@ -95,8 +101,7 @@ const ExchangePage = () => {
       await axiosInstance.delete(
         `/exchange-items/${exchanges[deleteIndex].id}`
       );
-      const updatedExchanges = exchanges.filter((_, i) => i !== deleteIndex);
-      setExchanges(updatedExchanges);
+      fetchExchangeItems();
       setIsDeleteModalOpen(false);
     } catch (error) {
       console.error("Error deleting exchange item:", error);
@@ -115,36 +120,40 @@ const ExchangePage = () => {
             onClick={openModal}
           />
           <ul className="exchange-page__list">
-            {exchanges.map((exchange, index) => (
-              <li key={index} className="exchange-page__item">
-                <img
-                  src={exchange.imgSrc}
-                  alt={exchange.provider}
-                  className="exchange-page__avatar"
-                  onError={(e) => {
-                    console.log("Image not found:", e.target.src);
-                  }} // Log image load errors
-                />
-                <div
-                  className="exchange-page__info"
-                  onClick={() => handleItemClick(index)}
-                >
-                  <h2 className="exchange-page__provider">
-                    {exchange.provider}
-                  </h2>
-                  <p className="exchange-page__service">{exchange.service}</p>
-                  <p className="exchange-page__exchange">{exchange.exchange}</p>
-                </div>
-                <Button
-                  variant="delete"
-                  text="Delete"
-                  onClick={() => confirmDelete(index)}
-                  color="red"
-                  hoverColor="darkred"
-                />
-                <span className="exchange-page__arrow">&gt;</span>
-              </li>
-            ))}
+            {exchanges.map((exchange, index) => {
+              const [exchangeType, date] = exchange.exchange.split(" - ");
+              return (
+                <li key={index} className="exchange-page__item">
+                  <img
+                    src={exchange.imgSrc}
+                    alt={exchange.provider}
+                    className="exchange-page__avatar"
+                    onError={() =>
+                      console.error(`Image not found: ${exchange.imgSrc}`)
+                    }
+                  />
+                  <div
+                    className="exchange-page__info"
+                    onClick={() => handleItemClick(index)}
+                  >
+                    <h2 className="exchange-page__provider">
+                      {exchange.provider}
+                    </h2>
+                    <p className="exchange-page__service">{exchange.service}</p>
+                    <p className="exchange-page__exchange">{exchangeType}</p>
+                    <p className="exchange-page__date">{date}</p>
+                  </div>
+                  <Button
+                    variant="delete"
+                    text="Delete"
+                    onClick={() => confirmDelete(index)}
+                    color="red"
+                    hoverColor="darkred"
+                  />
+                  <span className="exchange-page__arrow">&gt;</span>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
