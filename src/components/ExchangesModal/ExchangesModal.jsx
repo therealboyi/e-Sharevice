@@ -55,15 +55,12 @@ const ExchangesModal = ({ onClose, onAddExchange, currentItem }) => {
       "exchange",
       `Exchange Type: ${formattedExchangeDetail} - ${new Date().toLocaleDateString(
         "en-US",
-        {
-          month: "short",
-          day: "2-digit",
-          year: "numeric",
-        }
+        { month: "short", day: "2-digit", year: "numeric" }
       )}`
     );
     formData.append("description", description);
     formData.append("rateType", rateType);
+    formData.append("created_at", new Date().toISOString());
     if (images.length > 0) {
       formData.append("image", images[0]);
     }

@@ -42,7 +42,12 @@ const HomePage = () => {
       try {
         const response = await axiosInstance.get("/sample-data");
         console.log("Fetched photo card data:", response.data);
-        setPhotoCards(response.data);
+
+        const sortedData = response.data.sort(
+          (a, b) => new Date(b.created_at) - new Date(a.created_at)
+        );
+
+        setPhotoCards(sortedData);
       } catch (error) {
         console.error("Error fetching photo cards:", error);
       }

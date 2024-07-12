@@ -55,6 +55,7 @@ const ExchangePage = () => {
 
   const addExchange = async (formData) => {
     try {
+      formData.append("created_at", new Date().toISOString());
       const response = await axiosInstance.post("/exchange-items", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
