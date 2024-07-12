@@ -150,7 +150,6 @@ const ExchangePage = () => {
                     color="red"
                     hoverColor="darkred"
                   />
-                  <span className="exchange-page__arrow">&gt;</span>
                 </li>
               );
             })}
