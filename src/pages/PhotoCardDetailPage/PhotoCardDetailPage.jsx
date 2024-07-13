@@ -1,15 +1,16 @@
-// src/components/PhotoCardDetailPage/PhotoCardDetailPage.jsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axios";
 import ReserveBar from "../../components/ReserveBar/ReserveBar";
 import ReservationSummary from "../../components/ReservationSummary/ReservationSummary";
 import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
+import { AuthContext } from "../../contexts/AuthContext"; // Correct import
 import "./PhotoCardDetailPage.scss";
 
 const PhotoCardDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext); // Use AuthContext
   const [card, setCard] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -27,7 +28,11 @@ const PhotoCardDetailPage = () => {
   }, [id]);
 
   const handleReserveClick = () => {
-    setIsModalOpen(true);
+    if (user) {
+      setIsModalOpen(true);
+    } else {
+      navigate("/login");
+    }
   };
 
   const handleConfirmReservation = async () => {
