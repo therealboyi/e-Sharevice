@@ -1,0 +1,57 @@
+// src/components/ReservationSummary/ReservationSummary.scss
+
+.reservation-summary {
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  max-width: 100%;
+
+  &__button {
+    width: 100%;
+    padding: 0.75rem 0;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    text-align: right;
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 1rem;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__breakdown {
+    margin-bottom: 1rem;
+    width: 100%;
+    text-align: right;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__line-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+
+    span:last-child {
+      font-weight: bold;
+    }
+  }
+
+  &__total {
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: bold;
+    border-top: 1px solid #ddd;
+    padding-top: 0.5rem;
+  }
+}

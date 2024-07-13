@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import HomePage from "./pages/Homepage/Homepage.jsx";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
@@ -11,6 +11,8 @@ import ExchangePage from "./pages/ExchangePage/ExchangePage.jsx";
 import NavMenu from "./components/NavMenu/NavMenu";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import ProtectedComponent from "../src/components/ProtectedComponent/ProtectedComponent.jsx";
+import PhotoCardDetailPage from "./pages/PhotoCardDetailPage/PhotoCardDetailPage.jsx";
+import axiosInstance from "./utils/axios";
 import "./App.scss";
 
 function App() {
@@ -26,16 +28,42 @@ function App() {
 function AppContent() {
   const location = useLocation();
   const [isMessageSelected, setIsMessageSelected] = useState(false);
+  const [photoCards, setPhotoCards] = useState([]);
 
-  const hideNavMenuRoutes = ["/messages"];
+  useEffect(() => {
+    if (photoCards.length === 0) {
+      const fetchPhotoCards = async () => {
+        try {
+          const response = await axiosInstance.get("/sample-data");
+          const sortedData = response.data.sort(
+            (a, b) => new Date(b.created_at) - new Date(a.created_at)
+          );
+          setPhotoCards(sortedData);
+        } catch (error) {
+          console.error("Error fetching photo cards:", error);
+        }
+      };
+
+      fetchPhotoCards();
+    }
+  }, [photoCards]);
+
+  const hideNavMenuRoutes = [/^\/messages/, /^\/photo\/\d+$/];
+
+  const shouldHideNavMenu = hideNavMenuRoutes.some((route) =>
+    route.test(location.pathname)
+  );
 
   return (
     <>
-      {!(
-        hideNavMenuRoutes.includes(location.pathname) && isMessageSelected
-      ) && <NavMenu />}
+      {!shouldHideNavMenu && <NavMenu />}
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/"
+          element={
+            <HomePage photoCards={photoCards} setPhotoCards={setPhotoCards} />
+          }
+        />
         <Route
           path="/profile"
           element={
@@ -68,6 +96,10 @@ function AppContent() {
               <ExchangePage />
             </ProtectedComponent>
           }
+        />
+        <Route
+          path="/photo/:id"
+          element={<PhotoCardDetailPage photoCards={photoCards} />}
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

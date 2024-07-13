@@ -68,7 +68,10 @@ const ExchangesModal = ({ onClose, onAddExchange, currentItem }) => {
     if (currentItem) {
       onAddExchange(formData, currentItem.id);
     } else {
-      onAddExchange(formData);
+      const newItem = await onAddExchange(formData);
+      if (newItem && newItem.id) {
+        console.log("New item added with ID:", newItem.id);
+      }
     }
   };
 

@@ -1,0 +1,42 @@
+// src/components/ReserveBar/ReserveBar.scss
+
+.reserve-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 1rem;
+  border-top: 0.5px solid #ddd;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  @media (max-width: 767px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  &__price {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  &__dates {
+    font-size: 0.875rem;
+    color: #666;
+  }
+
+  &__button {
+    width: 100%;
+    margin-left: 1rem;
+  }
+}

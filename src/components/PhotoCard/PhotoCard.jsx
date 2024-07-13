@@ -1,12 +1,26 @@
-// PhotoCard.jsx
+// src/components/PhotoCard/PhotoCard.jsx
+import React from "react";
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+import "./PhotoCard.scss";
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import './PhotoCard.scss';
+const PhotoCard = ({
+  id,
+  imageSrc,
+  imageAlt,
+  title,
+  subtitle,
+  description,
+}) => {
+  const navigate = useNavigate();
 
-const PhotoCard = ({ imageSrc, imageAlt, title, subtitle, description }) => {
+  const handleClick = () => {
+    console.log("Navigating to card id:", id);
+    navigate(`/photo/${id}`);
+  };
+
   return (
-    <div className="photo-card">
+    <div className="photo-card" onClick={handleClick}>
       <div className="photo-card__image-wrapper">
         <img src={imageSrc} alt={imageAlt} className="photo-card__image" />
         <div className="photo-card__share-icon">
@@ -23,6 +37,7 @@ const PhotoCard = ({ imageSrc, imageAlt, title, subtitle, description }) => {
 };
 
 PhotoCard.propTypes = {
+  id: PropTypes.number.isRequired,
   imageSrc: PropTypes.string.isRequired,
   imageAlt: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

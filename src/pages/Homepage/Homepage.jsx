@@ -1,5 +1,7 @@
-// HomePage.jsx
+// src/pages/Homepage/Homepage.jsx
+
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import Header from "../../components/Header/Header";
 import PhotoCard from "../../components/PhotoCard/PhotoCard";
 import HorizontalNavbar from "../../components/HorizontalNavbar/HorizontalNavbar";
@@ -7,8 +9,6 @@ import NavMenu from "../../components/NavMenu/NavMenu";
 import Footer from "../../components/Footer/Footer";
 import axiosInstance from "../../utils/axios";
 import "./Homepage.scss";
-
-const API_URL = import.meta.env.VITE_API_URL;
 
 const navItems = [
   { label: "Gardening", link: "#" },
@@ -33,28 +33,27 @@ const navItems = [
   { label: "Fashion Design", link: "#" },
 ];
 
-const HomePage = () => {
+const HomePage = ({ photoCards, setPhotoCards }) => {
   const [activeNavItem, setActiveNavItem] = useState("explore");
-  const [photoCards, setPhotoCards] = useState([]);
 
   useEffect(() => {
-    const fetchPhotoCards = async () => {
-      try {
-        const response = await axiosInstance.get("/sample-data");
-        console.log("Fetched photo card data:", response.data);
+    if (photoCards.length === 0) {
+      const fetchPhotoCards = async () => {
+        try {
+          const response = await axiosInstance.get("/sample-data");
+          const sortedData = response.data.sort(
+            (a, b) => new Date(b.created_at) - new Date(a.created_at)
+          );
+          console.log("Fetched photo cards:", sortedData);
+          setPhotoCards(sortedData);
+        } catch (error) {
+          console.error("Error fetching photo cards:", error);
+        }
+      };
 
-        const sortedData = response.data.sort(
-          (a, b) => new Date(b.created_at) - new Date(a.created_at)
-        );
-
-        setPhotoCards(sortedData);
-      } catch (error) {
-        console.error("Error fetching photo cards:", error);
-      }
-    };
-
-    fetchPhotoCards();
-  }, []);
+      fetchPhotoCards();
+    }
+  }, [photoCards, setPhotoCards]);
 
   const handleNavItemClick = (item) => {
     setActiveNavItem(item);
@@ -67,10 +66,14 @@ const HomePage = () => {
         <HorizontalNavbar items={navItems} />
         <div className="homepage__photo-cards">
           {photoCards.map((card, index) => {
-            console.log(`Image URL for card ${index + 1}:`, card.imgSrc);
+            console.log("Rendering card:", card);
+            if (!card.id) {
+              console.error("Card without id:", card);
+            }
             return (
               <PhotoCard
-                key={index}
+                key={card.id || `card-${index}`} // Ensure a unique key, fallback to index if id is undefined
+                id={card.id}
                 imageSrc={card.imgSrc}
                 imageAlt={card.provider}
                 title={card.provider}
@@ -80,12 +83,16 @@ const HomePage = () => {
             );
           })}
         </div>
-
         <NavMenu activeItem={activeNavItem} onItemClick={handleNavItemClick} />
       </main>
       <Footer className="footer" />
     </div>
   );
+};
+
+HomePage.propTypes = {
+  photoCards: PropTypes.array.isRequired,
+  setPhotoCards: PropTypes.func.isRequired,
 };
 
 export default HomePage;
