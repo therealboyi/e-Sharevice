@@ -4,6 +4,8 @@ import axiosInstance from "../../utils/axios";
 import ReserveBar from "../../components/ReserveBar/ReserveBar";
 import ReservationSummary from "../../components/ReservationSummary/ReservationSummary";
 import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../../contexts/AuthContext"; // Correct import
 import "./PhotoCardDetailPage.scss";
 
@@ -13,6 +15,7 @@ const PhotoCardDetailPage = () => {
   const { user } = useContext(AuthContext); // Use AuthContext
   const [card, setCard] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     const fetchCardDetails = async () => {
@@ -26,6 +29,10 @@ const PhotoCardDetailPage = () => {
 
     fetchCardDetails();
   }, [id]);
+
+  const handleFavoriteClick = () => {
+    setIsFavorite(!isFavorite);
+  };
 
   const handleReserveClick = () => {
     if (user) {
@@ -89,11 +96,21 @@ const PhotoCardDetailPage = () => {
           </div>
         </div>
         <div className="photo-card-detail-page__left">
-          <img
-            src={card.imgSrc}
-            alt={card.provider}
-            className="photo-card-detail-page__image"
-          />
+          <div className="photo-card-detail-page__image-container">
+            <img
+              src={card.imgSrc}
+              alt={card.provider}
+              className="photo-card-detail-page__image"
+            />
+            <div className="photo-card-detail-page__heart-container" onClick={handleFavoriteClick}>
+              <FontAwesomeIcon
+                icon={faHeart}
+                className={`photo-card-detail-page__heart ${
+                  isFavorite ? "favorite" : ""
+                }`}
+              />
+            </div>
+          </div>
           <div className="photo-card-detail-page__reservation-summary">
             <ReservationSummary
               pricePerNight={337}
