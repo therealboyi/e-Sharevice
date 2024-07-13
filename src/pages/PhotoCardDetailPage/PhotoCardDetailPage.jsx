@@ -30,9 +30,14 @@ const PhotoCardDetailPage = () => {
     setIsModalOpen(true);
   };
 
-  const handleConfirmReservation = () => {
-    // Handle reservation confirmation logic here
-    setIsModalOpen(false);
+  const handleConfirmReservation = async () => {
+    try {
+      await axiosInstance.put(`/exchange-items/${id}/reserve`);
+      setIsModalOpen(false);
+      console.log("Reservation confirmed");
+    } catch (error) {
+      console.error("Failed to reserve item:", error);
+    }
   };
 
   if (!card) {
@@ -90,16 +95,22 @@ const PhotoCardDetailPage = () => {
               nights={5}
               serviceFee={269}
               taxes={310}
-              onReserve={handleReserveClick} // Pass the handleReserveClick function
+              onReserve={handleReserveClick}
             />
           </div>
         </div>
       </div>
-      <ReserveBar price={337} currency="CAD" dates="Aug. 6 – 11" onReserve={handleReserveClick} />
+      <ReserveBar
+        price={337}
+        currency="CAD"
+        dates="Aug. 6 – 11"
+        onReserve={handleReserveClick}
+      />
       <ConfirmationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onConfirm={handleConfirmReservation}
+        itemId={id}
       />
     </div>
   );

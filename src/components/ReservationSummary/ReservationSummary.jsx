@@ -63,7 +63,6 @@ ReservationSummary.propTypes = {
   serviceFee: PropTypes.number.isRequired,
   taxes: PropTypes.number.isRequired,
   onReserve: PropTypes.func.isRequired,
-  type,
 };
 
 export default ReservationSummary;
