@@ -1,4 +1,4 @@
-// src/pages/PhotoCardDetailPage/PhotoCardDetailPage.jsx
+// src/components/PhotoCardDetailPage/PhotoCardDetailPage.jsx
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axios";
@@ -32,12 +32,10 @@ const PhotoCardDetailPage = () => {
 
   const handleConfirmReservation = async () => {
     try {
-      const response = await axiosInstance.put(`/exchange-items/${id}/reserve`);
+      await axiosInstance.put(`/exchange-items/${id}/reserve`);
       setIsModalOpen(false);
       console.log("Reservation confirmed");
-      navigate("/reservation-confirmed", {
-        state: { reservationDetails: response.data },
-      });
+      navigate("/reservation-confirmed", { state: { exchangeDetails: card } });
     } catch (error) {
       console.error("Failed to reserve item:", error);
     }
@@ -113,6 +111,7 @@ const PhotoCardDetailPage = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onConfirm={handleConfirmReservation}
+        itemId={id}
       />
     </div>
   );

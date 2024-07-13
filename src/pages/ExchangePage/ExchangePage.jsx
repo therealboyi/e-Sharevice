@@ -4,6 +4,7 @@ import axiosInstance from "../../utils/axios";
 import Header from "../../components/Header/Header";
 import ExchangesModal from "../../components/ExchangesModal/ExchangesModal";
 import ConfirmDeleteModal from "../../components/ConfirmDeleteModal/ConfirmDeleteModal";
+import CompletedExchangeModal from "../../components/CompletedExchangeModal/CompletedExchangeModal";
 import Button from "../../components/Buttons/Buttons";
 import "./ExchangePage.scss";
 
@@ -14,14 +15,20 @@ const ExchangePage = ({ fetchPhotoCards }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [deleteIndex, setDeleteIndex] = useState(null);
+  const [completedModalIsOpen, setCompletedModalIsOpen] = useState(false);
+  const [completedItem, setCompletedItem] = useState(null);
 
   const fetchExchangeItems = async () => {
     try {
       const response = await axiosInstance.get("/exchange-items");
       if (Array.isArray(response.data)) {
-        setExchanges(
-          response.data.sort((a, b) => new Date(b.date) - new Date(a.date))
-        );
+        const sortedExchanges = response.data.sort((a, b) => {
+          if (a.reserved === b.reserved) {
+            return new Date(b.date) - new Date(a.date);
+          }
+          return a.reserved ? 1 : -1;
+        });
+        setExchanges(sortedExchanges);
       } else {
         setExchanges([]);
       }
@@ -45,9 +52,14 @@ const ExchangePage = ({ fetchPhotoCards }) => {
   };
 
   const handleItemClick = (index) => {
-    setCurrentItem({ ...exchanges[index], index });
-    setIsEditing(true);
-    openModal();
+    if (exchanges[index].reserved) {
+      setCompletedItem(exchanges[index]);
+      setCompletedModalIsOpen(true);
+    } else {
+      setCurrentItem({ ...exchanges[index], index });
+      setIsEditing(true);
+      openModal();
+    }
   };
 
   const addExchange = async (formData) => {
@@ -124,7 +136,12 @@ const ExchangePage = ({ fetchPhotoCards }) => {
             {exchanges.map((exchange, index) => {
               const [exchangeType, date] = exchange.exchange.split(" - ");
               return (
-                <li key={index} className="exchange-page__item">
+                <li
+                  key={index}
+                  className={`exchange-page__item ${
+                    exchange.reserved ? "exchange-page__item--reserved" : ""
+                  }`}
+                >
                   <img
                     src={exchange.imgSrc}
                     alt={exchange.provider}
@@ -144,13 +161,24 @@ const ExchangePage = ({ fetchPhotoCards }) => {
                     <p className="exchange-page__exchange">{exchangeType}</p>
                     <p className="exchange-page__date">{date}</p>
                   </div>
-                  <Button
-                    variant="delete"
-                    text="Delete"
-                    onClick={() => confirmDelete(index)}
-                    color="red"
-                    hoverColor="darkred"
-                  />
+                  {exchange.reserved ? (
+                    <Button
+                      variant="reserved"
+                      text="Exchanged"
+                      color="green"
+                      hoverColor="green"
+                      onClick={() => {}}
+                      disabled
+                    />
+                  ) : (
+                    <Button
+                      variant="delete"
+                      text="Delete"
+                      onClick={() => confirmDelete(index)}
+                      color="red"
+                      hoverColor="darkred"
+                    />
+                  )}
                 </li>
               );
             })}
@@ -169,6 +197,13 @@ const ExchangePage = ({ fetchPhotoCards }) => {
         <ConfirmDeleteModal
           onClose={() => setIsDeleteModalOpen(false)}
           onConfirm={handleDelete}
+        />
+      )}
+      {completedModalIsOpen && (
+        <CompletedExchangeModal
+          isOpen={completedModalIsOpen}
+          onClose={() => setCompletedModalIsOpen(false)}
+          exchangeDetails={completedItem}
         />
       )}
     </div>

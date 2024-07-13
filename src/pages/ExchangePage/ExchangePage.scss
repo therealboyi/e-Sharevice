@@ -34,6 +34,16 @@
     margin-bottom: 20px;
     border-bottom: 1px solid #ddd;
     padding-bottom: 20px;
+
+    &--reserved {
+      background-color: #f5f5f5;
+      color: #999;
+
+      .exchange-page__avatar,
+      .exchange-page__info {
+        opacity: 0.6;
+      }
+    }
   }
 
   &__avatar {
@@ -87,5 +97,11 @@
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 5px;
+
+    &--reserved {
+      background-color: green;
+      color: white;
+      cursor: not-allowed;
+    }
   }
 }
