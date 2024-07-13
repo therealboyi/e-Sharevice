@@ -1,20 +1,9 @@
 // src/components/ConfirmationModal/ConfirmationModal.jsx
 import React from "react";
 import "./ConfirmationModal.scss";
-import axiosInstance from "../../utils/axios";
 
-const ConfirmationModal = ({ isOpen, onClose, onConfirm, itemId }) => {
+const ConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
   if (!isOpen) return null;
-
-  const handleConfirm = async () => {
-    try {
-      await axiosInstance.put(`/exchange-items/${itemId}/reserve`);
-      console.log("Reservation confirmed"); 
-      onConfirm(); 
-    } catch (error) {
-      console.error("Failed to reserve item:", error);
-    }
-  };
 
   return (
     <div className="confirmation-modal">
@@ -27,7 +16,7 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm, itemId }) => {
         <div className="confirmation-modal__actions">
           <button
             className="confirmation-modal__button confirmation-modal__button--confirm"
-            onClick={handleConfirm}
+            onClick={onConfirm}
           >
             Confirm
           </button>

@@ -110,7 +110,6 @@ const PhotoCardDetailPage = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onConfirm={handleConfirmReservation}
-        itemId={id}
       />
     </div>
   );
