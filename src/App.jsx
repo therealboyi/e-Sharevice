@@ -1,6 +1,11 @@
 // src/App.jsx
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import HomePage from "./pages/Homepage/Homepage.jsx";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
@@ -12,15 +17,16 @@ import NavMenu from "./components/NavMenu/NavMenu";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import ProtectedComponent from "../src/components/ProtectedComponent/ProtectedComponent.jsx";
 import PhotoCardDetailPage from "./pages/PhotoCardDetailPage/PhotoCardDetailPage.jsx";
+import ReservationConfirmedPage from "./pages/ReservationConfirmedPage/ReservationConfirmedPage.jsx";
 import axiosInstance from "./utils/axios";
 import "./App.scss";
 
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <Router>
         <AppContent />
-      </BrowserRouter>
+      </Router>
     </AuthProvider>
   );
 }
@@ -102,6 +108,10 @@ function AppContent() {
         <Route
           path="/photo/:id"
           element={<PhotoCardDetailPage photoCards={photoCards} />}
+        />
+        <Route
+          path="/reservation-confirmed"
+          element={<ReservationConfirmedPage />}
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

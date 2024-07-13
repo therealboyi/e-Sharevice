@@ -1,0 +1,31 @@
+// src/pages/ReservationConfirmedPage/ReservationConfirmedPage.scss
+.reservation-confirmed {
+  text-align: center;
+  padding: 20px;
+}
+
+.reservation-confirmed__title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.reservation-confirmed__details {
+  text-align: left;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.reservation-confirmed__details p {
+  margin: 5px 0;
+}
+
+.reservation-confirmed__button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.reservation-confirmed__button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
