@@ -35,6 +35,20 @@ const navItems = [
 
 const HomePage = ({ photoCards, setPhotoCards }) => {
   const [activeNavItem, setActiveNavItem] = useState("explore");
+  const [currentUserId, setCurrentUserId] = useState(null);
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const response = await axiosInstance.get("/current-user");
+        setCurrentUserId(response.data.id);
+      } catch (error) {
+        console.error("Error fetching current user:", error);
+      }
+    };
+
+    fetchCurrentUser();
+  }, []);
 
   useEffect(() => {
     if (photoCards.length === 0) {
@@ -65,23 +79,25 @@ const HomePage = ({ photoCards, setPhotoCards }) => {
       <main className="homepage__content">
         <HorizontalNavbar items={navItems} />
         <div className="homepage__photo-cards">
-          {photoCards.map((card, index) => {
-            console.log("Rendering card:", card);
-            if (!card.id) {
-              console.error("Card without id:", card);
-            }
-            return (
-              <PhotoCard
-                key={card.id || `card-${index}`} // Ensure a unique key, fallback to index if id is undefined
-                id={card.id}
-                imageSrc={card.imgSrc}
-                imageAlt={card.provider}
-                title={card.provider}
-                subtitle={card.service}
-                description={card.exchange.split(" - ")[0]}
-              />
-            );
-          })}
+          {photoCards
+            .filter((card) => card.user_id !== currentUserId)
+            .map((card, index) => {
+              console.log("Rendering card:", card);
+              if (!card.id) {
+                console.error("Card without id:", card);
+              }
+              return (
+                <PhotoCard
+                  key={card.id || `card-${index}`} // Ensure a unique key, fallback to index if id is undefined
+                  id={card.id}
+                  imageSrc={card.imgSrc}
+                  imageAlt={card.provider}
+                  title={card.provider}
+                  subtitle={card.service}
+                  description={card.exchange.split(" - ")[0]}
+                />
+              );
+            })}
         </div>
         <NavMenu activeItem={activeNavItem} onItemClick={handleNavItemClick} />
       </main>
