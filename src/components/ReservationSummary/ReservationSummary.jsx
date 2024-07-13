@@ -10,6 +10,7 @@ const ReservationSummary = ({
   nights,
   serviceFee,
   taxes,
+  onReserve,
 }) => {
   const isMobile = window.innerWidth <= 767;
 
@@ -18,7 +19,7 @@ const ReservationSummary = ({
       <Button
         variant="confirm"
         text="Reserve"
-        onClick={() => alert("Reservation made!")}
+        onClick={onReserve}
         fullWidth={true}
       />
       {isMobile && (
@@ -61,6 +62,8 @@ ReservationSummary.propTypes = {
   nights: PropTypes.number.isRequired,
   serviceFee: PropTypes.number.isRequired,
   taxes: PropTypes.number.isRequired,
+  onReserve: PropTypes.func.isRequired,
+  type,
 };
 
 export default ReservationSummary;

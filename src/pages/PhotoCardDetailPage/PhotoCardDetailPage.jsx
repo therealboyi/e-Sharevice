@@ -1,15 +1,17 @@
-// src/components/PhotoCardDetailPage.jsx
+// src/components/PhotoCardDetailPage/PhotoCardDetailPage.jsx
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axios";
 import ReserveBar from "../../components/ReserveBar/ReserveBar";
 import ReservationSummary from "../../components/ReservationSummary/ReservationSummary";
+import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
 import "./PhotoCardDetailPage.scss";
 
 const PhotoCardDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [card, setCard] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchCardDetails = async () => {
@@ -23,6 +25,15 @@ const PhotoCardDetailPage = () => {
 
     fetchCardDetails();
   }, [id]);
+
+  const handleReserveClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleConfirmReservation = () => {
+    // Handle reservation confirmation logic here
+    setIsModalOpen(false);
+  };
 
   if (!card) {
     return (
@@ -79,11 +90,17 @@ const PhotoCardDetailPage = () => {
               nights={5}
               serviceFee={269}
               taxes={310}
+              onReserve={handleReserveClick} // Pass the handleReserveClick function
             />
           </div>
         </div>
       </div>
-      <ReserveBar price={337} currency="CAD" dates="Aug. 6 – 11" />
+      <ReserveBar price={337} currency="CAD" dates="Aug. 6 – 11" onReserve={handleReserveClick} />
+      <ConfirmationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={handleConfirmReservation}
+      />
     </div>
   );
 };

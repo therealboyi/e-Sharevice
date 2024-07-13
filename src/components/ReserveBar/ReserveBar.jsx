@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Button from "../Buttons/Buttons";
 import "./ReserveBar.scss";
 
-const ReserveBar = ({ price, currency, dates }) => {
+const ReserveBar = ({ price, currency, dates, onReserve }) => {
   return (
     <div className="reserve-bar">
       <div className="reserve-bar__details">
@@ -16,7 +16,7 @@ const ReserveBar = ({ price, currency, dates }) => {
       <Button
         variant="confirm"
         text="Reserve"
-        onClick={() => alert("Reservation made!")}
+        onClick={onReserve}
         fullWidth={true}
       />
     </div>
@@ -27,6 +27,7 @@ ReserveBar.propTypes = {
   price: PropTypes.number.isRequired,
   currency: PropTypes.string.isRequired,
   dates: PropTypes.string.isRequired,
+  onReserve: PropTypes.func.isRequired,
 };
 
 export default ReserveBar;
