@@ -10,7 +10,6 @@ const PhotoCardDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [card, setCard] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     console.log("Fetching details for card id:", id);
@@ -20,28 +19,19 @@ const PhotoCardDetailPage = () => {
         setCard(response.data);
       } catch (error) {
         console.error("Error fetching card details:", error);
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchCardDetails();
   }, [id]);
 
-  if (loading) {
-    return (
-      <div className="photo-card-detail-page">
-        <div className="photo-card-detail-page__skeleton">
-          <div className="photo-card-detail-page__skeleton-image"></div>
-          <div className="photo-card-detail-page__skeleton-content">
-            <div className="photo-card-detail-page__skeleton-title"></div>
-            <div className="photo-card-detail-page__skeleton-subtitle"></div>
-            <div className="photo-card-detail-page__skeleton-description"></div>
-          </div>
-        </div>
-      </div>
-    );
+  if (!card) {
+    return <p>Loading...</p>;
   }
+
+  const exchangeType = card.exchange
+    .replace("Exchange Type: ", "")
+    .split(" - ")[0];
 
   return (
     <div className="photo-card-detail-page">
@@ -61,7 +51,7 @@ const PhotoCardDetailPage = () => {
           <h1 className="photo-card-detail-page__title">{card.provider}</h1>
           <h2 className="photo-card-detail-page__subtitle">{card.service}</h2>
           <p className="photo-card-detail-page__description">
-            Exchange Type: {card.exchange}
+            Exchange Type: {exchangeType}
           </p>
           <div className="photo-card-detail-page__additional-description">
             <h3>Description</h3>
