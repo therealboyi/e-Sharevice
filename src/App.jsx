@@ -30,23 +30,21 @@ function AppContent() {
   const [isMessageSelected, setIsMessageSelected] = useState(false);
   const [photoCards, setPhotoCards] = useState([]);
 
-  useEffect(() => {
-    if (photoCards.length === 0) {
-      const fetchPhotoCards = async () => {
-        try {
-          const response = await axiosInstance.get("/sample-data");
-          const sortedData = response.data.sort(
-            (a, b) => new Date(b.created_at) - new Date(a.created_at)
-          );
-          setPhotoCards(sortedData);
-        } catch (error) {
-          console.error("Error fetching photo cards:", error);
-        }
-      };
-
-      fetchPhotoCards();
+  const fetchPhotoCards = async () => {
+    try {
+      const response = await axiosInstance.get("/sample-data");
+      const sortedData = response.data.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      );
+      setPhotoCards(sortedData);
+    } catch (error) {
+      console.error("Error fetching photo cards:", error);
     }
-  }, [photoCards]);
+  };
+
+  useEffect(() => {
+    fetchPhotoCards();
+  }, []);
 
   const hideNavMenuRoutes = [/^\/messages/, /^\/photo\/\d+$/];
 
@@ -61,7 +59,11 @@ function AppContent() {
         <Route
           path="/"
           element={
-            <HomePage photoCards={photoCards} setPhotoCards={setPhotoCards} />
+            <HomePage
+              photoCards={photoCards}
+              setPhotoCards={setPhotoCards}
+              fetchPhotoCards={fetchPhotoCards}
+            />
           }
         />
         <Route
@@ -93,7 +95,7 @@ function AppContent() {
           path="/exchanges"
           element={
             <ProtectedComponent>
-              <ExchangePage />
+              <ExchangePage fetchPhotoCards={fetchPhotoCards} />
             </ProtectedComponent>
           }
         />

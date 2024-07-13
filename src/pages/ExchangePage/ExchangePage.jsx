@@ -7,7 +7,7 @@ import ConfirmDeleteModal from "../../components/ConfirmDeleteModal/ConfirmDelet
 import Button from "../../components/Buttons/Buttons";
 import "./ExchangePage.scss";
 
-const ExchangePage = () => {
+const ExchangePage = ({ fetchPhotoCards }) => {
   const [exchanges, setExchanges] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
@@ -18,17 +18,14 @@ const ExchangePage = () => {
   const fetchExchangeItems = async () => {
     try {
       const response = await axiosInstance.get("/exchange-items");
-      console.log("Response:", response);
       if (Array.isArray(response.data)) {
         setExchanges(
           response.data.sort((a, b) => new Date(b.date) - new Date(a.date))
         );
       } else {
-        console.error("Response data is not an array:", response.data);
         setExchanges([]);
       }
     } catch (error) {
-      console.error("Error fetching exchange items:", error);
       setExchanges([]);
     }
   };
@@ -64,6 +61,7 @@ const ExchangePage = () => {
 
       if (response.data) {
         fetchExchangeItems();
+        fetchPhotoCards();
       }
       closeModal();
     } catch (error) {
@@ -85,6 +83,7 @@ const ExchangePage = () => {
 
       if (response.data) {
         fetchExchangeItems();
+        fetchPhotoCards();
       }
       closeModal();
     } catch (error) {
@@ -103,6 +102,7 @@ const ExchangePage = () => {
         `/exchange-items/${exchanges[deleteIndex].id}`
       );
       fetchExchangeItems();
+      fetchPhotoCards();
       setIsDeleteModalOpen(false);
     } catch (error) {
       console.error("Error deleting exchange item:", error);
@@ -162,6 +162,7 @@ const ExchangePage = () => {
           onClose={closeModal}
           onAddExchange={isEditing ? updateExchange : addExchange}
           currentItem={currentItem}
+          fetchPhotoCards={fetchPhotoCards}
         />
       )}
       {isDeleteModalOpen && (

@@ -3,7 +3,12 @@ import React, { useState, useEffect } from "react";
 import Button from "../../components/Buttons/Buttons";
 import "./ExchangesModal.scss";
 
-const ExchangesModal = ({ onClose, onAddExchange, currentItem }) => {
+const ExchangesModal = ({
+  onClose,
+  onAddExchange,
+  currentItem,
+  fetchPhotoCards,
+}) => {
   const [title, setTitle] = useState("");
   const [exchangeType, setExchangeType] = useState("");
   const [exchangeDetail, setExchangeDetail] = useState("");
@@ -66,11 +71,13 @@ const ExchangesModal = ({ onClose, onAddExchange, currentItem }) => {
     }
 
     if (currentItem) {
-      onAddExchange(formData, currentItem.id);
+      await onAddExchange(formData, currentItem.id);
+      fetchPhotoCards();
     } else {
       const newItem = await onAddExchange(formData);
       if (newItem && newItem.id) {
         console.log("New item added with ID:", newItem.id);
+        fetchPhotoCards();
       }
     }
   };

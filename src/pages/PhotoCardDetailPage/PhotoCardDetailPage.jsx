@@ -12,7 +12,6 @@ const PhotoCardDetailPage = () => {
   const [card, setCard] = useState(null);
 
   useEffect(() => {
-    console.log("Fetching details for card id:", id);
     const fetchCardDetails = async () => {
       try {
         const response = await axiosInstance.get(`/exchange-items/${id}`);
@@ -26,7 +25,16 @@ const PhotoCardDetailPage = () => {
   }, [id]);
 
   if (!card) {
-    return <p>Loading...</p>;
+    return (
+      <div className="photo-card-detail-page__skeleton">
+        <div className="photo-card-detail-page__skeleton-image"></div>
+        <div className="photo-card-detail-page__skeleton-content">
+          <div className="photo-card-detail-page__skeleton-title"></div>
+          <div className="photo-card-detail-page__skeleton-subtitle"></div>
+          <div className="photo-card-detail-page__skeleton-description"></div>
+        </div>
+      </div>
+    );
   }
 
   const exchangeType = card.exchange
