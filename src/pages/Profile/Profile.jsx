@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Profile.scss";
 import Header from "../../components/Header/Header";
-import Avatar from "../../components/Avatar/Avatar";
+import ProfileAvatar from "../../components/ProfileAvatar/ProfileAvatar";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 import NavMenu from "../../components/NavMenu/NavMenu";
 
@@ -33,10 +33,10 @@ const Profile = () => {
           </div>
         </header>
         <div className="profile__info">
-          <Avatar
-            className="profile__avatar"
-            src="path/to/avatar.jpg"
-            alt="Marvin's avatar"
+          <ProfileAvatar
+            className="profile__ProfileAvatar"
+            src="/src/assets/images/avatar.png"
+            alt="Marvin's ProfileAvatar"
           />{" "}
           <div className="profile__details">
             <p className="profile__name">Marvin</p>

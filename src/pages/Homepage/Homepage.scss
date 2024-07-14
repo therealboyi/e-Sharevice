@@ -1,4 +1,4 @@
-// HomePage.scss
+// src/pages/Homepage/Homepage.scss
 
 @use "../../styles/partials/index.scss" as *;
 
@@ -55,9 +55,10 @@
       grid-template-columns: repeat(4, 1fr); // 4 columns for larger screens
       justify-content: center; // Center the grid
     }
-  }
 
-  .photo-card {
-    margin: 0; // Ensure no extra margin on photo cards
+    .photo-card {
+      margin: 0; // Ensure no extra margin on photo cards
+      cursor: pointer; // Add this line to change the cursor to a pointer
+    }
   }
 }

@@ -22,10 +22,10 @@
     font-weight: bold;
   }
 
-  &__notification {
-    .profile__icon--notification {
-    }
-  }
+  // &__notification {
+  //   .profile__icon--notification {
+  //   }
+  // }
 
   &__info {
     display: flex;
@@ -33,9 +33,9 @@
     padding: 16px;
   }
 
-  &__avatar {
-    // Avatar component specific styles
-  }
+  // &__ProfileAvatar {
+  //   // ProfileAvatar component specific styles
+  // }
 
   &__details {
     flex-grow: 1;
@@ -52,9 +52,9 @@
     color: gray;
   }
 
-  &__icon--arrow {
-    // arrow icon styles here
-  }
+  // &__icon--arrow {
+  //   // arrow icon styles here
+  // }
 
   &__divider {
     border: 0;
