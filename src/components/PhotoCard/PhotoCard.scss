@@ -5,7 +5,7 @@
   overflow: hidden;
   background-color: #fff;
   width: 100%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Remove shadow for mobile
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   margin: 1rem;
   transition: transform 0.3s;
 
@@ -69,6 +69,6 @@
   }
 
   @media (min-width: 550px) {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   }
 }

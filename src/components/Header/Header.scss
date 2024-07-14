@@ -25,6 +25,9 @@
     &-img {
       height: 50px;
       margin-top: 0.5rem;
+      filter: invert(48%) sepia(18%) saturate(3385%) hue-rotate(172deg)
+        brightness(101%) contrast(102%);
+      // Sky blue
     }
 
     @media (max-width: 767px) {

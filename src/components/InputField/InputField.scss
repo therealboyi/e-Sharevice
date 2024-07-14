@@ -5,7 +5,8 @@
   //   width: 50%; // Temp adjustment for mobile view
   align-items: center;
   border: 0px solid #ccc;
-  box-shadow: 0 0 10px rgba(133, 133, 133, 0.3);
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
   border-radius: 40px;
   padding: 0.5rem;
   background-color: #fff;
@@ -32,7 +33,8 @@
     font-size: 1rem;
 
     &::placeholder {
-      color: #999;
+      color: #F2F2F2;
+      font-size: 1rem;
     }
   }
 }
