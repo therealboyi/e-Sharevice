@@ -1,22 +1,28 @@
 // src/pages/ExchangePage/ExchangePage.scss
+@use "../../styles/partials/mixins" as *;
+
 .exchange-page {
   padding-top: 60px;
 
   &__content {
     padding: 20px;
-    @media (max-width: 767px) {
+    @include respond-to("mobile") {
       margin-top: -4rem;
     }
   }
 
   &__title {
-    font-size: 24px;
-    font-weight: bold;
+    @include large-title;
     margin-bottom: 20px;
+
+    @include respond-to("mobile") {
+      font-size: 22px;
+      line-height: 26px;
+    }
   }
 
   &__add-button {
-    font-size: 16px;
+    @include font-style(16px, 400, 20px);
     padding: 10px 20px;
     margin-bottom: 20px;
     cursor: pointer;
@@ -31,9 +37,9 @@
   &__item {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 20px;
+    padding: 1rem;
+    gap: 1rem;
 
     &--reserved {
       background-color: #f5f5f5;
@@ -46,11 +52,13 @@
     }
   }
 
+  &__image-wrapper {
+    display: inline-block;
+    width: 130px;
+  }
+
   &__avatar {
-    width: 60px;
-    height: 60px;
     border-radius: 10px;
-    margin-right: 20px;
     object-fit: cover;
   }
 
@@ -62,26 +70,34 @@
   }
 
   &__provider {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0;
+    @include bold-text(16px, 20px);
+    @include respond-to("mobile") {
+      font-size: 14px;
+    }
   }
 
   &__service {
-    font-size: 14px;
+    @include font-style(14px, 400, 18px);
     color: #555;
-    margin: 5px 0;
+    @include respond-to("mobile") {
+      font-size: 12px;
+    }
   }
 
   &__exchange {
-    font-size: 14px;
+    @include font-style(14px, 400, 18px);
     color: #555;
+    @include respond-to("mobile") {
+      font-size: 12px;
+    }
   }
 
   &__date {
-    font-size: 14px;
+    @include font-style(14px, 400, 18px);
     color: #555;
-    margin-top: 5px;
+    @include respond-to("mobile") {
+      font-size: 12px;
+    }
   }
 
   &__arrow {

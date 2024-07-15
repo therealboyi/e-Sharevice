@@ -9,10 +9,6 @@
   margin: 1rem;
   transition: transform 0.3s;
 
-  &:hover {
-    transform: translateY(-5px);
-  }
-
   &__image-wrapper {
     position: relative;
     width: 100%;
@@ -70,5 +66,11 @@
 
   @media (min-width: 550px) {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+
+  @media (min-width: 1280px) {
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }

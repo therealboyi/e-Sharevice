@@ -142,14 +142,16 @@ const ExchangePage = ({ fetchPhotoCards }) => {
                     exchange.reserved ? "exchange-page__item--reserved" : ""
                   }`}
                 >
-                  <img
-                    src={exchange.imgSrc}
-                    alt={exchange.provider}
-                    className="exchange-page__avatar"
-                    onError={() =>
-                      console.error(`Image not found: ${exchange.imgSrc}`)
-                    }
-                  />
+                  <div className="exchange-page__image-wrapper">
+                    <img
+                      src={exchange.imgSrc}
+                      alt={exchange.provider}
+                      className="exchange-page__avatar"
+                      onError={() =>
+                        console.error(`Image not found: ${exchange.imgSrc}`)
+                      }
+                    />
+                  </div>
                   <div
                     className="exchange-page__info"
                     onClick={() => handleItemClick(index)}

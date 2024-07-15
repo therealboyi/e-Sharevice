@@ -1,19 +1,63 @@
 // src/styles/partials/_mixins.scss
 
-@mixin font($family, $size, $weight: normal) {
-  font-family: $family;
+@use "./variables" as *;
+
+@mixin bold-text($size, $line-height) {
+  font-size: $size;
+  font-weight: bold;
+  line-height: $line-height;
+}
+
+// Mixin for responsive breakpoints
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "mobile" {
+    @media (max-width: $breakpoint-mobile-max) {
+      @content;
+    }
+  } @else if $breakpoint == "tablet" {
+    @media (min-width: $breakpoint-tablet-min) and (max-width: $breakpoint-tablet-max) {
+      @content;
+    }
+  } @else if $breakpoint == "desktop" {
+    @media (min-width: $breakpoint-desktop) {
+      @content;
+    }
+  }
+}
+
+// Font style mixins
+@mixin font-style($size, $weight, $line-height) {
   font-size: $size;
   font-weight: $weight;
+  line-height: $line-height;
 }
 
-@mixin font-sf-pro-display($size, $weight: normal) {
-  @include font("SF Pro Display", $size, $weight);
+@mixin large-title {
+  @include font-style(26px, 400, 32px); // Regular 26/32
+  font-weight: bold; // Emphasized weight: Bold
 }
 
-@mixin font-sf-pro-text($size, $weight: normal) {
-  @include font("SF Pro Text", $size, $weight);
+@mixin title-1 {
+  @include font-style(22px, 400, 26px); // Regular 22/26
+  font-weight: bold; // Emphasized weight: Bold
 }
 
-@mixin font-sf-pro($size, $weight: normal) {
-  @include font("SF Pro", $size, $weight);
+@mixin title-2 {
+  @include font-style(17px, 400, 22px); // Regular 17/22
+  font-weight: bold; // Emphasized weight: Bold
+}
+
+@mixin title-3 {
+  @include font-style(15px, 400, 20px); // Regular 15/20
+  font-weight: semibold; // Emphasized weight: Semibold
+}
+
+@mixin headline {
+  @include font-style(13px, 700, 16px); // Bold 13/16
+  font-weight: heavy; // Emphasized weight: Heavy
+}
+
+@mixin body {
+  @include font-style(13px, 400, 16px); // Regular 13/16
+  font-weight: semibold; // Emphasized weight: Semibold
 }

@@ -1,4 +1,6 @@
 // src/components/Buttons/Buttons.scss
+
+@use "src/styles/partials/mixins" as *;
 @import "src/styles/partials/variables";
 
 :root {
@@ -19,7 +21,6 @@
   background-color: var(--button-color);
   border-radius: var(--button-border-radius);
   padding: var(--button-padding);
-  margin-bottom: 10px;
   position: relative;
 
   &__icon {
@@ -35,7 +36,11 @@
   }
 
   &__text {
-    font-size: 16px;
+    @include font-style(16px, 400, 20px);
+
+    @include respond-to("mobile") {
+      font-size: 14px;
+    }
   }
 
   &:hover {

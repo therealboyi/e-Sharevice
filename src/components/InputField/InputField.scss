@@ -33,8 +33,9 @@
     font-size: 1rem;
 
     &::placeholder {
-      color: #F2F2F2;
+      color: #999;
       font-size: 1rem;
+      opacity: 30%;
     }
   }
 }
