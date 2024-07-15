@@ -1,4 +1,6 @@
 // src/pages/ReservationConfirmedPage/ReservationConfirmedPage.scss
+@use "../../styles/partials/mixins" as *;
+
 .reservation-confirmed-page {
   display: flex;
   flex-direction: column;
@@ -6,10 +8,14 @@
   padding: 20px;
 
   &__title {
-    font-size: 24px;
-    font-weight: bold;
+    @include font-style(24px, bold, 32px);
     margin-bottom: 20px;
     text-align: center;
+
+    @include respond-to('mobile') {
+      font-size: 20px;
+      line-height: 28px;
+    }
   }
 
   &__details {
@@ -17,7 +23,13 @@
     margin-bottom: 20px;
 
     p {
+      @include font-style(16px, 400, 24px);
       margin: 10px 0;
+
+      @include respond-to('mobile') {
+        font-size: 14px;
+        line-height: 20px;
+      }
     }
   }
 
