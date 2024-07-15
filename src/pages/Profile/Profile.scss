@@ -3,9 +3,17 @@
 .profile {
   padding-top: 60px;
 
+  @media (min-width: 767px) {
+    padding: 60px 1.5rem 1rem 2.8rem;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 60px 3.8rem 1rem 4.8rem;
+  }
+
   &__content {
     @include respond-to('mobile') {
-      margin-top: -4rem;
+      margin: -4rem 1rem 0 1rem;
     }
   }
 
@@ -13,22 +21,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px;
+    padding: 16px 0;
   }
 
   &__title {
-    @include font-style(24px, bold, 32px);
+    @include large-title;
+    margin-bottom: 1rem;
 
-    @include respond-to('mobile') {
-      font-size: 20px;
-      line-height: 28px;
+    @include respond-to("mobile") {
+      font-size: 22px;
+      line-height: 26px;
     }
   }
 
   &__info {
     display: flex;
     align-items: center;
-    padding: 16px;
+    padding: 16px 0;
   }
 
   &__details {
@@ -61,7 +70,7 @@
   }
 
   &__settings {
-    padding: 16px;
+    padding: 16px 0;
   }
 
   &__settings-title {
@@ -87,7 +96,7 @@
   }
 
   &__settings-label {
-    margin-left: 8px;
+    // margin-left: 8px;
     @include font-style(16px, 400, 24px);
 
     @include respond-to('mobile') {

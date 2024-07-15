@@ -22,46 +22,48 @@ const Profile = () => {
     window.location.reload();
   };
 
-  return (
-    <div className="profile">
-      <Header />
-      <div className="profile__content">
-        <header className="profile__header">
-          <h1 className="profile__title">Profile</h1>
-          <div className="profile__notification">
-            <i className="profile__icon profile__icon--notification" />
+  return (<>
+    <Header />
+    <main>
+      <div className="profile">
+        <div className="profile__content">
+          <header className="profile__header">
+            <h1 className="profile__title">Profile</h1>
+            <div className="profile__notification">
+              <i className="profile__icon profile__icon--notification" />
+            </div>
+          </header>
+          <div className="profile__info">
+            <ProfileAvatar
+              className="profile__ProfileAvatar"
+              src="/src/assets/images/avatar.png"
+              alt="Marvin's ProfileAvatar"
+            />{" "}
+            <div className="profile__details">
+              <p className="profile__name">Marvin</p>
+              <p className="profile__description">Click to show profile</p>
+            </div>
+            <i className="profile__icon profile__icon--arrow" />
           </div>
-        </header>
-        <div className="profile__info">
-          <ProfileAvatar
-            className="profile__ProfileAvatar"
-            src="/src/assets/images/avatar.png"
-            alt="Marvin's ProfileAvatar"
-          />{" "}
-          <div className="profile__details">
-            <p className="profile__name">Marvin</p>
-            <p className="profile__description">Click to show profile</p>
+          <hr className="profile__divider" />
+          <div className="profile__settings">
+            <h2 className="profile__settings-title">Settings</h2>
+            <ul className="profile__settings-list">
+              {settings.map((setting) => (
+                <li className="profile__settings-item" key={setting.label}>
+                  <i className={`profile__icon profile__icon--${setting.icon}`} />
+                  <span className="profile__settings-label">{setting.label}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <i className="profile__icon profile__icon--arrow" />
+          <button className="profile__logout" onClick={handleLogout}>
+            Logout
+          </button>
+          <NavMenu activeItem={activeNavItem} onItemClick={handleNavItemClick} />
         </div>
-        <hr className="profile__divider" />
-        <div className="profile__settings">
-          <h2 className="profile__settings-title">Settings</h2>
-          <ul className="profile__settings-list">
-            {settings.map((setting) => (
-              <li className="profile__settings-item" key={setting.label}>
-                <i className={`profile__icon profile__icon--${setting.icon}`} />
-                <span className="profile__settings-label">{setting.label}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <button className="profile__logout" onClick={handleLogout}>
-          Logout
-        </button>
-        <NavMenu activeItem={activeNavItem} onItemClick={handleNavItemClick} />
       </div>
-    </div>
+    </main></>
   );
 };
 

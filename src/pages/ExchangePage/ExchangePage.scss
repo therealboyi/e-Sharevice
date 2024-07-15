@@ -2,10 +2,18 @@
 @use "../../styles/partials/mixins" as *;
 
 .exchange-page {
-  padding-top: 60px;
+  padding: 60px 1rem 0rem 1rem;
+
+  @media (min-width: 767px) {
+    padding: 60px 2.8rem 1rem 2.8rem;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 60px 4.8rem 1rem 4.8rem;
+  }
 
   &__content {
-    padding: 20px;
+    padding: 20px 0;
     @include respond-to("mobile") {
       margin-top: -4rem;
     }
@@ -13,7 +21,7 @@
 
   &__title {
     @include large-title;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
 
     @include respond-to("mobile") {
       font-size: 22px;
@@ -38,7 +46,7 @@
     display: flex;
     align-items: center;
     border-bottom: 1px solid #ddd;
-    padding: 1rem;
+    padding: 1rem 0;
     gap: 1rem;
 
     &--reserved {
