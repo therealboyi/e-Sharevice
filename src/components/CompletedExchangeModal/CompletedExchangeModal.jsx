@@ -26,21 +26,23 @@ const CompletedExchangeModal = ({ isOpen, onClose, exchangeDetails }) => {
             alt={exchangeDetails.provider}
             className="completed-exchange-modal__image"
           />
-          <p>
-            <strong>Exchange:</strong> {exchangeDetails.provider}
-          </p>
-          <p>
-            <strong>Type:</strong> {exchangeDetails.service}
-          </p>
-          <p>
-            <strong>Date:</strong> {date}
-          </p>
-          <p>
-            <strong>Exchange Type:</strong> {exchangeType}
-          </p>
-          <p>
-            <strong>Description:</strong> {exchangeDetails.description}
-          </p>
+          <div className="completed-exchange-modal__info">
+            <p>
+              <strong>Exchange:</strong> {exchangeDetails.provider}
+            </p>
+            <p>
+              <strong>Type:</strong> {exchangeDetails.service}
+            </p>
+            <p>
+              <strong>Date:</strong> {date}
+            </p>
+            <p>
+              <strong>Exchange Type:</strong> {exchangeType}
+            </p>
+            <p>
+              <strong>Description:</strong> {exchangeDetails.description}
+            </p>
+          </div>
         </div>
         <div className="completed-exchange-modal__button-container">
           <Button variant="confirm" text="Close" onClick={onClose} />

@@ -1,6 +1,7 @@
 // src/components/ConfirmationModal/ConfirmationModal.jsx
 import React from "react";
 import "./ConfirmationModal.scss";
+import Button from "../Buttons/Buttons";
 
 const ConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
   if (!isOpen) return null;
@@ -14,18 +15,8 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
           Are you sure you want to confirm this reservation?
         </p>
         <div className="confirmation-modal__actions">
-          <button
-            className="confirmation-modal__button confirmation-modal__button--confirm"
-            onClick={onConfirm}
-          >
-            Confirm
-          </button>
-          <button
-            className="confirmation-modal__button confirmation-modal__button--cancel"
-            onClick={onClose}
-          >
-            Cancel
-          </button>
+          <Button variant="confirm" text="Confirm" onClick={onConfirm} />
+          <Button variant="cancel" text="Cancel" onClick={onClose} />
         </div>
       </div>
     </div>

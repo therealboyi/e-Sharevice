@@ -31,21 +31,23 @@ const ReservationConfirmedPage = () => {
           alt={exchangeDetails.provider}
           className="reservation-confirmed-page__image"
         />
-        <p>
-          <strong>Exchange:</strong> {exchangeDetails.provider}
-        </p>
-        <p>
-          <strong>Type:</strong> {exchangeDetails.service}
-        </p>
-        <p>
-          <strong>Date:</strong> {date}
-        </p>
-        <p>
-          <strong>Exchange Type:</strong> {exchangeType}
-        </p>
-        <p>
-          <strong>Description:</strong> {exchangeDetails.description}
-        </p>
+        <div className="reservation-confirmed-page__info">
+          <p>
+            <strong>Exchange:</strong> {exchangeDetails.provider}
+          </p>
+          <p>
+            <strong>Type:</strong> {exchangeDetails.service}
+          </p>
+          <p>
+            <strong>Date:</strong> {date}
+          </p>
+          <p>
+            <strong>Exchange Type:</strong> {exchangeType}
+          </p>
+          <p>
+            <strong>Description:</strong> {exchangeDetails.description}
+          </p>
+        </div>
       </div>
       <div className="reservation-confirmed-page__button-container">
         <Button variant="confirm" text="Done" onClick={handleDoneClick} />

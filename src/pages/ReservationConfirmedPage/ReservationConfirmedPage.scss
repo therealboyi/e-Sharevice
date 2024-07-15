@@ -12,21 +12,26 @@
     margin-bottom: 20px;
     text-align: center;
 
-    @include respond-to('mobile') {
+    @include respond-to("mobile") {
       font-size: 20px;
       line-height: 28px;
     }
   }
 
   &__details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
 
     p {
       @include font-style(16px, 400, 24px);
       margin: 10px 0;
 
-      @include respond-to('mobile') {
+      @include respond-to("mobile") {
         font-size: 14px;
         line-height: 20px;
       }
@@ -34,10 +39,24 @@
   }
 
   &__image {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     margin-bottom: 20px;
     border-radius: 8px;
+    max-width: 300px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+
+    p {
+      text-align: left;
+      width: 100%;
+    }
   }
 
   &__button-container {
