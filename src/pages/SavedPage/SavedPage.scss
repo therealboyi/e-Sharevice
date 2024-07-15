@@ -1,23 +1,30 @@
-// src/pages/SavedPage/SavedPage.scss
 @use "../../styles/partials/mixins" as *;
 
 .saved-page {
-  padding-top: 60px;
+  padding: 3.8rem 1rem 0rem 1rem;
+
+  @media (min-width: 767px) {
+    padding: 3.8rem 2.8rem 1rem 2.8rem;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 3.8rem 4.8rem 1rem 4.8rem;
+  }
 
   &__content {
-    padding: 20px;
-    @include respond-to('mobile') {
+    padding: 20px 0;
+    @include respond-to("mobile") {
       margin-top: -4rem;
     }
   }
 
   &__title {
-    @include font-style(24px, bold, 32px);
-    margin-bottom: 20px;
+    @include large-title;
+    margin-bottom: 1rem;
 
-    @include respond-to('mobile') {
-      font-size: 20px;
-      line-height: 28px;
+    @include respond-to("mobile") {
+      font-size: 22px;
+      line-height: 26px;
     }
   }
 
@@ -30,51 +37,47 @@
   &__item {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 20px;
+    padding: 1rem 0;
+    gap: 1rem;
   }
 
-  &__image {
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
-    margin-right: 20px;
+  &__image-wrapper {
+    display: inline-block;
+    width: 130px;
+  }
+
+  &__avatar {
+    border-radius: 10px;
+    object-fit: cover;
   }
 
   &__info {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
   }
 
-  &__title {
-    @include font-style(18px, bold, 24px);
-    margin: 0;
-
-    @include respond-to('mobile') {
-      font-size: 16px;
-      line-height: 22px;
+  &__provider {
+    @include bold-text(16px, 20px);
+    @include respond-to("mobile") {
+      font-size: 14px;
     }
   }
 
-  &__type {
-    @include font-style(14px, 400, 20px);
+  &__service {
+    @include font-style(14px, 400, 18px);
     color: #555;
-    margin: 5px 0;
-
-    @include respond-to('mobile') {
+    @include respond-to("mobile") {
       font-size: 12px;
-      line-height: 18px;
     }
   }
 
-  &__dates {
-    @include font-style(14px, 400, 20px);
+  &__exchange {
+    @include font-style(14px, 400, 18px);
     color: #555;
-
-    @include respond-to('mobile') {
+    @include respond-to("mobile") {
       font-size: 12px;
-      line-height: 18px;
     }
   }
 }

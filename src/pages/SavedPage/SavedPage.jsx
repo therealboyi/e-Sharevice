@@ -1,4 +1,3 @@
-// src/pages/SavedPage/SavedPage.jsx
 import React from "react";
 import Header from "../../components/Header/Header";
 import "./SavedPage.scss";
@@ -52,27 +51,31 @@ const SavedPage = () => {
   return (
     <div>
       <Header />
-      <div className="saved-page">
-        <div className="saved-page__content">
-          <h1 className="saved-page__title">Saved+</h1>
-          <ul className="saved-page__list">
-            {savedItems.map((item, index) => (
-              <li key={index} className="saved-page__item">
-                <img
-                  src={item.imgSrc}
-                  alt={item.title}
-                  className="saved-page__image"
-                />
-                <div className="saved-page__info">
-                  <h2 className="saved-page__title">{item.title}</h2>
-                  <p className="saved-page__type">{item.type}</p>
-                  <p className="saved-page__dates">{item.dates}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+      <main>
+        <div className="saved-page">
+          <div className="saved-page__content">
+            <h1 className="saved-page__title">Saved Items</h1>
+            <ul className="saved-page__list">
+              {savedItems.map((item, index) => (
+                <li key={index} className="saved-page__item">
+                  <div className="saved-page__image-wrapper">
+                    <img
+                      src={item.imgSrc}
+                      alt={item.title}
+                      className="saved-page__avatar"
+                    />
+                  </div>
+                  <div className="saved-page__info">
+                    <h2 className="saved-page__provider">{item.title}</h2>
+                    <p className="saved-page__service">{item.type}</p>
+                    <p className="saved-page__exchange">{item.dates}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

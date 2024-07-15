@@ -1,18 +1,18 @@
 @use "../../styles/partials/mixins" as *;
 
 .profile {
-  padding-top: 60px;
+  padding-top: 3.8rem;
 
   @media (min-width: 767px) {
-    padding: 60px 1.5rem 1rem 2.8rem;
+    padding: 3.8rem 1.5rem 1rem 2.8rem;
   }
 
   @media (min-width: 1280px) {
-    padding: 60px 3.8rem 1rem 4.8rem;
+    padding: 3.8rem 3.8rem 1rem 4.8rem;
   }
 
   &__content {
-    @include respond-to('mobile') {
+    @include respond-to("mobile") {
       margin: -4rem 1rem 0 1rem;
     }
   }
@@ -30,7 +30,7 @@
 
     @include respond-to("mobile") {
       font-size: 22px;
-      line-height: 26px;
+      // line-height: 26px;
     }
   }
 
@@ -48,7 +48,7 @@
   &__name {
     @include font-style(18px, bold, 24px);
 
-    @include respond-to('mobile') {
+    @include respond-to("mobile") {
       font-size: 16px;
       line-height: 22px;
     }
@@ -58,7 +58,7 @@
     @include font-style(14px, 400, 20px);
     color: gray;
 
-    @include respond-to('mobile') {
+    @include respond-to("mobile") {
       font-size: 12px;
       line-height: 18px;
     }
@@ -77,7 +77,7 @@
     @include font-style(18px, bold, 24px);
     margin-bottom: 8px;
 
-    @include respond-to('mobile') {
+    @include respond-to("mobile") {
       font-size: 16px;
       line-height: 22px;
     }
@@ -99,7 +99,7 @@
     // margin-left: 8px;
     @include font-style(16px, 400, 24px);
 
-    @include respond-to('mobile') {
+    @include respond-to("mobile") {
       font-size: 14px;
       line-height: 20px;
     }
@@ -116,7 +116,7 @@
     color: red;
     cursor: pointer;
 
-    @include respond-to('mobile') {
+    @include respond-to("mobile") {
       font-size: 14px;
       line-height: 20px;
     }

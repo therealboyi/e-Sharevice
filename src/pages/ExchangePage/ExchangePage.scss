@@ -2,14 +2,14 @@
 @use "../../styles/partials/mixins" as *;
 
 .exchange-page {
-  padding: 60px 1rem 0rem 1rem;
+  padding: 3.8rem 1rem 0rem 1rem;
 
   @media (min-width: 767px) {
-    padding: 60px 2.8rem 1rem 2.8rem;
+    padding: 3.8rem 2.8rem 1rem 2.8rem;
   }
 
   @media (min-width: 1280px) {
-    padding: 60px 4.8rem 1rem 4.8rem;
+    padding: 3.8rem 4.8rem 1rem 4.8rem;
   }
 
   &__content {
