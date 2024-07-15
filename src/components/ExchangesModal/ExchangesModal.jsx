@@ -106,7 +106,7 @@ const ExchangesModal = ({
           <div className="exchanges-modal__form-group">
             <label className="exchanges-modal__form-label">Description:</label>
             <textarea
-              className="exchanges-modal__form-input"
+              className="exchanges-modal__form-input exchanges-modal__form-textarea"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
