@@ -2,13 +2,63 @@
 
 @use "./variables" as *;
 
+// Mixin for padding with responsive adjustments
+@mixin responsive-padding($default-padding, $tablet-padding, $desktop-padding) {
+  padding: $default-padding;
+
+  @media (min-width: $breakpoint-tablet-min) {
+    padding: $tablet-padding;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: $desktop-padding;
+  }
+}
+
+// Mixin for font styles with mobile adjustments
+@mixin responsive-font(
+  $font-size,
+  $line-height,
+  $mobile-font-size: null,
+  $mobile-line-height: null
+) {
+  font-size: $font-size;
+  line-height: $line-height;
+
+  @if $mobile-font-size and $mobile-line-height {
+    @include respond-to("mobile") {
+      font-size: $mobile-font-size;
+      line-height: $mobile-line-height;
+    }
+  }
+}
+
+// Mixin for flexbox alignment
+@mixin flex-align($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// Mixin for borders
+@mixin border-bottom($width, $color) {
+  border-bottom: $width solid $color;
+}
+
+// Mixin for avatar styling
+@mixin avatar-style($size, $radius) {
+  width: $size;
+  height: $size;
+  border-radius: $radius;
+}
+
 @mixin bold-text($size, $line-height) {
   font-size: $size;
   font-weight: bold;
   line-height: $line-height;
 }
 
-// Mixin for responsive breakpoints
 @mixin respond-to($breakpoint) {
   @if $breakpoint == "mobile" {
     @media (max-width: $breakpoint-mobile-max) {
@@ -25,7 +75,6 @@
   }
 }
 
-// Font style mixins
 @mixin font-style($size, $weight, $line-height) {
   font-size: $size;
   font-weight: $weight;
@@ -33,31 +82,31 @@
 }
 
 @mixin large-title {
-  @include font-style(26px, 400, 32px); // Regular 26/32
-  font-weight: bold; // Emphasized weight: Bold
+  @include font-style(26px, 400, 32px);
+  font-weight: bold;
 }
 
 @mixin title-1 {
-  @include font-style(22px, 400, 26px); // Regular 22/26
-  font-weight: bold; // Emphasized weight: Bold
+  @include font-style(22px, 400, 26px);
+  font-weight: bold;
 }
 
 @mixin title-2 {
-  @include font-style(17px, 400, 22px); // Regular 17/22
-  font-weight: bold; // Emphasized weight: Bold
+  @include font-style(17px, 400, 22px);
+  font-weight: bold;
 }
 
 @mixin title-3 {
-  @include font-style(15px, 400, 20px); // Regular 15/20
-  font-weight: semibold; // Emphasized weight: Semibold
+  @include font-style(15px, 400, 20px);
+  font-weight: semibold;
 }
 
 @mixin headline {
-  @include font-style(13px, 700, 16px); // Bold 13/16
-  font-weight: heavy; // Emphasized weight: Heavy
+  @include font-style(13px, 700, 16px);
+  font-weight: heavy;
 }
 
 @mixin body {
-  @include font-style(13px, 400, 16px); // Regular 13/16
-  font-weight: semibold; // Emphasized weight: Semibold
+  @include font-style(13px, 400, 16px);
+  font-weight: semibold;
 }

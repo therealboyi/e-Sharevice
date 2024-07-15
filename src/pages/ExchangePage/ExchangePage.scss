@@ -2,15 +2,11 @@
 @use "../../styles/partials/mixins" as *;
 
 .exchange-page {
-  padding: 3.8rem 1rem 0rem 1rem;
-
-  @media (min-width: 767px) {
-    padding: 3.8rem 2.8rem 1rem 2.8rem;
-  }
-
-  @media (min-width: 1280px) {
-    padding: 3.8rem 4.8rem 1rem 4.8rem;
-  }
+  @include responsive-padding(
+    3.8rem 1rem 0rem 1rem,
+    3.8rem 2.8rem 1rem 2.8rem,
+    3.8rem 4.8rem 1rem 4.8rem
+  );
 
   &__content {
     padding: 20px 0;
@@ -22,11 +18,7 @@
   &__title {
     @include large-title;
     margin-bottom: 1rem;
-
-    @include respond-to("mobile") {
-      font-size: 22px;
-      line-height: 26px;
-    }
+    @include responsive-font(26px, 32px, 22px, 26px);
   }
 
   &__add-button {
@@ -45,14 +37,14 @@
   &__item {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
+    @include border-bottom(1px, #ddd);
     padding: 1rem 0;
     gap: 1rem;
 
     &--reserved {
       background-color: #f5f5f5;
       color: #999;
-
       .exchange-page__avatar,
       .exchange-page__info {
         opacity: 0.6;
@@ -61,13 +53,19 @@
   }
 
   &__image-wrapper {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 130px;
+    height: 130px;
+    overflow: hidden;
   }
 
   &__avatar {
-    border-radius: 10px;
+    width: 100%;
+    height: 100px;
     object-fit: cover;
+    border-radius: 10px;
   }
 
   &__info {
@@ -79,38 +77,15 @@
 
   &__provider {
     @include bold-text(16px, 20px);
-    @include respond-to("mobile") {
-      font-size: 14px;
-    }
+    @include responsive-font(16px, 20px, 14px, null);
   }
 
-  &__service {
-    @include font-style(14px, 400, 18px);
-    color: #555;
-    @include respond-to("mobile") {
-      font-size: 12px;
-    }
-  }
-
-  &__exchange {
-    @include font-style(14px, 400, 18px);
-    color: #555;
-    @include respond-to("mobile") {
-      font-size: 12px;
-    }
-  }
-
+  &__service,
+  &__exchange,
   &__date {
     @include font-style(14px, 400, 18px);
     color: #555;
-    @include respond-to("mobile") {
-      font-size: 12px;
-    }
-  }
-
-  &__arrow {
-    font-size: 20px;
-    color: #555;
+    @include responsive-font(14px, 18px, 12px, null);
   }
 
   &__delete-button {

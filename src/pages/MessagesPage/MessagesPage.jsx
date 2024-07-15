@@ -4,116 +4,107 @@ import Header from "../../components/Header/Header";
 import MessageInput from "../../components/MessageInput/MessageInput";
 import "./MessagesPage.scss";
 
-const messages = [
+const conversations = [
   {
     sender: "Fit4Less",
-    message:
-      "I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want. workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want. workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want. workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want.I can also make a 4 Months customized workout plan for you if you want",
-    imgSrc: "/src/assets/images/avatar.png",
+    messages: [
+      {
+        sender: "Fit4Less",
+        message:
+          "I can also make a 4 Months customized workout plan for you if you want.",
+        imgSrc: "/src/assets/images/avatar.png",
+      },
+      {
+        sender: "You",
+        message:
+          "That sounds great! Can you include exercises for both strength and cardio?",
+        imgSrc: "/src/assets/images/avatar.png",
+      },
+      {
+        sender: "Fit4Less",
+        message:
+          "Absolutely! I'll make sure to include a balanced mix of both.",
+        imgSrc: "/src/assets/images/avatar.png",
+      },
+    ],
   },
   {
     sender: "Gym Jam",
-    message:
-      "Are you able to help me get started on a plan to gain more weight?",
-    imgSrc: "/src/assets/images/avatar.png",
+    messages: [
+      {
+        sender: "Gym Jam",
+        message:
+          "Are you able to help me get started on a plan to gain more weight?",
+        imgSrc: "/src/assets/images/avatar.png",
+      },
+      {
+        sender: "You",
+        message: "Sure, I can help with that. What are your goals?",
+        imgSrc: "/src/assets/images/avatar.png",
+      },
+      {
+        sender: "Gym Jam",
+        message: "I want to gain muscle mass and improve my overall strength.",
+        imgSrc: "/src/assets/images/avatar.png",
+      },
+      {
+        sender: "You",
+        message:
+          "Great! We'll need to focus on a high-calorie diet and a consistent workout plan.",
+        imgSrc: "/src/assets/images/avatar.png",
+      },
+      {
+        sender: "Gym Jam",
+        message: "I'm ready to get started!",
+        imgSrc: "/src/assets/images/avatar.png",
+      },
+    ],
   },
   {
     sender: "Mandy's Pawradise",
-    message: "Will you be available to pick them up at 5:00 PM?",
-    imgSrc: "/src/assets/images/avatar.png",
-  },
-  {
-    sender: "Mandy's Pawradise",
-    message: "Will you be available to pick them up at 5:00 PM?",
-    imgSrc: "/src/assets/images/avatar.png",
-  },
-  {
-    sender: "Mandy's Pawradise",
-    message: "Will you be available to pick them up at 5:00 PM?",
-    imgSrc: "/src/assets/images/avatar.png",
-  },
-  {
-    sender: "Mandy's Pawradise",
-    message: "Will you be available to pick them up at 5:00 PM?",
-    imgSrc: "/src/assets/images/avatar.png",
-  },
-  {
-    sender: "Mandy's Pawradise",
-    message: "Will you be available to pick them up at 5:00 PM?",
-    imgSrc: "/src/assets/images/avatar.png",
-  },
-  {
-    sender: "Mandy's Pawradise",
-    message: "Will you be available to pick them up at 5:00 PM?",
-    imgSrc: "/src/assets/images/avatar.png",
-  },
-  {
-    sender: "Mandy's Pawradise",
-    message: "Will you be available to pick them up at 5:00 PM?",
-    imgSrc: "/src/assets/images/avatar.png",
-  },
-  {
-    sender: "Mandy's Pawradise",
-    message: "Will you be available to pick them up at 5:00 PM?",
-    imgSrc: "/src/assets/images/avatar.png",
-  },
-  {
-    sender: "Mandy's Pawradise",
-    message: "Will you be available to pick them up at 5:00 PM?",
-    imgSrc: "/src/assets/images/avatar.png",
-  },
-  {
-    sender: "Mandy's Pawradise",
-    message: "Will you be available to pick them up at 5:00 PM?",
-    imgSrc: "/src/assets/images/avatar.png",
-  },
-  {
-    sender: "Mandy's Pawradise",
-    message: "Will you be available to pick them up at 5:00 PM?",
-    imgSrc: "/src/assets/images/avatar.png",
-  },
-  {
-    sender: "Mandy's Pawradise",
-    message: "Will you be available to pick them up at 5:00 PM?",
-    imgSrc: "/src/assets/images/avatar.png",
+    messages: [
+      {
+        sender: "Mandy's Pawradise",
+        message: "Will you be available to pick them up at 5:00 PM?",
+        imgSrc: "/src/assets/images/avatar.png",
+      },
+      {
+        sender: "You",
+        message: "Yes, I can be there by 5:00 PM. Thanks!",
+        imgSrc: "/src/assets/images/avatar.png",
+      },
+      {
+        sender: "Mandy's Pawradise",
+        message: "Great! See you then.",
+        imgSrc: "/src/assets/images/avatar.png",
+      },
+    ],
   },
 ];
 
 const MessagesPage = ({ setIsMessageSelected }) => {
-  const [selectedMessage, setSelectedMessage] = useState(null);
+  const [selectedConversation, setSelectedConversation] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
   const [newMessage, setNewMessage] = useState("");
 
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 767);
+  };
+
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 767);
-    };
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      console.log("MessagesPage scroll detected");
-    };
-    const messagesPageElement = document.querySelector(".messages-page");
-    messagesPageElement.addEventListener("scroll", handleScroll);
-    return () => {
-      messagesPageElement.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const handleSelectMessage = (message) => {
-    console.log("Message selected:", message);
-    setSelectedMessage(message);
+  const handleSelectConversation = (conversation) => {
+    setSelectedConversation(conversation);
     setIsMessageSelected(true);
   };
 
   const handleBackToList = () => {
-    console.log("Back to list");
-    setSelectedMessage(null);
+    setSelectedConversation(null);
     setIsMessageSelected(false);
   };
 
@@ -124,31 +115,27 @@ const MessagesPage = ({ setIsMessageSelected }) => {
         message: newMessage,
         imgSrc: "/src/assets/images/avatar.png",
       };
-      messages.push(newMsg);
+      selectedConversation.messages.push(newMsg);
       setNewMessage("");
     }
   };
 
-  useEffect(() => {
-    console.log("isMobile:", isMobile);
-    console.log("selectedMessage:", selectedMessage);
-  }, [isMobile, selectedMessage]);
-
   return (
     <>
-      {" "}
       <Header />
       <main>
         <div
           className={`messages-page ${
-            selectedMessage && isMobile ? "messages-page--message-selected" : ""
+            selectedConversation && isMobile
+              ? "messages-page--message-selected"
+              : ""
           }`}
         >
           <div className="messages-page__content">
-            {!selectedMessage && isMobile ? (
+            {!selectedConversation && isMobile ? (
               <h1 className="messages-page__title">Messages</h1>
             ) : null}
-            {isMobile && selectedMessage ? (
+            {isMobile && selectedConversation ? (
               <div className="messages-page__details">
                 <div className="messages-page__details-header">
                   <button
@@ -158,12 +145,23 @@ const MessagesPage = ({ setIsMessageSelected }) => {
                     Back
                   </button>
                   <h2 className="messages-page__details-sender">
-                    {selectedMessage.sender}
+                    {selectedConversation.sender}
                   </h2>
                 </div>
-                <p className="messages-page__details-text">
-                  {selectedMessage.message}
-                </p>
+                <div className="messages-page__details-texts">
+                  {selectedConversation.messages.map((msg, index) => (
+                    <div
+                      key={index}
+                      className={`message ${
+                        msg.sender === "You"
+                          ? "message--sent"
+                          : "message--received"
+                      }`}
+                    >
+                      <p className="message__text">{msg.message}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             ) : (
               <div className="messages-page__main">
@@ -172,52 +170,68 @@ const MessagesPage = ({ setIsMessageSelected }) => {
                     <h1 className="messages-page__title">Messages</h1>
                   )}
                   <ul className="messages-page__list">
-                    {messages.map((msg, index) => (
+                    {conversations.map((conv, index) => (
                       <li
                         key={index}
                         className="messages-page__item"
-                        onClick={() => handleSelectMessage(msg)}
+                        onClick={() => handleSelectConversation(conv)}
                       >
                         <img
-                          src={msg.imgSrc}
-                          alt={msg.sender}
+                          src={conv.messages[0].imgSrc}
+                          alt={conv.sender}
                           className="messages-page__avatar"
                         />
                         <div className="messages-page__info">
                           <h2 className="messages-page__sender">
-                            {msg.sender}
+                            {conv.sender}
                           </h2>
                           <p className="messages-page__text">
-                            {msg.message.length > 50
-                              ? `${msg.message.substring(0, 50)}...`
-                              : msg.message}
+                            {conv.messages[0].message.length > 50
+                              ? `${conv.messages[0].message.substring(
+                                  0,
+                                  50
+                                )}...`
+                              : conv.messages[0].message}
                           </p>
                         </div>
                       </li>
                     ))}
                   </ul>
                 </div>
-                {selectedMessage && !isMobile && (
+                {selectedConversation && !isMobile && (
                   <div className="messages-page__details-container">
                     <div className="messages-page__details">
                       <h2 className="messages-page__details-sender">
-                        {selectedMessage.sender}
+                        {selectedConversation.sender}
                       </h2>
-                      <p className="messages-page__details-text">
-                        {selectedMessage.message}
-                      </p>
+                      <div className="messages-page__details-texts">
+                        {selectedConversation.messages.map((msg, index) => (
+                          <div
+                            key={index}
+                            className={`message ${
+                              msg.sender === "You"
+                                ? "message--sent"
+                                : "message--received"
+                            }`}
+                          >
+                            <p className="message__text">{msg.message}</p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}
               </div>
             )}
           </div>
-          {(selectedMessage || !isMobile) && (
-            <MessageInput
-              newMessage={newMessage}
-              setNewMessage={setNewMessage}
-              handleSendMessage={handleSendMessage}
-            />
+          {(selectedConversation || window.innerWidth < 768) && (
+            <div className="messages-page__input-container">
+              <MessageInput
+                newMessage={newMessage}
+                setNewMessage={setNewMessage}
+                handleSendMessage={handleSendMessage}
+              />
+            </div>
           )}
         </div>
       </main>

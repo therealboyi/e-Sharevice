@@ -1,6 +1,5 @@
 // src/pages/Homepage/Homepage.scss
-
-@use "../../styles/partials/index.scss" as *;
+@use "../../styles/partials/mixins" as *;
 
 .homepage {
   display: flex;
@@ -8,57 +7,53 @@
   min-height: 100vh;
 
   &__content {
-    flex: 1;
-    padding: 8rem 1rem 1rem 1rem; // Adjusted padding to account for fixed header and navbar
+    @include responsive-padding(
+      8rem 1rem 1rem 1rem,
+      8rem 3rem 1rem 3rem,
+      9rem 5rem 1rem 5rem
+    );
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    @media (min-width: 768px) {
-      padding: 8rem 3rem 1rem 3rem; // Adjust padding for specific screen sizes
-    }
-    @media (min-width: 1280px) {
-      padding: 9rem 5rem 1rem 5rem; // Adjust padding for specific screen sizes
-    }
   }
 
   &__title {
     font-size: 2rem;
     color: #333;
-    margin-top: 2rem; // Space between the title and the photo card
+    margin-top: 2rem;
   }
 
   &__description {
     font-size: 1rem;
     color: #666;
-    margin-top: 1rem; // Space between the description and the title
+    margin-top: 1rem;
   }
 
   &__photo-cards {
     display: grid;
-    grid-template-columns: 1fr; // Default to a single column
-    gap: 2rem; // Space between the photo cards
+    grid-template-columns: 1fr;
+    gap: 2rem;
     width: 100%;
     padding: 0.5rem 0rem;
 
     @media (min-width: 550px) {
       grid-template-columns: repeat(2, 1fr);
-      justify-content: center; // Center the grid
+      justify-content: center;
     }
 
     @media (min-width: 768px) and (max-width: 1279px) {
-      grid-template-columns: repeat(3, 1fr); // 3 columns for medium screens
-      justify-content: center; // Center the grid
+      grid-template-columns: repeat(3, 1fr);
+      justify-content: center;
     }
 
     @media (min-width: 1280px) {
-      grid-template-columns: repeat(4, 1fr); // 4 columns for larger screens
-      justify-content: center; // Center the grid
+      grid-template-columns: repeat(4, 1fr);
+      justify-content: center;
     }
 
     .photo-card {
-      margin: 0; // Ensure no extra margin on photo cards
-      cursor: pointer; // Add this line to change the cursor to a pointer
+      margin: 0;
+      cursor: pointer;
     }
   }
 }

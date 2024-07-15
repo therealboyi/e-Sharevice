@@ -2,6 +2,7 @@
 
 import React from "react";
 import "./MessageInput.scss";
+import Button from "../Buttons/Buttons";
 
 const MessageInput = ({ newMessage, setNewMessage, handleSendMessage }) => {
   return (
@@ -13,12 +14,7 @@ const MessageInput = ({ newMessage, setNewMessage, handleSendMessage }) => {
         onChange={(e) => setNewMessage(e.target.value)}
         placeholder="Type a message"
       />
-      <button
-        className="message-input__send-button"
-        onClick={handleSendMessage}
-      >
-        Send
-      </button>
+      <Button variant="submit" text="Send" onClick={handleSendMessage} />
     </div>
   );
 };
