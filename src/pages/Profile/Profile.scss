@@ -1,11 +1,10 @@
-// src/pages/Profile/Profile.scss
+@use "../../styles/partials/mixins" as *;
+
 .profile {
   padding-top: 60px;
 
   &__content {
-    // padding: 20px;
-
-    @media (max-width: 767px) {
+    @include respond-to('mobile') {
       margin-top: -4rem;
     }
   }
@@ -18,14 +17,13 @@
   }
 
   &__title {
-    font-size: 24px;
-    font-weight: bold;
-  }
+    @include font-style(24px, bold, 32px);
 
-  // &__notification {
-  //   .profile__icon--notification {
-  //   }
-  // }
+    @include respond-to('mobile') {
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
 
   &__info {
     display: flex;
@@ -33,28 +31,29 @@
     padding: 16px;
   }
 
-  // &__ProfileAvatar {
-  //   // ProfileAvatar component specific styles
-  // }
-
   &__details {
     flex-grow: 1;
     padding: 0 16px;
   }
 
   &__name {
-    font-size: 18px;
-    font-weight: bold;
+    @include font-style(18px, bold, 24px);
+
+    @include respond-to('mobile') {
+      font-size: 16px;
+      line-height: 22px;
+    }
   }
 
   &__description {
-    font-size: 14px;
+    @include font-style(14px, 400, 20px);
     color: gray;
-  }
 
-  // &__icon--arrow {
-  //   // arrow icon styles here
-  // }
+    @include respond-to('mobile') {
+      font-size: 12px;
+      line-height: 18px;
+    }
+  }
 
   &__divider {
     border: 0;
@@ -66,9 +65,13 @@
   }
 
   &__settings-title {
-    font-size: 18px;
-    font-weight: bold;
+    @include font-style(18px, bold, 24px);
     margin-bottom: 8px;
+
+    @include respond-to('mobile') {
+      font-size: 16px;
+      line-height: 22px;
+    }
   }
 
   &__settings-list {
@@ -85,7 +88,12 @@
 
   &__settings-label {
     margin-left: 8px;
-    font-size: 16px;
+    @include font-style(16px, 400, 24px);
+
+    @include respond-to('mobile') {
+      font-size: 14px;
+      line-height: 20px;
+    }
   }
 
   &__logout {
@@ -95,8 +103,13 @@
     background: none;
     border: none;
     text-align: center;
-    font-size: 16px;
+    @include font-style(16px, 400, 24px);
     color: red;
     cursor: pointer;
+
+    @include respond-to('mobile') {
+      font-size: 14px;
+      line-height: 20px;
+    }
   }
 }

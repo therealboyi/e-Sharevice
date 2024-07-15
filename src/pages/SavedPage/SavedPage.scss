@@ -1,18 +1,24 @@
 // src/pages/SavedPage/SavedPage.scss
+@use "../../styles/partials/mixins" as *;
+
 .saved-page {
   padding-top: 60px;
 
   &__content {
     padding: 20px;
-    @media (max-width: 767px) {
+    @include respond-to('mobile') {
       margin-top: -4rem;
     }
   }
 
   &__title {
-    font-size: 24px;
-    font-weight: bold;
+    @include font-style(24px, bold, 32px);
     margin-bottom: 20px;
+
+    @include respond-to('mobile') {
+      font-size: 20px;
+      line-height: 28px;
+    }
   }
 
   &__list {
@@ -41,20 +47,34 @@
     flex-direction: column;
   }
 
-  &__city {
-    font-size: 18px;
-    font-weight: bold;
+  &__title {
+    @include font-style(18px, bold, 24px);
     margin: 0;
+
+    @include respond-to('mobile') {
+      font-size: 16px;
+      line-height: 22px;
+    }
   }
 
-  &__host {
-    font-size: 14px;
+  &__type {
+    @include font-style(14px, 400, 20px);
     color: #555;
     margin: 5px 0;
+
+    @include respond-to('mobile') {
+      font-size: 12px;
+      line-height: 18px;
+    }
   }
 
   &__dates {
-    font-size: 14px;
+    @include font-style(14px, 400, 20px);
     color: #555;
+
+    @include respond-to('mobile') {
+      font-size: 12px;
+      line-height: 18px;
+    }
   }
 }
