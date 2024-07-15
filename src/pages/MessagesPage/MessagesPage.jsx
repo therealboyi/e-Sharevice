@@ -205,11 +205,13 @@ const MessagesPage = ({ setIsMessageSelected }) => {
           </div>
         )}
       </div>
-      <MessageInput
-        newMessage={newMessage}
-        setNewMessage={setNewMessage}
-        handleSendMessage={handleSendMessage}
-      />
+      {(selectedMessage || !isMobile) && (
+        <MessageInput
+          newMessage={newMessage}
+          setNewMessage={setNewMessage}
+          handleSendMessage={handleSendMessage}
+        />
+      )}
     </div>
   );
 };

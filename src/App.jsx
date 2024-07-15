@@ -52,11 +52,11 @@ function AppContent() {
     fetchPhotoCards();
   }, []);
 
-  const hideNavMenuRoutes = [/^\/messages/, /^\/photo\/\d+$/];
+  const hideNavMenuRoutes = [/^\/photo\/\d+$/];
 
   const shouldHideNavMenu = hideNavMenuRoutes.some((route) =>
     route.test(location.pathname)
-  );
+  ) || (location.pathname === "/messages" && isMessageSelected && window.innerWidth <= 767);
 
   return (
     <>
