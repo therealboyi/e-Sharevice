@@ -135,84 +135,93 @@ const MessagesPage = ({ setIsMessageSelected }) => {
   }, [isMobile, selectedMessage]);
 
   return (
-    <div
-      className={`messages-page ${
-        selectedMessage && isMobile ? "messages-page--message-selected" : ""
-      }`}
-    >
+    <>
+      {" "}
       <Header />
-      <div className="messages-page__content">
-        {!selectedMessage && isMobile ? (
-          <h1 className="messages-page__title">Messages</h1>
-        ) : null}
-        {isMobile && selectedMessage ? (
-          <div className="messages-page__details">
-            <div className="messages-page__details-header">
-              <button
-                className="messages-page__back-button"
-                onClick={handleBackToList}
-              >
-                Back
-              </button>
-              <h2 className="messages-page__details-sender">
-                {selectedMessage.sender}
-              </h2>
-            </div>
-            <p className="messages-page__details-text">
-              {selectedMessage.message}
-            </p>
-          </div>
-        ) : (
-          <div className="messages-page__main">
-            <div className="messages-page__list-container">
-              {!isMobile && <h1 className="messages-page__title">Messages</h1>}
-              <ul className="messages-page__list">
-                {messages.map((msg, index) => (
-                  <li
-                    key={index}
-                    className="messages-page__item"
-                    onClick={() => handleSelectMessage(msg)}
+      <main>
+        <div
+          className={`messages-page ${
+            selectedMessage && isMobile ? "messages-page--message-selected" : ""
+          }`}
+        >
+          <div className="messages-page__content">
+            {!selectedMessage && isMobile ? (
+              <h1 className="messages-page__title">Messages</h1>
+            ) : null}
+            {isMobile && selectedMessage ? (
+              <div className="messages-page__details">
+                <div className="messages-page__details-header">
+                  <button
+                    className="messages-page__back-button"
+                    onClick={handleBackToList}
                   >
-                    <img
-                      src={msg.imgSrc}
-                      alt={msg.sender}
-                      className="messages-page__avatar"
-                    />
-                    <div className="messages-page__info">
-                      <h2 className="messages-page__sender">{msg.sender}</h2>
-                      <p className="messages-page__text">
-                        {msg.message.length > 50
-                          ? `${msg.message.substring(0, 50)}...`
-                          : msg.message}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {selectedMessage && !isMobile && (
-              <div className="messages-page__details-container">
-                <div className="messages-page__details">
+                    Back
+                  </button>
                   <h2 className="messages-page__details-sender">
                     {selectedMessage.sender}
                   </h2>
-                  <p className="messages-page__details-text">
-                    {selectedMessage.message}
-                  </p>
                 </div>
+                <p className="messages-page__details-text">
+                  {selectedMessage.message}
+                </p>
+              </div>
+            ) : (
+              <div className="messages-page__main">
+                <div className="messages-page__list-container">
+                  {!isMobile && (
+                    <h1 className="messages-page__title">Messages</h1>
+                  )}
+                  <ul className="messages-page__list">
+                    {messages.map((msg, index) => (
+                      <li
+                        key={index}
+                        className="messages-page__item"
+                        onClick={() => handleSelectMessage(msg)}
+                      >
+                        <img
+                          src={msg.imgSrc}
+                          alt={msg.sender}
+                          className="messages-page__avatar"
+                        />
+                        <div className="messages-page__info">
+                          <h2 className="messages-page__sender">
+                            {msg.sender}
+                          </h2>
+                          <p className="messages-page__text">
+                            {msg.message.length > 50
+                              ? `${msg.message.substring(0, 50)}...`
+                              : msg.message}
+                          </p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {selectedMessage && !isMobile && (
+                  <div className="messages-page__details-container">
+                    <div className="messages-page__details">
+                      <h2 className="messages-page__details-sender">
+                        {selectedMessage.sender}
+                      </h2>
+                      <p className="messages-page__details-text">
+                        {selectedMessage.message}
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>
-        )}
-      </div>
-      {(selectedMessage || !isMobile) && (
-        <MessageInput
-          newMessage={newMessage}
-          setNewMessage={setNewMessage}
-          handleSendMessage={handleSendMessage}
-        />
-      )}
-    </div>
+          {(selectedMessage || !isMobile) && (
+            <MessageInput
+              newMessage={newMessage}
+              setNewMessage={setNewMessage}
+              handleSendMessage={handleSendMessage}
+            />
+          )}
+        </div>
+      </main>
+    </>
   );
 };
 
