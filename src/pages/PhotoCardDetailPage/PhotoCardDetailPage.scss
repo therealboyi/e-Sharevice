@@ -1,3 +1,5 @@
+@use "../../styles/partials/mixins" as *;
+
 .photo-card-detail-page {
   padding: 3rem 1rem 3rem 1rem;
 
@@ -119,22 +121,36 @@
   }
 
   &__title {
-    font-size: 2rem;
-    font-weight: bold;
+    @include font-style(2rem, bold, 2.5rem);
     margin-bottom: 0.5rem;
+
+    @include respond-to('mobile') {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
   }
 
   &__subtitle {
-    font-size: 1.25rem;
+    @include font-style(1.25rem, 400, 1.75rem);
     color: #666;
     margin-bottom: 1rem;
+
+    @include respond-to('mobile') {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
   }
 
   &__description {
-    font-size: 1rem;
+    @include font-style(1rem, 400, 1.5rem);
     line-height: 1.5;
     color: #333;
     margin-bottom: 1rem;
+
+    @include respond-to('mobile') {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
   }
 
   &__additional-description {
@@ -143,14 +159,24 @@
     border-radius: 8px;
 
     h3 {
-      font-size: 1.5rem;
+      @include font-style(1.5rem, 400, 2rem);
       margin-bottom: 0.5rem;
+
+      @include respond-to('mobile') {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+      }
     }
 
     p {
-      font-size: 1rem;
+      @include font-style(1rem, 400, 1.5rem);
       line-height: 1.5;
       color: #333;
+
+      @include respond-to('mobile') {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
     }
   }
 

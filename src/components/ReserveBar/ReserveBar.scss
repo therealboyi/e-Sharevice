@@ -1,5 +1,7 @@
 // src/components/ReserveBar/ReserveBar.scss
 
+@use "../../styles/partials/mixins" as *;
+
 .reserve-bar {
   display: none;
   position: fixed;
@@ -12,7 +14,7 @@
   box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 
-  @media (max-width: 767px) {
+  @include respond-to('mobile') {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,13 +28,20 @@
   }
 
   &__price {
-    font-size: 1.25rem;
-    font-weight: bold;
+    @include font-style(1.25rem, bold, 1.5rem);
+    @include respond-to('mobile') {
+      font-size: 1rem;
+      line-height: 1.25rem;
+    }
   }
 
   &__dates {
-    font-size: 0.875rem;
+    @include font-style(0.875rem, 400, 1.125rem);
     color: #666;
+    @include respond-to('mobile') {
+      font-size: 0.75rem;
+      line-height: 1rem;
+    }
   }
 
   &__button {

@@ -1,4 +1,5 @@
 // src/components/ReservationSummary/ReservationSummary.scss
+@use "../../styles/partials/mixins" as *;
 
 .reservation-summary {
   padding: 1rem;
@@ -16,7 +17,7 @@
 
   p {
     text-align: right;
-    font-size: 0.875rem;
+    @include font-style(0.875rem, 400, 1.25rem);
     color: #666;
     margin-bottom: 1rem;
 

@@ -81,7 +81,7 @@ const PhotoCardDetailPage = () => {
           alt="Back"
           className="photo-card-detail-page__back-icon"
         />{" "}
-        Homes
+        Back
       </button>
       <div className="photo-card-detail-page__container">
         <div className="photo-card-detail-page__content">
