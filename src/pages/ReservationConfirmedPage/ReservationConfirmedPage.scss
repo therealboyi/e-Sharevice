@@ -7,11 +7,16 @@
   align-items: center;
   padding: 20px;
   width: 25rem;
-  margin: 10rem auto;
+  margin: 1rem auto;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   border-radius: 10px;
   gap: 1rem;
+
+  @media screen and (min-width: 768px) {
+    width: 40rem;
+    
+  }
 
   &__title {
     @include font-style(24px, bold, 32px);
@@ -53,6 +58,11 @@
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
       rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
       rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+      @media screen and (min-width: 768px) {
+        max-width: 500px;
+        
+      }
   }
 
   &__info {
@@ -61,6 +71,11 @@
     align-items: center;
     width: 100%;
     max-width: 300px;
+    
+    @media screen and (min-width: 768px) {
+      max-width: 500px;
+      
+    }
 
     p {
       text-align: left;
