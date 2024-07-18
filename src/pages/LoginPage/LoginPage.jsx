@@ -246,54 +246,56 @@ const LoginPage = ({ onClose, intendedDestination = "/" }) => {
               <span className="login-page__divider-text">or</span>
               <hr className="login-page__divider" />
             </div>
-            <Button
-              variant="facebook"
-              svgIconPath="/src/assets/icons/meta.svg"
-              text="Continue with Meta"
-              onClick={() => {}}
-              color="#fff"
-              hoverColor="#f0f0f0"
-              borderRadius="4px"
-              padding="12px"
-              fullWidth
-              disabled={isSubmitting}
-            />
-            <Button
-              variant="google"
-              svgIconPath="/src/assets/icons/google2.svg"
-              text="Continue with Google"
-              onClick={() => {}}
-              color="#fff"
-              hoverColor="#f0f0f0"
-              borderRadius="4px"
-              padding="12px"
-              fullWidth
-              disabled={isSubmitting}
-            />
-            <Button
-              variant="apple"
-              svgIconPath="/src/assets/icons/apple2.svg"
-              text="Continue with Apple"
-              onClick={() => {}}
-              color="#fff"
-              hoverColor="#f0f0f0"
-              borderRadius="4px"
-              padding="12px"
-              fullWidth
-              disabled={isSubmitting}
-            />
-            <Button
-              variant="phone"
-              svgIconPath="/src/assets/icons/phone2.svg"
-              text="Continue with Phone"
-              onClick={() => {}}
-              color="#fff"
-              hoverColor="#f0f0f0"
-              borderRadius="4px"
-              padding="12px"
-              fullWidth
-              disabled={isSubmitting}
-            />
+            <div className="login-page__social-buttons">
+              <Button
+                variant="facebook"
+                svgIconPath="/src/assets/icons/meta.svg"
+                text="Continue with Meta"
+                onClick={() => {}}
+                color="#fff"
+                hoverColor="#f0f0f0"
+                borderRadius="4px"
+                padding="12px"
+                fullWidth
+                disabled={isSubmitting}
+              />
+              <Button
+                variant="google"
+                svgIconPath="/src/assets/icons/google2.svg"
+                text="Continue with Google"
+                onClick={() => {}}
+                color="#fff"
+                hoverColor="#f0f0f0"
+                borderRadius="4px"
+                padding="12px"
+                fullWidth
+                disabled={isSubmitting}
+              />
+              <Button
+                variant="apple"
+                svgIconPath="/src/assets/icons/apple2.svg"
+                text="Continue with Apple"
+                onClick={() => {}}
+                color="#fff"
+                hoverColor="#f0f0f0"
+                borderRadius="4px"
+                padding="12px"
+                fullWidth
+                disabled={isSubmitting}
+              />
+              <Button
+                variant="phone"
+                svgIconPath="/src/assets/icons/phone2.svg"
+                text="Continue with Phone"
+                onClick={() => {}}
+                color="#fff"
+                hoverColor="#f0f0f0"
+                borderRadius="4px"
+                padding="12px"
+                fullWidth
+                disabled={isSubmitting}
+              />
+            </div>
             <p className="login-page__help">
               <a href="#" className="login-page__help-link">
                 Need help?
