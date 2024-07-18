@@ -127,12 +127,7 @@ const PhotoCardDetailPage = () => {
           </div>
         </div>
       </div>
-      <ReserveBar
-        price={337}
-        currency="CAD"
-        dates="Aug. 6 – 11"
-        onReserve={handleReserveClick}
-      />
+      <ReserveBar exchangeType={exchangeType} onReserve={handleReserveClick} />
       <ConfirmationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
