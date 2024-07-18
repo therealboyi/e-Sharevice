@@ -1,0 +1,40 @@
+// src/components/Skeleton/Skeleton.scss
+
+.skeleton {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    // margin: 1rem;
+    width: 100%;
+    overflow: hidden;
+  
+    &__image {
+      width: 100%;
+      height: 15rem;
+      background-color: #ccc;
+    }
+  
+    &__content {
+      padding: 1rem;
+  
+      &__title,
+      &__subtitle,
+      &__description {
+        height: 1rem;
+        margin: 0.5rem 0;
+        background-color: #ccc;
+      }
+  
+      &__title {
+        width: 60%;
+      }
+  
+      &__subtitle {
+        width: 40%;
+      }
+  
+      &__description {
+        width: 80%;
+      }
+    }
+  }
+  

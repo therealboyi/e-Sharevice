@@ -1,7 +1,8 @@
 // src/components/PhotoCard/PhotoCard.jsx
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import Skeleton from "../Skeleton/Skeleton";
 import "./PhotoCard.scss";
 
 const PhotoCard = ({
@@ -13,16 +14,28 @@ const PhotoCard = ({
   description,
 }) => {
   const navigate = useNavigate();
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const handleClick = () => {
-    console.log("Navigating to card id:", id);
     navigate(`/photo/${id}`);
+  };
+
+  const handleImageLoad = () => {
+    setIsImageLoaded(true);
   };
 
   return (
     <div className="photo-card" onClick={handleClick}>
       <div className="photo-card__image-wrapper">
-        <img src={imageSrc} alt={imageAlt} className="photo-card__image" />
+        {!isImageLoaded && <Skeleton />}
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          className={`photo-card__image ${
+            isImageLoaded ? "loaded" : "loading"
+          }`}
+          onLoad={handleImageLoad}
+        />
         <div className="photo-card__share-icon">
           <i className="fas fa-share-alt"></i>
         </div>

@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import ExchangesModal from "../../components/ExchangesModal/ExchangesModal";
 import ConfirmDeleteModal from "../../components/ConfirmDeleteModal/ConfirmDeleteModal";
 import CompletedExchangeModal from "../../components/CompletedExchangeModal/CompletedExchangeModal";
+import Skeleton from "../../components/Skeleton/Skeleton"; // Import Skeleton component
 import Button from "../../components/Buttons/Buttons";
 import "./ExchangePage.scss";
 
@@ -17,6 +18,7 @@ const ExchangePage = ({ fetchPhotoCards }) => {
   const [deleteIndex, setDeleteIndex] = useState(null);
   const [completedModalIsOpen, setCompletedModalIsOpen] = useState(false);
   const [completedItem, setCompletedItem] = useState(null);
+  const [imageLoaded, setImageLoaded] = useState(Array(10).fill(false)); // Assuming max 10 images
 
   const fetchExchangeItems = async () => {
     try {
@@ -121,9 +123,16 @@ const ExchangePage = ({ fetchPhotoCards }) => {
     }
   };
 
+  const handleImageLoad = (index) => {
+    setImageLoaded((prev) => {
+      const newState = [...prev];
+      newState[index] = true;
+      return newState;
+    });
+  };
+
   return (
     <>
-      {" "}
       <Header />
       <main>
         <div>
@@ -146,13 +155,15 @@ const ExchangePage = ({ fetchPhotoCards }) => {
                       }`}
                     >
                       <div className="exchange-page__image-wrapper">
+                        {!imageLoaded[index] && <Skeleton />}
                         <img
                           src={exchange.imgSrc}
                           alt={exchange.provider}
-                          className="exchange-page__avatar"
-                          onError={() =>
-                            console.error(`Image not found: ${exchange.imgSrc}`)
-                          }
+                          className={`exchange-page__avatar ${
+                            imageLoaded[index] ? "loaded" : "loading"
+                          }`}
+                          onLoad={() => handleImageLoad(index)}
+                          style={{ display: imageLoaded[index] ? "block" : "none" }}
                         />
                       </div>
                       <div

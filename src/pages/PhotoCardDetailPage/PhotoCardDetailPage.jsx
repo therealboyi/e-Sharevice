@@ -1,3 +1,4 @@
+// src/pages/PhotoCardDetailPage/PhotoCardDetailPage.jsx
 import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axios";
@@ -6,7 +7,7 @@ import ReservationSummary from "../../components/ReservationSummary/ReservationS
 import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { AuthContext } from "../../contexts/AuthContext"; // Correct import
+import { AuthContext } from "../../contexts/AuthContext";
 import "./PhotoCardDetailPage.scss";
 
 const PhotoCardDetailPage = () => {
@@ -102,7 +103,10 @@ const PhotoCardDetailPage = () => {
               alt={card.provider}
               className="photo-card-detail-page__image"
             />
-            <div className="photo-card-detail-page__heart-container" onClick={handleFavoriteClick}>
+            <div
+              className="photo-card-detail-page__heart-container"
+              onClick={handleFavoriteClick}
+            >
               <FontAwesomeIcon
                 icon={faHeart}
                 className={`photo-card-detail-page__heart ${

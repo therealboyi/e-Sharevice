@@ -1,7 +1,11 @@
+// src/pages/PhotoCardDetailPage/PhotoCardDetailPage.scss
 @use "../../styles/partials/mixins" as *;
 
 .photo-card-detail-page {
-  padding: 3rem 1rem 3rem 1rem;
+  padding: 4rem 1rem 3rem 1rem;
+  @media (min-width: 768px) {
+    padding: 4rem 1rem 3rem 1rem;
+  }
 
   &__back-button {
     position: fixed;
@@ -12,8 +16,6 @@
     align-items: center;
     padding: 1rem;
     background: #fff;
-    // border-bottom: 0.5px solid #ddd;
-    // box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     cursor: pointer;
 
@@ -27,17 +29,15 @@
   &__container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     margin: 0 auto;
-    max-width: 1200px;
-    padding: 1rem;
     box-sizing: border-box;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
 
     @media (min-width: 768px) {
       flex-direction: row;
-      padding: 2rem;
+      padding: 1rem;
+      gap: 1rem;
     }
   }
 
@@ -47,10 +47,11 @@
     align-items: center;
     width: 100%;
     order: 1;
+    gap: 0.5rem;
 
     @media (min-width: 768px) {
-      width: 50%;
-      order: 2;
+      width: 150rem; // Watch
+      order: 1;
     }
   }
 
@@ -61,13 +62,10 @@
 
   &__image {
     width: 100%;
-    max-height: 500px;
     object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 1rem;
+    border-radius: 4px;
 
     @media (min-width: 768px) {
-      margin-bottom: 1rem;
     }
   }
 
@@ -105,26 +103,23 @@
   }
 
   &__content {
-    padding: 1rem;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1rem;
     order: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 
     @media (min-width: 768px) {
-      width: 50%;
       margin-bottom: 0;
-      margin-left: 1rem;
-      order: 1;
+      order: 2;
     }
   }
 
   &__title {
     @include font-style(2rem, bold, 2.5rem);
-    margin-bottom: 0.5rem;
 
-    @include respond-to('mobile') {
+    @include respond-to("mobile") {
       font-size: 1.5rem;
       line-height: 2rem;
     }
@@ -133,9 +128,8 @@
   &__subtitle {
     @include font-style(1.25rem, 400, 1.75rem);
     color: #666;
-    margin-bottom: 1rem;
 
-    @include respond-to('mobile') {
+    @include respond-to("mobile") {
       font-size: 1rem;
       line-height: 1.5rem;
     }
@@ -145,24 +139,20 @@
     @include font-style(1rem, 400, 1.5rem);
     line-height: 1.5;
     color: #333;
-    margin-bottom: 1rem;
 
-    @include respond-to('mobile') {
+    @include respond-to("mobile") {
       font-size: 0.875rem;
       line-height: 1.25rem;
     }
   }
 
   &__additional-description {
-    padding: 1rem;
-    background-color: #f9f9f9;
     border-radius: 8px;
 
     h3 {
       @include font-style(1.5rem, 400, 2rem);
-      margin-bottom: 0.5rem;
 
-      @include respond-to('mobile') {
+      @include respond-to("mobile") {
         font-size: 1.25rem;
         line-height: 1.75rem;
       }
@@ -173,7 +163,7 @@
       line-height: 1.5;
       color: #333;
 
-      @include respond-to('mobile') {
+      @include respond-to("mobile") {
         font-size: 0.875rem;
         line-height: 1.25rem;
       }
