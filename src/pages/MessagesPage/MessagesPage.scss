@@ -19,7 +19,7 @@
 
   &__content {
     flex-grow: 1;
-    padding: 20px;
+    padding: 20px 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -35,7 +35,8 @@
 
     @include respond-to("mobile") {
       font-size: 22px;
-      line-height: 26px;
+      line-height: 26px;        margin: 0 1rem;
+
     }
 
     &--hidden {
@@ -82,8 +83,9 @@
     flex-grow: 1;
 
     @media (max-width: 767px) {
-      width: 100%;
+      // width: 100%;
       border-right: none;
+      margin: 1rem 1rem;
     }
 
     @media (min-width: 768px) {
@@ -202,7 +204,10 @@
     flex-direction: column;
     gap: 10px;
 
-    @media (min-width: 767px) {
+    @media (max-width: 767px) {
+      padding: 0 1rem;    }
+
+    @media (min-width: 768px) {
       margin: 1rem 0 2rem 0;
       scrollbar-width: none;
 
@@ -217,10 +222,10 @@
 
     @media (max-width: 767px) {
       display: block;
-      margin-bottom: 10px;
+      // margin-bottom: 10px;
       background-color: #f5f5f5;
       border: none;
-      padding: 10px 20px;
+      padding: 10px 0;
       font-size: 16px;
       cursor: pointer;
     }
